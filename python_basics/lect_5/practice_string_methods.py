@@ -447,4 +447,206 @@ def ljust_ex_1():
 
 # task 2
 def ljust_ex_2():
-    pass
+    txt = "left".ljust(15, "-")
+    txt_r = "rigth".ljust(10, "-")
+    for _ in range(5):
+        print("|"+txt+"|"+txt_r+"|")
+#ljust_ex_2()
+
+
+# lower()
+# task 1
+def lower_1():
+    print("HELLO World!".lower())
+    print("Straße".lower())
+    print("HELLO World!".casefold())
+    print("Straße".casefold())
+#lower_1()
+
+
+# task 2
+def lower_2():
+    py_list = ["Python", "PYTHON", "pyThoN"]
+    i = 0
+    for py in py_list:
+        py_list[i] = py.lower()
+        i += 1
+    print(list(set(py_list)))
+#lower_2()
+
+
+# lstrip()
+# task 1
+def lstrip_1():
+    print(" hello".lstrip())
+    print("---hello---".lstrip("-"))
+#lstrip_1()
+
+
+# task 2
+def lstrip_2():
+    txt = " ### remove".lstrip().lstrip("#")
+    print(txt)
+#lstrip_2()
+
+
+# maketrans()
+# task 1
+def maketrans_1():
+    table = str.maketrans("as", "@$", "!") 
+    txt = "a glass! of soda!"
+    change = txt.translate(table)
+    print(change)
+#maketrans_1()
+
+
+# task 2
+def maketrans_2():
+    table = str.maketrans("aeiouAEIOU", "**********")
+    txt = "A normal text; vowels will be replaced with *"
+    txt = txt.translate(table)
+    print(txt)
+#maketrans_2()
+
+
+# partition()
+# task 1
+def partition_1():
+    print("name: value".partition(":"))
+#partition_1()
+
+
+# task 2
+def partition_2():
+    print("no-separator-here".partition("="))
+#partition_2()
+
+
+# replace()
+# task 1
+def replace_1():
+    print("The catcatcher caught a cat".replace("cat", "dog"))
+    print("The catcatcher caught a cat".replace("cat", "dog", count=1))
+    print("The catcatcher caught a cat".replace("cat", "dog", count=2))
+#replace_1()
+
+
+# task 2
+def replace_2():
+    txt = "Hello world\t\tthis is\nPython".replace("\t", " ")
+    print(txt)
+    print(txt.replace("  ", " "))
+#replace_2()
+
+
+# rfind()
+# task 1-2
+def rfind_1():
+    print("bananas".rfind("ana"))
+    print("abracadabra".find("abra", 2))
+    print("abracadabra".rfind("abra", 0, 4))
+#rfind_1()
+
+
+# rindex():
+# task 1
+def rindex_1():
+    a = "bananas".rindex("a")
+    print(a)
+    try:
+        "bananas".rindex("x")
+    except ValueError:
+        print("No 'x' in bananas")
+#rindex_1()
+
+
+# task 2
+def rindex_2():
+    txt = "a-123-456-a"
+    print(txt[txt.index("a")+1:txt.rindex("a")])
+#rindex_2()
+
+
+# rjust()
+# task 1
+def rjust_1():
+    print("42".rjust(5, "0"))
+#rjust_1()
+
+
+# task 2
+def rjust_2():
+    for i in range(3):
+        print(str(i+1).rjust(4, "-"))
+#rjust_2()
+
+
+# rpartition()
+# task 1-2
+def rpartition_1():
+    print("a=b=c".rpartition("="))
+    print("a=b=c".partition("="))
+    print("/home/user/projects/code.py".rpartition("/"))
+    directory, _, file = "/home/user/projects/code.py".rpartition("/")
+    print(directory)
+    print(file)
+#rpartition_1()
+
+
+# rsplit()
+# task 1
+def rsplit_1():
+    print("a,b,c,d".rsplit(",", 2))
+    print("a,b,c,d".split(",", 2))
+#rsplit_1()
+
+
+# task 2
+def rsplit_2():
+    abs_path = "path/to/my/file.txt"
+    print(f"directory: {abs_path.rsplit("/", 1)[0]}")
+    print(f"file: {abs_path.rsplit("/", 1)[1]}")
+#rsplit_2()
+
+
+# rstrip()
+# task 1-2
+def rstrip_1():
+    print("hello ".rstrip())
+    print("hello\n".rstrip())
+    print("hello\r\n".rstrip())
+    print("value1,value2;,;;".rstrip(",;"))
+    print("value1,value2;,;;".rstrip(";"))
+#rstrip_1()
+
+
+# split()
+# task 1
+def split_1():
+    print("one two three".split())
+    print("one two three".split())
+#split_1()
+
+
+# task 2
+def split_2():
+    print("a,b,,c,".split(","))
+    print("a,b,,c,".split(",", 2))
+#split_2()
+
+
+# splitlines()
+# task 1
+def splitlines_1():
+    print("line1\nline2\r\nline3\rline4".splitlines())
+    print("line1\nline2\r\nline3\rline4".splitlines())
+    print("line1\nline2\n".splitlines())
+    print("line1\nline2\n".splitlines(True))
+#splitlines_1()
+
+
+# task 2
+def splitlines_2():
+    newline_count = len("line1\nline2\r\nline3\rline4".splitlines())
+    print(newline_count*2-1)
+splitlines_2()
