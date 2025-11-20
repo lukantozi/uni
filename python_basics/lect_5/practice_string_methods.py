@@ -786,4 +786,14 @@ def upper_2(wrd):
 # zfill()
 # task 1
 def zfill_1():
-    pass
+    print("42".zfill(5))
+    print("12345".zfill(5))
+    print("".zfill(5))
+#zfill_1()
+
+
+# task 2
+def zfill_2():
+    print("-42".zfill(5))
+    print("-7".zfill(5))
+zfill_2()
