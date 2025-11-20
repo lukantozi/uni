@@ -649,4 +649,141 @@ def splitlines_1():
 def splitlines_2():
     newline_count = len("line1\nline2\r\nline3\rline4".splitlines())
     print(newline_count*2-1)
-splitlines_2()
+#splitlines_2()
+
+
+# startswith()
+# task 1
+def startswith_1():
+    print("unbelievable".startswith("un"))
+    print("unbelievable".startswith("bel"))
+#startswith_1()
+
+
+# task 2
+def startswith_2():
+    print("https://www.amindi.com".startswith(("https://", "http://", "www")))
+    print("http://www.amindi.com".startswith(("https://", "http://")))
+    print("www.amindi.com".startswith(("https://", "http://", "www")))
+#startswith_2()
+
+
+# strip()
+def strip_1():
+    print(" hello ".strip())
+    print("***hello***".strip("*"))
+#strip_1()
+
+
+def strip_2(txt):
+    n = 1
+    for i in txt:
+        if i == "'" or i == '"':
+            for j in txt[n:]:
+                if j == i:
+                    return txt.strip(j)
+        n += 1
+    return txt
+
+#print(strip_2("\"hello\""))
+#print(strip_2("'hello'"))
+#print(strip_2("\"hello'"))
+
+
+# swapcase()
+# task 1
+def swapcase_1():
+    print("Hello WORLD".swapcase())
+    print("ß".swapcase())
+    print("Python3.8".swapcase())
+#swapcase_1()
+
+
+# task 2
+def swapcase_2():
+    pass
+
+
+# title()
+# task 1
+def title_1():
+    print("this is a title".title())
+    print("this isn't fine".title())
+    print("hello-world".title())
+#title_1()
+
+
+# task 2
+def title_2(txt):
+    txt_title = txt.title().split()
+    lower_words = ["and", "or", "the", "a", "an"]
+    i = 1
+    for word in txt_title[1:]:
+        lowered = word.lower()
+        if lowered in lower_words:
+            txt_title[i] = lowered
+        i += 1
+    print(txt_title)
+    txt_title = " ".join(txt_title)
+    print(txt_title)
+#title_2("And we were there and the boy, an apple or a pear") 
+
+
+# translate():
+# task 1
+def translate_1():
+    table = str.maketrans("", "", "aeiouAEIOU")
+    print("beautiful code".translate(table))
+#translate_1()
+
+
+# task 2
+def translate_2(txt):
+    cypher = ""
+    alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ" 
+    for i in alphabet:
+        if i.isupper():
+            cypher += chr(((ord(i)+2-65)%26+65))
+        else:
+            cypher += chr(((ord(i)+2-97)%26+97))
+    table = str.maketrans(alphabet, cypher)
+    text = txt.translate(table)
+    print(text)
+#translate_2("xyz")
+#translate_2("Hello, World!")
+
+
+# upper()
+# task 1
+def upper_1():
+    print("hello world".upper())
+    print("Straße".upper())
+    print("προγραμμα".upper())
+    print()
+    print("hello world".casefold())
+    print("Straße".casefold())
+    print("προγραμμα".casefold())
+    print()
+    print("hello world".lower())
+    print("Straße".lower())
+    print("προγραμμα".lower())
+#upper_1()
+
+
+# task 2
+def upper_2(wrd):
+    len_wrd = len(wrd) 
+    upper_l = 0
+    for i in wrd:
+        if i.isupper():
+            upper_l += 1
+    if upper_l > len_wrd/2:
+        return True
+    return False
+#print(upper_2("HEELLooo"))
+
+
+# zfill()
+# task 1
+def zfill_1():
+    pass
