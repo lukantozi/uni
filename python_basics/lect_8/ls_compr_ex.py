@@ -19,7 +19,7 @@ def ret_no_empt(lst):
 
 # task 4
 def div_sing():
-    return [[x for x in range(1, 101) if x%y==0] for y in range(2, 10)]
+    return [x for x in range(1, 101) if [y for y in range(2, 10) if x%y==0]]
 #print(div_sing())
 
 
