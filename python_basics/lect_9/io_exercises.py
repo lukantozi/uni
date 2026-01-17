@@ -55,4 +55,4 @@ def two_files():
     with open("example1.txt") as file1, open("letters_by_4.txt") as file2:
         for num, lines in enumerate(zip(file1, file2)):
             print(f"line {num+1} from file 1: {lines[0].strip().ljust(8)} - line {num+1} from file 2: {lines[1].strip()}")
-two_files()
+#two_files()
