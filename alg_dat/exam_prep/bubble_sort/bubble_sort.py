@@ -97,7 +97,6 @@ def cocktail_sort(arr):
     swapped = True
 
     while swapped == True:
-
         swapped = False
         for i in range(start, end):
             if arr[i] > arr[i+1]:
@@ -148,3 +147,43 @@ def bubble_k_last_swap(arr, k):
         k -= 1
     return arr
 #print(bubble_k_last_swap([9,8,4,3,2,1], 3))
+
+def repet_bubble(arr):
+    n = len(arr)
+    while n > 1:
+        last_swapped = 0
+        for i in range(n-1):
+            if arr[i] > arr[i+1]:
+                arr[i], arr[i+1] = arr[i+1], arr[i]
+                last_swapped = i + 1
+        n = last_swapped
+    return arr
+#print(repet_bubble(nums))
+
+def repet_shaker_sort(arr):
+    n = len(arr)
+    start = 0
+    end = n - 1
+    swapped = True
+
+    while swapped == True:
+        swapped = False
+        for i in range(start, end):
+            if arr[i] > arr[i+1]: # was writing i+i instead of i+1
+                arr[i], arr[i+1] = arr[i+1], arr[i]
+                swapped = True
+        
+        if swapped == False:
+            break
+        end -= 1
+        swapped = False
+
+        for i in range(end-1, start-1, -1):
+            if arr[i] > arr[i+1]:
+                arr[i], arr[i+1] = arr[i+1], arr[i]
+                swapped = True
+
+        start += 1
+
+    return arr
+#print(repet_shaker_sort(nums))
