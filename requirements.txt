@@ -1,0 +1,8 @@
+jedi==0.19.2
+packaging==26.0
+parso==0.8.5
+Pygments==2.19.2
+typing_extensions==4.15.0
+urwid==3.0.3
+urwid_readline==0.15.1
+wcwidth==0.5.3
