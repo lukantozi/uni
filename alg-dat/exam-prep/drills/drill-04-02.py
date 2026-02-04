@@ -54,8 +54,16 @@ def bubble_sort(arr):
 
 #- +1: Last-swap boundary optimization.
 def last_swap_bubble_sort(arr):
-    pass
-    # already implemented above?
+    n = len(arr)
+    while n > 0:
+        last_swap = 0
+        for j in range(0, n - 1):
+            if arr[j] > arr[j+1]:
+                arr[j], arr[j+1] = arr[j+1], arr[j]
+                last_swap = j + 1
+        n = last_swap
+    return arr
+
 
 TESTS = {"lists": [[64, 34, 25, 12, 22, 11, 90], [1, 2, 3, 4], [4, 3, 2, 1], [2, 1, 2, 1, 2, 1]]}
 
@@ -63,6 +71,8 @@ TESTS = {"lists": [[64, 34, 25, 12, 22, 11, 90], [1, 2, 3, 4], [4, 3, 2, 1], [2,
 #print(bubble_sort(TESTS["lists"][1]))
 #print(bubble_sort(TESTS["lists"][2]))
 #print(bubble_sort(TESTS["lists"][3]))
+#print(last_swap_bubble_sort(TESTS["lists"][0]))
+#print(last_swap_bubble_sort(TESTS["lists"][1]))
 
 #binary_search
 #- BASIC: Binary search (iterative) -> index or -1.
