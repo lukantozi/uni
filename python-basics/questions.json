@@ -1,0 +1,1650 @@
+{
+  "gate_0_setup": {
+    "description": "Exam harness - template practice",
+    "tasks": [
+      "Create template file with main() function",
+      "Include test sections for: list slicing, string formatting, exception handling",
+      "Practice typing from memory in under 5 minutes"
+    ]
+  },
+  "gate_1_values_types": {
+    "layer_a_batch_1": {
+      "questions": [
+        {
+          "q": "print(type(input()))  # User types: 42",
+          "a": "<class 'str'>"
+        },
+        {
+          "q": "print(1 == True)",
+          "a": "True"
+        },
+        {
+          "q": "print(0 == False)",
+          "a": "True"
+        },
+        {
+          "q": "print(True + True)",
+          "a": "2"
+        },
+        {
+          "q": "print(False * 10)",
+          "a": "0"
+        },
+        {
+          "q": "print(bool(\"\"))",
+          "a": "False"
+        },
+        {
+          "q": "print(bool(\"0\"))",
+          "a": "True"
+        },
+        {
+          "q": "print(bool([]))",
+          "a": "False"
+        },
+        {
+          "q": "print(bool([0]))",
+          "a": "True"
+        },
+        {
+          "q": "print(bool(None))",
+          "a": "False"
+        },
+        {
+          "q": "x = 5\nprint(type(x), type(str(x)))",
+          "a": "<class 'int'> <class 'str'>"
+        },
+        {
+          "q": "a = \"123\"\nb = int(a)\nprint(type(a), type(b), a + a, b + b)",
+          "a": "<class 'str'> <class 'int'> 123123 246"
+        },
+        {
+          "q": "print(1 < 2 < 3)",
+          "a": "True"
+        },
+        {
+          "q": "print(1 < 3 < 2)",
+          "a": "False"
+        },
+        {
+          "q": "x = 5\nprint(1 < x < 10)",
+          "a": "True"
+        }
+      ]
+    },
+    "layer_a_batch_2": {
+      "questions": [
+        {
+          "q": "print(bool(0))",
+          "a": "False"
+        },
+        {
+          "q": "print(bool(1))",
+          "a": "True"
+        },
+        {
+          "q": "print(bool(-1))",
+          "a": "True"
+        },
+        {
+          "q": "print(bool([]))",
+          "a": "False"
+        },
+        {
+          "q": "print(bool([False]))",
+          "a": "True"
+        },
+        {
+          "q": "print(bool(\"False\"))",
+          "a": "True"
+        },
+        {
+          "q": "print(True * 5)",
+          "a": "5"
+        },
+        {
+          "q": "print(False + False + False)",
+          "a": "0"
+        },
+        {
+          "q": "print(2 == True)",
+          "a": "False"
+        },
+        {
+          "q": "print(1 == True == True)",
+          "a": "True"
+        },
+        {
+          "q": "x = input()  # user types: hello\nprint(x, type(x))",
+          "a": "hello <class 'str'>"
+        },
+        {
+          "q": "a = \"10\"\nb = \"20\"\nprint(a + b)",
+          "a": "1020"
+        },
+        {
+          "q": "a = 10\nb = 20\nprint(str(a) + str(b))",
+          "a": "1020"
+        },
+        {
+          "q": "print(type(3.14))",
+          "a": "<class 'float'>"
+        },
+        {
+          "q": "print(type(True))",
+          "a": "<class 'bool'>"
+        }
+      ]
+    },
+    "layer_b": {
+      "questions": [
+        {
+          "q": "print(True is 1)",
+          "a": "False (SyntaxWarning)"
+        },
+        {
+          "q": "print(True == 1)",
+          "a": "True"
+        },
+        {
+          "q": "x = []\ny = []\nprint(x == y, x is y)",
+          "a": "True False"
+        },
+        {
+          "q": "x = [1, 2]\ny = x\nprint(x is y)",
+          "a": "True"
+        },
+        {
+          "q": "print(2 < 3 < 2)",
+          "a": "False"
+        },
+        {
+          "q": "x = 5\nprint(0 < x < 10 < 20)",
+          "a": "True"
+        },
+        {
+          "q": "print(\"\" or \"hello\")",
+          "a": "hello"
+        },
+        {
+          "q": "print([] or [1])",
+          "a": "[1]"
+        },
+        {
+          "q": "print(0 or False or \"\" or \"text\")",
+          "a": "text"
+        },
+        {
+          "q": "print(bool(0), bool(), bool(\"\"))",
+          "a": "False False False"
+        },
+        {
+          "q": "a = 10\nb = 10\nprint(a is b)",
+          "a": "True (small int caching)"
+        },
+        {
+          "q": "a = 1000\nb = 1000\nprint(a is b)",
+          "a": "False (large ints not cached)"
+        },
+        {
+          "q": "print(not not \"\")",
+          "a": "False"
+        },
+        {
+          "q": "print(not not [])",
+          "a": "False"
+        },
+        {
+          "q": "x = None\nprint(x is None, x == None)",
+          "a": "True True"
+        }
+      ]
+    },
+    "layer_b_or_and": {
+      "questions": [
+        {
+          "q": "print(0 or 5)",
+          "a": "5"
+        },
+        {
+          "q": "print(5 or 0)",
+          "a": "5"
+        },
+        {
+          "q": "print(False or 10)",
+          "a": "10"
+        },
+        {
+          "q": "print(10 or False)",
+          "a": "10"
+        },
+        {
+          "q": "print(\"\" or \"first\" or \"second\")",
+          "a": "first"
+        },
+        {
+          "q": "print([] or 0 or \"text\")",
+          "a": "text"
+        },
+        {
+          "q": "print(1 and 2)",
+          "a": "2"
+        },
+        {
+          "q": "print(0 and 2)",
+          "a": "0"
+        },
+        {
+          "q": "print(5 and 10 and 20)",
+          "a": "20"
+        },
+        {
+          "q": "print(\"hello\" and \"\")",
+          "a": "\"\""
+        },
+        {
+          "q": "a = 256\nb = 256\nprint(a is b)",
+          "a": "True (cached)"
+        },
+        {
+          "q": "a = 257\nb = 257\nprint(a is b)",
+          "a": "False (not cached)"
+        }
+      ]
+    },
+    "layer_c_speedrun": {
+      "questions": [
+        {
+          "q": "print(int(\"10\") + 5)",
+          "a": "15"
+        },
+        {
+          "q": "print(\"10\" + \"5\")",
+          "a": "105"
+        },
+        {
+          "q": "print(bool(1), bool(-1))",
+          "a": "True True"
+        },
+        {
+          "q": "print(True + False + True)",
+          "a": "2"
+        },
+        {
+          "q": "x = input()  # user types: hello\nprint(type(x))",
+          "a": "<class 'str'>"
+        },
+        {
+          "q": "print(5 < 10 < 7)",
+          "a": "False"
+        },
+        {
+          "q": "print(\"text\" and \"another\")",
+          "a": "another"
+        },
+        {
+          "q": "print([] and [1])",
+          "a": "[]"
+        },
+        {
+          "q": "print(False == 0 == 0.0)",
+          "a": "True"
+        },
+        {
+          "q": "x = \"\"\nif x:\n    print(\"A\")\nelse:\n    print(\"B\")",
+          "a": "B"
+        },
+        {
+          "q": "x = \"0\"\nif x:\n    print(\"A\")\nelse:\n    print(\"B\")",
+          "a": "A"
+        },
+        {
+          "q": "print(type(True))",
+          "a": "<class 'bool'>"
+        },
+        {
+          "q": "print(int(True), int(False))",
+          "a": "1 0"
+        },
+        {
+          "q": "x = 5\ny = 5\nprint(x is y)",
+          "a": "True"
+        },
+        {
+          "q": "x = [2]\ny = [2]\nprint(x is y)",
+          "a": "False"
+        },
+        {
+          "q": "x = None\nif x is None:\n    print(\"A\")\nif x == None:\n    print(\"B\")",
+          "a": "A\\nB"
+        },
+        {
+          "q": "print(1 < 2 and 2 < 3)",
+          "a": "True"
+        },
+        {
+          "q": "print(1 < 2 < 3)",
+          "a": "True"
+        },
+        {
+          "q": "print(not \"\")",
+          "a": "True"
+        },
+        {
+          "q": "print(not \"False\")",
+          "a": "False"
+        },
+        {
+          "q": "x = 0\nprint(bool(x), bool(str(x)))",
+          "a": "False True"
+        },
+        {
+          "q": "print(True * 3)",
+          "a": "3"
+        },
+        {
+          "q": "print(False or 0 or \"\" or None or \"last\")",
+          "a": "last"
+        },
+        {
+          "q": "x = input()  # user types: 100\nprint(x > 50)",
+          "a": "Error (can't compare str and int)"
+        },
+        {
+          "q": "a = 10\nb = 20\nc = 15\nprint(a < c < b)",
+          "a": "True"
+        },
+        {
+          "q": "print(type(1 == 1))",
+          "a": "<class 'bool'>"
+        },
+        {
+          "q": "x = []\ny = x\nz = []\nprint(x is y, x is z, x == z)",
+          "a": "True False True"
+        },
+        {
+          "q": "print(bool({}), bool({1}))",
+          "a": "False True"
+        },
+        {
+          "q": "print(\"\" + \"\" or \"empty\")",
+          "a": "empty"
+        },
+        {
+          "q": "print(1 and 2)",
+          "a": "2"
+        }
+      ]
+    }
+  },
+  "gate_2_strings_formatting": {
+    "layer_a": {
+      "questions": [
+        {
+          "q": "name = \"alice\"\nprint(f\"Hello {name}\")",
+          "a": "Hello alice"
+        },
+        {
+          "q": "name = \"alice\"\nprint(f\"Hello {name.upper()}\")",
+          "a": "Hello ALICE"
+        },
+        {
+          "q": "x = 10\ny = 20\nprint(f\"{x} + {y} = {x+y}\")",
+          "a": "10 + 20 = 30"
+        },
+        {
+          "q": "print(\"hello\", \"world\")",
+          "a": "hello world"
+        },
+        {
+          "q": "print(\"hello\", end=\"\")\nprint(\"world\")",
+          "a": "helloworld"
+        },
+        {
+          "q": "print(\"hello\", end=\" \")\nprint(\"world\")",
+          "a": "hello world"
+        },
+        {
+          "q": "print(\"hello\", end=\"...\")\nprint(\"world\")",
+          "a": "hello...world"
+        },
+        {
+          "q": "for i in range(3):\n    print(i, end=\"\")",
+          "a": "012"
+        },
+        {
+          "q": "for i in range(3):\n    print(i, end=\" \")",
+          "a": "0 1 2 "
+        },
+        {
+          "q": "text = \"\"\nprint(text, text[1])",
+          "a": "IndexError"
+        },
+        {
+          "q": "text = \"Hello World\"\nprint(text.split())",
+          "a": "['Hello', 'World']"
+        },
+        {
+          "q": "text = \"hello\"\nprint(text * 3)",
+          "a": "hellohellohello"
+        },
+        {
+          "q": "age = 25\nprint(\"Age: {}\".format(age))",
+          "a": "Age: 25"
+        },
+        {
+          "q": "name = \"Bob\"\nage = 30\nprint(\"Name: {}, Age: {}\".format(name, age))",
+          "a": "Name: Bob, Age: 30"
+        },
+        {
+          "q": "print(\"{1} {0}\".format(\"world\", \"hello\"))",
+          "a": "hello world"
+        }
+      ]
+    },
+    "layer_b": {
+      "questions": [
+        {
+          "q": "print(\"A\")\nprint(\"B\")",
+          "a": "A\\nB"
+        },
+        {
+          "q": "print(\"A\", end=\"\")\nprint(\"B\", end=\"\")\nprint(\"C\")",
+          "a": "ABC"
+        },
+        {
+          "q": "print(\"X\", \"Y\", \"Z\")",
+          "a": "X Y Z"
+        },
+        {
+          "q": "print(\"X\" + \"Y\" + \"Z\")",
+          "a": "XYZ"
+        },
+        {
+          "q": "print(\"Line1\\nLine2\")",
+          "a": "Line1\\nLine2"
+        },
+        {
+          "q": "print(\"Tab\\there\")",
+          "a": "Tab    here"
+        },
+        {
+          "q": "x = 5\nprint(f\"{x:02d}\")",
+          "a": "05"
+        },
+        {
+          "q": "pi = 3.14159\nprint(f\"{pi:.2f}\")",
+          "a": "3.14"
+        },
+        {
+          "q": "text = \" hello \"\nprint(text.strip())",
+          "a": "hello"
+        },
+        {
+          "q": "text = \"hello world\"\nprint(text.count(\"l\"))",
+          "a": "3"
+        },
+        {
+          "q": "text = \"hello\"\nprint(text.replace(\"l\", \"L\"))",
+          "a": "heLLo"
+        },
+        {
+          "q": "text = \"Hello World\"\nprint(text.lower())",
+          "a": "hello world"
+        },
+        {
+          "q": "text = \"hello\"\nprint(text.upper().lower())",
+          "a": "hello"
+        },
+        {
+          "q": "s = \"a,b,c\"\nprint(s.split(\",\"))",
+          "a": "['a', 'b', 'c']"
+        },
+        {
+          "q": "parts = [\"a\", \"b\", \"c\"]\nprint(\"-\".join(parts))",
+          "a": "a-b-c"
+        }
+      ]
+    },
+    "layer_c_speedrun": {
+      "questions": [
+        {
+          "q": "print(\"A\", \"B\", sep=\"-\")",
+          "a": "A-B"
+        },
+        {
+          "q": "print(\"A\", \"B\", sep=\"\")",
+          "a": "AB"
+        },
+        {
+          "q": "for i in range(4):\n    print(i, end=\",\")",
+          "a": "0,1,2,3,"
+        },
+        {
+          "q": "name = \"john\"\nprint(f\"{name.upper()}\")",
+          "a": "JOHN"
+        },
+        {
+          "q": "x = 10.5678\nprint(f\"{x:.2f}\")",
+          "a": "10.57"
+        },
+        {
+          "q": "print(\"{}+{}={}\".format(2, 3, 2+3))",
+          "a": "2+3=5"
+        },
+        {
+          "q": "print(\"{0}{0}{0}\".format(\"X\"))",
+          "a": "XXX"
+        },
+        {
+          "q": "text = \"hello\"\nprint(len(text))",
+          "a": "5"
+        },
+        {
+          "q": "text = \"hello world\"\nprint(text[0:5])",
+          "a": "hello"
+        },
+        {
+          "q": "text = \"hello\"\nprint(text[::-1])",
+          "a": "olleh"
+        },
+        {
+          "q": "print(\"x\" * 5)",
+          "a": "xxxxx"
+        },
+        {
+          "q": "print(\"Line1\")\nprint(\"Line2\", end=\"\")\nprint(\"Line3\")",
+          "a": "Line1\\nLine2Line3"
+        },
+        {
+          "q": "s = \"a b c\"\nprint(s.split())",
+          "a": "['a', 'b', 'c']"
+        },
+        {
+          "q": "s = \"ABC\"\nprint(s.lower())",
+          "a": "abc"
+        },
+        {
+          "q": "s = \"abc\"\nprint(s.isupper())",
+          "a": "False"
+        },
+        {
+          "q": "s = \"123\"\nprint(s.isdigit())",
+          "a": "True"
+        },
+        {
+          "q": "s = \"hello world\"\nprint(s.startswith(\"hello\"))",
+          "a": "True"
+        },
+        {
+          "q": "s = \"hello world \"\nprint(s.endswith(\"world\"))",
+          "a": "False"
+        },
+        {
+          "q": "s = \"hello\"\nprint(s.find(\"l\"))",
+          "a": "2"
+        },
+        {
+          "q": "s = \"hello\"\nprint(s.index(\"l\"))",
+          "a": "2"
+        },
+        {
+          "q": "s = \"hello\"\nprint(s.replace(\"l\", \"\"))",
+          "a": "heo"
+        },
+        {
+          "q": "parts = [\"a\", \"b\", \"c\"]\nprint(\",\".join(parts))",
+          "a": "a,b,c"
+        },
+        {
+          "q": "s = \" text \"\nprint(s.strip())",
+          "a": "text"
+        },
+        {
+          "q": "s = \"Hello\"\nprint(s, s[1])",
+          "a": "Hello e"
+        },
+        {
+          "q": "print(\"A\\nB\\nC\", end=\"\")\nprint(\"D\")",
+          "a": "A\\nB\\nCD"
+        }
+      ]
+    }
+  },
+  "gate_3_lists_slicing": {
+    "layer_a": {
+      "questions": [
+        {
+          "q": "a = [1, 2, 3, 4, 5]\nprint(a)",
+          "a": "[1, 2, 3, 4, 5]"
+        },
+        {
+          "q": "a = [1, 2, 3, 4, 5]\nprint(a[1])",
+          "a": "2"
+        },
+        {
+          "q": "a = [1, 2, 3, 4, 5]\nprint(a[1:3])",
+          "a": "[2, 3]"
+        },
+        {
+          "q": "a = [1, 2, 3, 4, 5]\nprint(a[:3])",
+          "a": "[1, 2, 3]"
+        },
+        {
+          "q": "a = [1, 2, 3, 4, 5]\nprint(a[2:])",
+          "a": "[3, 4, 5]"
+        },
+        {
+          "q": "a = [1, 2, 3, 4, 5]\nprint(a[:])",
+          "a": "[1, 2, 3, 4, 5]"
+        },
+        {
+          "q": "a = [1, 2, 3, 4, 5]\nprint(a[::2])",
+          "a": "[1, 3, 5]"
+        },
+        {
+          "q": "a = [1, 2, 3, 4, 5]\nprint(a[::-1])",
+          "a": "[5, 4, 3, 2, 1]"
+        },
+        {
+          "q": "a = [1, 2, 3, 4, 5]\nprint(a[2:])",
+          "a": "[3, 4, 5]"
+        },
+        {
+          "q": "a = [1, 2, 3, 4, 5]\nprint(a[:2])",
+          "a": "[1, 2]"
+        },
+        {
+          "q": "a = [1, 2, 3, 4, 5]\nprint(a[3:1])",
+          "a": "[]"
+        },
+        {
+          "q": "a = [1, 2, 3, 4, 5]\nprint(a[1::2])",
+          "a": "[2, 4]"
+        },
+        {
+          "q": "a = [1, 2, 3, 4, 5]\nb = a\nb[0] = 99\nprint(a)",
+          "a": "[99, 2, 3, 4, 5]"
+        },
+        {
+          "q": "a = [1, 2, 3, 4, 5]\nb = a[:]\nb[0] = 99\nprint(a)",
+          "a": "[1, 2, 3, 4, 5]"
+        },
+        {
+          "q": "a = [1, 2, 3, 4, 5]\na.append(6)\nprint(a)",
+          "a": "[1, 2, 3, 4, 5, 6]"
+        },
+        {
+          "q": "a = [1, 2, 3]\na.extend([4, 5])\nprint(a)",
+          "a": "[1, 2, 3, 4, 5]"
+        },
+        {
+          "q": "a = [1, 2, 3]\na.insert(1, 99)\nprint(a)",
+          "a": "[1, 99, 2, 3]"
+        },
+        {
+          "q": "a = [1, 2, 3, 2, 4]\na.remove(2)\nprint(a)",
+          "a": "[1, 3, 2, 4]"
+        },
+        {
+          "q": "a = [1, 2, 3, 4, 5]\nx = a.pop()\nprint(a, x)",
+          "a": "[1, 2, 3, 4] 5"
+        },
+        {
+          "q": "a = [1, 2, 3, 4, 5]\nx = a.pop(2)\nprint(a, x)",
+          "a": "[1, 2, 4, 5] 3"
+        }
+      ]
+    },
+    "layer_b_nested": {
+      "questions": [
+        {
+          "q": "a = [[1, 2], [3, 4]]\nprint(a)",
+          "a": "[[1, 2], [3, 4]]"
+        },
+        {
+          "q": "a = [[1, 2], [3, 4]]\nprint(a[1])",
+          "a": "[3, 4]"
+        },
+        {
+          "q": "a = [[1, 2], [3, 4]]\na[0] = 99\nprint(a)",
+          "a": "[99, [3, 4]]"
+        },
+        {
+          "q": "a = [1, 2, [3, 4]]\nprint(a[3])",
+          "a": "IndexError"
+        },
+        {
+          "q": "a = [1, 2, [3, 4]]\na[3].append(5)\nprint(a)",
+          "a": "IndexError"
+        },
+        {
+          "q": "a = [1, 2, 3]\nb = [a, a]\na[0] = 99\nprint(b)",
+          "a": "[[99, 2, 3], [99, 2, 3]]"
+        },
+        {
+          "q": "a = [1, 2, 3]\nb = [a[:], a[:]]\na[0] = 99\nprint(b)",
+          "a": "[[1, 2, 3], [1, 2, 3]]"
+        },
+        {
+          "q": "a = [[1, 2], [3, 4]]\nb = a[:]\na.append(99)\nprint(b)",
+          "a": "[[1, 2], [3, 4]]"
+        },
+        {
+          "q": "nested = [[1, 2], [3, 4], [5, 6]]\nprint(len(nested))",
+          "a": "3"
+        },
+        {
+          "q": "nested = [[1, 2], [3, 4], [5, 6]]\ntotal = 0\nfor sublist in nested:\n    total += len(sublist)\nprint(total)",
+          "a": "6"
+        },
+        {
+          "q": "a = [1, 2, [30, 40, [500, 600, 700], 80], 8]\nprint(a[2][2])",
+          "a": "[500, 600, 700]"
+        },
+        {
+          "q": "a = [1, 2, [30, 40, [500, 600, 700], 80], 8]\na[2][2].append(800)\nprint(a)",
+          "a": "[1, 2, [30, 40, [500, 600, 700, 800], 80], 8]"
+        },
+        {
+          "q": "matrix = [[1, 2, 3], [4, 5, 6]]\nprint(matrix[1][2])",
+          "a": "6"
+        },
+        {
+          "q": "a = [1, 2, 3]\nb = a\nc = a[:]\na.append(4)\nprint(b, c)",
+          "a": "[1, 2, 3, 4] [1, 2, 3]"
+        },
+        {
+          "q": "a = [[1, 2], [3, 4]]\nb = a\nb.append(99)\nprint(a)",
+          "a": "[[1, 2], [3, 4], 99]"
+        }
+      ]
+    },
+    "layer_c_speedrun": {
+      "questions": [
+        {
+          "q": "a = [1, 2, 3, 4, 5]\nprint(a[2:4])",
+          "a": "[3, 4]"
+        },
+        {
+          "q": "a = [1, 2, 3, 4, 5]\nprint(a[1::-1])",
+          "a": "[2, 1]"
+        },
+        {
+          "q": "a = [1, 2, 3]\na.append([4, 5])\nprint(a)",
+          "a": "[1, 2, 3, [4, 5]]"
+        },
+        {
+          "q": "a = [1, 2, 3]\na.extend([4, 5])\nprint(a)",
+          "a": "[1, 2, 3, 4, 5]"
+        },
+        {
+          "q": "a = [5, 2, 8, 1]\nprint(max(a), min(a))",
+          "a": "8 1"
+        },
+        {
+          "q": "a = [1, 2, 3]\nprint(sum(a))",
+          "a": "6"
+        },
+        {
+          "q": "a = [1, 2, 3]\nprint(len(a))",
+          "a": "3"
+        },
+        {
+          "q": "a = [1, 2, 3]\nb = a\na = a + [4]\nprint(b)",
+          "a": "[1, 2, 3]"
+        },
+        {
+          "q": "a = [1, 2, 3]\nb = a\na += [4]\nprint(b)",
+          "a": "[1, 2, 3, 4]"
+        },
+        {
+          "q": "a = [1, 2, 3, 2, 4]\nprint(a.count(2))",
+          "a": "2"
+        },
+        {
+          "q": "a = [1, 2, 3]\nprint(2 in a)",
+          "a": "True"
+        },
+        {
+          "q": "a = [1, 2, 3]\nprint(a.index(2))",
+          "a": "1"
+        },
+        {
+          "q": "a = [3, 1, 4, 1, 5]\na.sort()\nprint(a)",
+          "a": "[1, 1, 3, 4, 5]"
+        },
+        {
+          "q": "a = [3, 1, 4, 1, 5]\nb = sorted(a)\nprint(a, b)",
+          "a": "[3, 1, 4, 1, 5] [1, 1, 3, 4, 5]"
+        },
+        {
+          "q": "a = [1, 2, 3]\na.reverse()\nprint(a)",
+          "a": "[3, 2, 1]"
+        },
+        {
+          "q": "a = [1, 2, 3]\nprint(a[::-1])",
+          "a": "[3, 2, 1]"
+        },
+        {
+          "q": "a = [[1, 2], [3, 4]]\nprint(a[1][0])",
+          "a": "3"
+        },
+        {
+          "q": "a = [1, [2, 3], 4]\nprint(a[1][1])",
+          "a": "3"
+        },
+        {
+          "q": "a = [1, 2, 3]\na.clear()\nprint(a)",
+          "a": "[]"
+        },
+        {
+          "q": "a = [1, 2, 3, 4, 5]\ndel a[2]\nprint(a)",
+          "a": "[1, 2, 4, 5]"
+        },
+        {
+          "q": "a = [1, 2, 3, 4, 5]\ndel a[1:3]\nprint(a)",
+          "a": "[1, 4, 5]"
+        },
+        {
+          "q": "a = [1, 2, 3]\nb = a * 2\nprint(b)",
+          "a": "[1, 2, 3, 1, 2, 3]"
+        },
+        {
+          "q": "a = [1, 2]\nb = [3, 4]\nprint(a + b)",
+          "a": "[1, 2, 3, 4]"
+        },
+        {
+          "q": "a = [1, 2, 3]\na[1:2] = [99, 88]\nprint(a)",
+          "a": "[1, 99, 88, 3]"
+        },
+        {
+          "q": "a = [1, 2, 3, 4, 5]\nprint(a[::2])",
+          "a": "[1, 3, 5]"
+        },
+        {
+          "q": "a = [1, 2, 3, 4, 5]\nprint(a[1::2])",
+          "a": "[2, 4]"
+        },
+        {
+          "q": "a = [1, 2, 3]\nx = a.pop()\ny = a.pop(0)\nprint(a, x, y)",
+          "a": "[2] 3 1"
+        },
+        {
+          "q": "a = [[1], [2], [3]]\nb = a[:]\nb.append(99)\nprint(a)",
+          "a": "[[1], [2], [3]]"
+        },
+        {
+          "q": "a = [5, 3, 8, 1]\nprint(sorted(a, reverse=True))",
+          "a": "[8, 5, 3, 1]"
+        },
+        {
+          "q": "head, *tail = [1, 2, 3, 4, 5]\nprint(head, tail)",
+          "a": "1 [2, 3, 4, 5]"
+        }
+      ]
+    }
+  },
+  "gate_4_tuples_sets": {
+    "layer_a": {
+      "questions": [
+        {
+          "q": "t = (1, 2, 3)\nprint(t)",
+          "a": "(1, 2, 3)"
+        },
+        {
+          "q": "t = (1, 2, 3)\nprint(t[1])",
+          "a": "2"
+        },
+        {
+          "q": "t = (1, 2, 3)\nprint(t[1:])",
+          "a": "(2, 3)"
+        },
+        {
+          "q": "t = (1, 2, 3, 2, 4)\nprint(t.count(2))",
+          "a": "2"
+        },
+        {
+          "q": "t = (1, 2, 3)\nprint(t.index(2))",
+          "a": "1"
+        },
+        {
+          "q": "t = (1, 2, 3)\nt[0] = 99\nprint(t)",
+          "a": "TypeError (tuples immutable)"
+        },
+        {
+          "q": "t = (1,)\nprint(type(t))",
+          "a": "<class 'tuple'>"
+        },
+        {
+          "q": "t = (1)\nprint(type(t))",
+          "a": "<class 'int'>"
+        },
+        {
+          "q": "a = 1, 2, 3\nprint(type(a))",
+          "a": "<class 'tuple'>"
+        },
+        {
+          "q": "s = {1, 2, 3, 2, 4}\nprint(s)",
+          "a": "{1, 2, 3, 4}"
+        },
+        {
+          "q": "s = {1, 2, 3}\nprint(s[0])",
+          "a": "TypeError (sets not subscriptable)"
+        },
+        {
+          "q": "s = {1, 2, 3}\nprint(2 in s)",
+          "a": "True"
+        },
+        {
+          "q": "s = {1, 2, 3}\ns.add(4)\nprint(s)",
+          "a": "{1, 2, 3, 4}"
+        },
+        {
+          "q": "s = {1, 2, 3}\ns.remove(2)\nprint(s)",
+          "a": "{1, 3}"
+        },
+        {
+          "q": "s1 = {1, 2, 3}\ns2 = {3, 4, 5}\nprint(s1 & s2)",
+          "a": "{3}"
+        },
+        {
+          "q": "s1 = {1, 2, 3}\ns2 = {3, 4, 5}\nprint(s1 | s2)",
+          "a": "{1, 2, 3, 4, 5}"
+        },
+        {
+          "q": "s = {\"car\", \"boat\", \"car\"}\nprint(s)",
+          "a": "{'car', 'boat'}"
+        },
+        {
+          "q": "s = set([1, 2, 2, 3])\nprint(s)",
+          "a": "{1, 2, 3}"
+        },
+        {
+          "q": "t = tuple([1, 2, 3])\nprint(t)",
+          "a": "(1, 2, 3)"
+        },
+        {
+          "q": "t = (1, 2, 3)\na, b, c = t\nprint(a, b, c)",
+          "a": "1 2 3"
+        }
+      ]
+    },
+    "layer_b": {
+      "questions": [
+        {
+          "q": "data = (1, 2, [3, 4])\ndata[2].append(5)\nprint(data)",
+          "a": "(1, 2, [3, 4, 5])"
+        },
+        {
+          "q": "t1 = (1, 2)\nt2 = (3, 4)\nprint(t1 + t2)",
+          "a": "(1, 2, 3, 4)"
+        },
+        {
+          "q": "t = (1, 2, 3)\nprint(t * 2)",
+          "a": "(1, 2, 3, 1, 2, 3)"
+        },
+        {
+          "q": "s = {1, 2, 3}\ns.discard(2)\nprint(s)",
+          "a": "{1, 3}"
+        },
+        {
+          "q": "s = {1, 2, 3}\ns.discard(99)\nprint(s)",
+          "a": "{1, 2, 3}"
+        },
+        {
+          "q": "s1 = {1, 2}\ns2 = {2, 3}\nprint(s1 * s2)",
+          "a": "TypeError"
+        },
+        {
+          "q": "s = {3, 1, 2}\nprint(sorted(s))",
+          "a": "[1, 2, 3]"
+        },
+        {
+          "q": "s = set()\nprint(type(s))",
+          "a": "<class 'set'>"
+        },
+        {
+          "q": "s = {}\nprint(type(s))",
+          "a": "<class 'dict'>"
+        },
+        {
+          "q": "t = (1, 2, 3, 4, 5)\na, b, c = t\nprint(a, b, c)",
+          "a": "ValueError (too many values to unpack)"
+        },
+        {
+          "q": "t = ((1, 2), (3, 4))\nprint(t[1])",
+          "a": "(3, 4)"
+        },
+        {
+          "q": "s = {1, 2, 3}\nx = s.pop()\nprint(x, s)",
+          "a": "Removes arbitrary element"
+        },
+        {
+          "q": "t = (5, 2, 8, 1)\nprint(max(t), min(t))",
+          "a": "8 1"
+        },
+        {
+          "q": "s = {1, 2, 3}\nprint(len(s))",
+          "a": "3"
+        },
+        {
+          "q": "t = tuple(\"hello\")\nprint(t)",
+          "a": "('h', 'e', 'l', 'l', 'o')"
+        }
+      ]
+    },
+    "layer_c_speedrun": {
+      "questions": [
+        {
+          "q": "a, *b = [1, 2, 3, 4]\nprint(a, b)",
+          "a": "1 [2, 3, 4]"
+        },
+        {
+          "q": "*a, b = [1, 2, 3, 4]\nprint(a, b)",
+          "a": "[1, 2, 3] 4"
+        },
+        {
+          "q": "a, *b, c = [1, 2, 3, 4, 5]\nprint(a, b, c)",
+          "a": "1 [2, 3, 4] 5"
+        },
+        {
+          "q": "s1 = {1, 2, 3}\ns2 = {2, 3, 4}\nprint(s1 - s2)",
+          "a": "{1}"
+        },
+        {
+          "q": "s1 = {1, 2, 3}\ns2 = {2, 3, 4}\nprint(s2 - s1)",
+          "a": "{4}"
+        },
+        {
+          "q": "print(sorted({5, 1, 3}))",
+          "a": "[1, 3, 5]"
+        },
+        {
+          "q": "t = [(1, 2), (3, 4)]\nprint(t[1])",
+          "a": "(3, 4)"
+        },
+        {
+          "q": "t = tuple([1, 2, 3])\nprint(t)",
+          "a": "(1, 2, 3)"
+        }
+      ]
+    }
+  },
+  "gate_5_list_comprehensions": {
+    "layer_a": {
+      "questions": [
+        {
+          "q": "[x for x in range(10)]",
+          "a": "[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]"
+        },
+        {
+          "q": "[x**2 for x in range(5)]",
+          "a": "[0, 1, 4, 9, 16]"
+        },
+        {
+          "q": "[x for x in range(20) if x % 2 == 0]",
+          "a": "[0, 2, 4, 6, 8, 10, 12, 14, 16, 18]"
+        },
+        {
+          "q": "[x for x in range(20) if x % 5 == 0]",
+          "a": "[0, 5, 10, 15]"
+        },
+        {
+          "q": "nums = [1, 2, 3, 4]\n[x for x in nums if x >= 0]",
+          "a": "[1, 2, 3, 4]"
+        },
+        {
+          "q": "words = [\"a\", \"\", \"b\", \"\"]\n[w for w in words if w != \"\"]",
+          "a": "['a', 'b']"
+        },
+        {
+          "q": "[x*2 for x in [1, 2, 3]]",
+          "a": "[2, 4, 6]"
+        },
+        {
+          "q": "text = \"abc\"\n[c.upper() for c in text]",
+          "a": "['A', 'B', 'C']"
+        },
+        {
+          "q": "[i for i in range(10) if i % 2 == 0 if i % 3 == 0]",
+          "a": "[0, 6]"
+        },
+        {
+          "q": "[[i for i in range(3)] for j in range(2)]",
+          "a": "[[0, 1, 2], [0, 1, 2]]"
+        },
+        {
+          "q": "[(x, y) for x in range(2) for y in range(3)]",
+          "a": "[(0, 0), (0, 1), (0, 2), (1, 0), (1, 1), (1, 2)]"
+        },
+        {
+          "q": "matrix = [[1, 2], [3, 4]]\n[num for row in matrix for num in row]",
+          "a": "[1, 2, 3, 4]"
+        },
+        {
+          "q": "[x if x > 0 else 0 for x in [1, -2, 3, -4]]",
+          "a": "[1, 0, 3, 0]"
+        },
+        {
+          "q": "sentence = \"hello world\"\n[len(w) for w in sentence.split()]",
+          "a": "[5, 5]"
+        },
+        {
+          "q": "[str(i) for i in range(5)]",
+          "a": "['0', '1', '2', '3', '4']"
+        },
+        {
+          "q": "nums = [1, 2, 3, 4, 5]\nsum([x for x in nums if x % 2 == 0])",
+          "a": "6"
+        },
+        {
+          "q": "text = \"hello\"\n[c for c in text if c not in \"aeiou\"]",
+          "a": "['h', 'l', 'l']"
+        },
+        {
+          "q": "[x for x in range(1, 11) if '6' in str(x)]",
+          "a": "[6]"
+        },
+        {
+          "q": "word = \"hello\"\n[word[:i] + word[i+1:] for i in range(len(word))]",
+          "a": "['ello', 'hllo', 'helo', 'helo', 'hell']"
+        },
+        {
+          "q": "{x: x**2 for x in range(5)}",
+          "a": "{0: 0, 1: 1, 2: 4, 3: 9, 4: 16}"
+        },
+        {
+          "q": "{x for x in [1, 2, 2, 3, 3]}",
+          "a": "{1, 2, 3}"
+        },
+        {
+          "q": "list(range(10, 0, -1))",
+          "a": "[10, 9, 8, 7, 6, 5, 4, 3, 2, 1]"
+        },
+        {
+          "q": "[i*j for i in range(1, 4) for j in range(1, 4)]",
+          "a": "[1, 2, 3, 2, 4, 6, 3, 6, 9]"
+        }
+      ]
+    }
+  },
+  "gate_6_files_io": {
+    "layer_a": {
+      "questions": [
+        {
+          "q": "f = open(\"test.txt\", \"r\")\ncontent = f.read()\nf.close()\n\nFile exists with 'hello'. What does content contain?",
+          "a": "hello"
+        },
+        {
+          "q": "f = open(\"test.txt\", \"r\")\nline = f.readline()\nf.close()\n\nFile has 3 lines. What does line contain?",
+          "a": "First line"
+        },
+        {
+          "q": "f = open(\"nonexistent.txt\", \"r\")",
+          "a": "FileNotFoundError"
+        },
+        {
+          "q": "f = open(\"test.txt\", \"w\")\nf.write(\"new content\")\nf.close()\n\nFile had 'old content'. What's in file after?",
+          "a": "new content"
+        },
+        {
+          "q": "f = open(\"test.txt\", \"a\")\nf.write(\"more\")\nf.close()\n\nFile has 'hello'. What's in file after?",
+          "a": "hellomore"
+        },
+        {
+          "q": "f = open(\"new.txt\", \"x\")\nf.write(\"data\")\nf.close()\n\nFile doesn't exist. What happens?",
+          "a": "File created with 'data'"
+        },
+        {
+          "q": "f = open(\"new.txt\", \"x\")\n\nFile already exists. What happens?",
+          "a": "FileExistsError"
+        },
+        {
+          "q": "with open(\"test.txt\", \"r\") as f:\n    data = f.read()\n\nDo you need f.close()?",
+          "a": "No (with statement handles it)"
+        },
+        {
+          "q": "f = open(\"test.txt\", \"r\")\nlines = f.readlines()\nf.close()\n\nFile has 3 lines. What type is lines?",
+          "a": "list"
+        },
+        {
+          "q": "f = open(\"test.txt\", \"r\")\nfirst = f.read(5)\nf.close()\n\nFile contains 'hello world'. What's in first?",
+          "a": "hello"
+        }
+      ]
+    }
+  },
+  "gate_7_exceptions": {
+    "layer_a_quiz": {
+      "questions": [
+        {
+          "q": "try:\n    x = 10 / 0\nexcept ZeroDivisionError:\n    print('Error')\n\nWhat prints?",
+          "a": "Error"
+        },
+        {
+          "q": "try:\n    x = int('abc')\nexcept ValueError:\n    print('Invalid')\n\nWhat prints?",
+          "a": "Invalid"
+        },
+        {
+          "q": "try:\n    x = [1, 2, 3]\n    print(x[5])\nexcept IndexError:\n    print('Out of range')\n\nWhat prints?",
+          "a": "Out of range"
+        },
+        {
+          "q": "try:\n    x = {'a': 1}\n    print(x['b'])\nexcept KeyError:\n    print('Key not found')\n\nWhat prints?",
+          "a": "Key not found"
+        },
+        {
+          "q": "try:\n    f = open('nonexistent.txt')\nexcept FileNotFoundError:\n    print('File missing')\n\nWhat prints?",
+          "a": "File missing"
+        },
+        {
+          "q": "try:\n    x = None\n    x.append(1)\nexcept AttributeError:\n    print('Attribute error')\n\nWhat prints?",
+          "a": "Attribute error"
+        },
+        {
+          "q": "try:\n    x = 10 / 2\nexcept ZeroDivisionError:\n    print('Error')\n\nWhat prints?",
+          "a": "Nothing (no exception)"
+        },
+        {
+          "q": "try:\n    x = int('10')\nexcept ValueError:\n    print('Error')\nelse:\n    print('Success')\n\nWhat prints?",
+          "a": "Success"
+        },
+        {
+          "q": "try:\n    x = 10 / 0\nexcept ZeroDivisionError:\n    print('Error')\nfinally:\n    print('Done')\n\nWhat prints?",
+          "a": "Error\\nDone"
+        },
+        {
+          "q": "try:\n    x = 10 / 2\nexcept ZeroDivisionError:\n    print('Error')\nelse:\n    print('Valid')\nfinally:\n    print('End')\n\nWhat prints?",
+          "a": "Valid\\nEnd"
+        },
+        {
+          "q": "Can you write code after a bare except: clause?",
+          "a": "Yes"
+        },
+        {
+          "q": "try:\n    x = 10 / 0\nexcept:\n    print('Caught')\n\nWhat prints?",
+          "a": "Caught"
+        },
+        {
+          "q": "Does finally block run if there's no exception?",
+          "a": "Yes"
+        },
+        {
+          "q": "try:\n    raise ValueError('Custom error')\nexcept ValueError as e:\n    print(e)\n\nWhat prints?",
+          "a": "Custom error"
+        },
+        {
+          "q": "try:\n    x = 10 / 0\nexcept Exception:\n    print('Caught')\n\nDoes this catch ZeroDivisionError?",
+          "a": "Yes"
+        }
+      ]
+    },
+    "layer_b_quiz": {
+      "questions": [
+        {
+          "q": "try:\n    x = int('abc')\nexcept ValueError:\n    print('ValueError')\nexcept Exception:\n    print('Exception')\n\nWhat prints?",
+          "a": "ValueError"
+        },
+        {
+          "q": "try:\n    x = 10 / 0\nexcept Exception:\n    print('Exception')\nexcept ZeroDivisionError:\n    print('ZeroDivisionError')\n\nWhat prints? (Order matters!)",
+          "a": "Exception"
+        },
+        {
+          "q": "try:\n    raise ValueError('test')\nexcept:\n    print('Caught')\n\nWhat prints?",
+          "a": "Caught"
+        },
+        {
+          "q": "def check(x):\n    if x < 0:\n        raise ValueError('Negative')\n    return x\n\ntry:\n    check(5)\nexcept ValueError as e:\n    print(e)\n\nWhat prints?",
+          "a": "Nothing (no exception)"
+        },
+        {
+          "q": "try:\n    x = [1, 2, 3]\n    print(x[2])\nexcept (IndexError, KeyError):\n    print('Caught')\n\nWhat prints?",
+          "a": "3"
+        },
+        {
+          "q": "try:\n    x = {'a': 1}\n    print(x['b'])\nexcept KeyError:\n    print('Key error')\n\nWhat prints?",
+          "a": "Key error"
+        },
+        {
+          "q": "try:\n    x = None\n    x.append(1)\nexcept AttributeError:\n    print('Attribute error')\n\nWhat prints?",
+          "a": "Attribute error"
+        },
+        {
+          "q": "try:\n    x = 10 / 0\nexcept:\n    print('Error')\nfinally:\n    print('Finally')\n\nWhat prints?",
+          "a": "Error\\nFinally"
+        },
+        {
+          "q": "try:\n    pass\nfinally:\n    print('Finally runs')\n\nWhat prints?",
+          "a": "Finally runs"
+        },
+        {
+          "q": "try:\n    x = int(input())  # user enters 'abc'\nexcept:\n    print('Error')\nelse:\n    print('Success')\nfinally:\n    print('End')\n\nWhat prints?",
+          "a": "Error\\nEnd"
+        }
+      ]
+    },
+    "layer_c_speedrun": {
+      "questions": [
+        {
+          "q": "What exception for division by zero?",
+          "a": "ZeroDivisionError"
+        },
+        {
+          "q": "What exception for invalid int conversion?",
+          "a": "ValueError"
+        },
+        {
+          "q": "What exception for list index out of range?",
+          "a": "IndexError"
+        },
+        {
+          "q": "What exception for dictionary key not found?",
+          "a": "KeyError"
+        },
+        {
+          "q": "What exception for file not found?",
+          "a": "FileNotFoundError"
+        },
+        {
+          "q": "What exception for calling method on None?",
+          "a": "AttributeError"
+        },
+        {
+          "q": "try:\n    x = 5 / 0\nexcept:\n    print('A')\n\nWhat prints?",
+          "a": "A"
+        },
+        {
+          "q": "try:\n    x = 5 / 2\nexcept:\n    print('A')\nelse:\n    print('B')\n\nWhat prints?",
+          "a": "B"
+        },
+        {
+          "q": "try:\n    x = 5 / 0\nexcept:\n    print('A')\nfinally:\n    print('B')\n\nWhat prints?",
+          "a": "A\\nB"
+        },
+        {
+          "q": "try:\n    x = 5 / 2\nexcept:\n    print('A')\nelse:\n    print('B')\nfinally:\n    print('C')\n\nWhat prints?",
+          "a": "B\\nC"
+        },
+        {
+          "q": "Can you catch SyntaxError with try/except in the same file?",
+          "a": "No"
+        },
+        {
+          "q": "raise ValueError('test')\n\nWhat happens?",
+          "a": "ValueError is raised with message 'test'"
+        },
+        {
+          "q": "try:\n    raise ValueError('test')\nexcept ValueError:\n    print('Caught')\n\nWhat prints?",
+          "a": "Caught"
+        },
+        {
+          "q": "try:\n    x = int('10')\nexcept ValueError:\n    print('Error')\n\nDoes 'Error' print?",
+          "a": "No"
+        },
+        {
+          "q": "try:\n    x = int('10')\nexcept ValueError:\n    print('Error')\nelse:\n    print('Success')\n\nWhat prints?",
+          "a": "Success"
+        },
+        {
+          "q": "Order of try/except/else/finally?",
+          "a": "try -> except (if error) OR else (if no error) -> finally (always)"
+        },
+        {
+          "q": "Is else block required?",
+          "a": "No"
+        },
+        {
+          "q": "Is finally block required?",
+          "a": "No"
+        },
+        {
+          "q": "Can you have try/finally without except?",
+          "a": "Yes"
+        },
+        {
+          "q": "try:\n    x = [1, 2]\n    x[2]\nexcept IndexError:\n    print('Caught')\n\nWhat prints?",
+          "a": "Caught"
+        },
+        {
+          "q": "try:\n    x = {'a': 1}\n    x['b']\nexcept IndexError:\n    print('Caught')\n\nDoes this catch the error?",
+          "a": "No (KeyError, not IndexError)"
+        },
+        {
+          "q": "try:\n    f = open('x.txt')\nexcept FileNotFoundError:\n    print('Not found')\nfinally:\n    f.close()\n\nIs there a problem?",
+          "a": "Yes, f is undefined if open fails"
+        },
+        {
+          "q": "try:\n    x = 10 / 0\nexcept ZeroDivisionError:\n    pass\n\nWhat does pass do?",
+          "a": "Does nothing (silently catches exception)"
+        },
+        {
+          "q": "try:\n    x = None\n    len(x)\nexcept TypeError:\n    print('Type error')\n\nWhat prints?",
+          "a": "Type error"
+        },
+        {
+          "q": "What's the most general exception class?",
+          "a": "BaseException (or Exception for practical use)"
+        }
+      ]
+    }
+  },
+  "gate_8_modules_packages": {
+    "layer_a_quiz": {
+      "questions": [
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(sqrt(16))\n\nDoes this work?",
+          "a": "No (NameError)"
+        },
+        {
+          "q": "from math import sqrt\nprint(sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "from math import sqrt\nprint(math.sqrt(16))\n\nDoes this work?",
+          "a": "No (NameError: math not defined)"
+        },
+        {
+          "q": "from math import sqrt\nprint(sqrt(16))\nprint(pi)\n\nWhat happens?",
+          "a": "4.0 then NameError: pi not defined"
+        },
+        {
+          "q": "import math as m\nprint(m.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "from math import sqrt as square_root\nprint(square_root(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(type(math))\n\nWhat prints?",
+          "a": "<class 'module'>"
+        },
+        {
+          "q": "import math\nprint(dir(math))\n\nWhat does dir() return?",
+          "a": "List of all attributes/methods in module"
+        },
+        {
+          "q": "import math\nimport math\n\nDoes this execute math module twice?",
+          "a": "No (cached in sys.modules)"
+        },
+        {
+          "q": "from math import pi\nprint(pi)\nprint(type(pi))\n\nWhat prints?",
+          "a": "3.14159...\\n<class 'float'>"
+        },
+        {
+          "q": "import math\nprint(math.pi)\n\nWhat prints?",
+          "a": "3.14159..."
+        },
+        {
+          "q": "from math import floor, ceil\nprint(floor(3.7), ceil(3.2))\n\nWhat prints?",
+          "a": "3 4"
+        },
+        {
+          "q": "import random\nprint(random.randint(1, 10))\n\nWhat type of value?",
+          "a": "int (between 1 and 10 inclusive)"
+        },
+        {
+          "q": "from random import choice\nprint(choice([1, 2, 3]))\n\nWhat happens?",
+          "a": "Prints random element from list"
+        }
+      ]
+    },
+    "layer_b_concept": {
+      "questions": [
+        {
+          "q": "What's the difference between a module and a package?",
+          "a": "Module is a .py file; package is a directory with __init__.py"
+        },
+        {
+          "q": "What file makes a directory a package?",
+          "a": "__init__.py"
+        },
+        {
+          "q": "Can you import a module multiple times? Does it re-execute?",
+          "a": "Yes you can import multiple times, but it doesn't re-execute (cached)"
+        },
+        {
+          "q": "What happens when you import a package? Which file runs?",
+          "a": "__init__.py runs"
+        },
+        {
+          "q": "What's the difference between import math and from math import sqrt in terms of namespace?",
+          "a": "import math reserves 'math' namespace; from math import sqrt only reserves 'sqrt'"
+        },
+        {
+          "q": "Can you use import *? Is it recommended?",
+          "a": "Yes, but not recommended (pollutes namespace with all public names)"
+        },
+        {
+          "q": "What does __name__ equal when a module is run directly vs imported?",
+          "a": "__main__ when run directly; module name when imported"
+        },
+        {
+          "q": "What's a standard library vs third-party library?",
+          "a": "Standard: built-in with Python; third-party: external packages (pip install)"
+        },
+        {
+          "q": "How do you check what names are available in a module?",
+          "a": "dir(module)"
+        },
+        {
+          "q": "What's the search path for modules?",
+          "a": "Current directory, PYTHONPATH, standard library, site-packages (stored in sys.path)"
+        }
+      ]
+    },
+    "layer_b_predict": {
+      "questions": [
+        {
+          "q": "# mymodule.py\nprint('Loading module')\nx = 10\n\n# main.py\nimport mymodule\nimport mymodule\nprint(mymodule.x)\n\nHow many times does 'Loading module' print?",
+          "a": "Once (module cached after first import)"
+        },
+        {
+          "q": "# mymodule.py\ndef greet():\n    print('Hello')\n\n# main.py\nfrom mymodule import greet\ngreet()\n\nWhat prints?",
+          "a": "Hello"
+        },
+        {
+          "q": "# mymodule.py\nif __name__ == '__main__':\n    print('Running directly')\nelse:\n    print('Imported')\n\n# main.py\nimport mymodule\n\nWhat prints?",
+          "a": "Imported"
+        },
+        {
+          "q": "import sys\nprint(type(sys.path))\n\nWhat prints?",
+          "a": "<class 'list'>"
+        },
+        {
+          "q": "import os\nprint(os.getcwd())\n\nWhat does this return?",
+          "a": "Current working directory path"
+        }
+      ]
+    },
+    "layer_c_speedrun": {
+      "questions": [
+        {
+          "q": "import math — what name is added to namespace?",
+          "a": "math"
+        },
+        {
+          "q": "from math import sqrt — what name is added?",
+          "a": "sqrt"
+        },
+        {
+          "q": "from math import * — good practice?",
+          "a": "No (pollutes namespace)"
+        },
+        {
+          "q": "What's __init__.py for?",
+          "a": "Makes directory a package, runs on package import"
+        },
+        {
+          "q": "How to import with alias?",
+          "a": "import something as alias"
+        },
+        {
+          "q": "How to import multiple items in one line?",
+          "a": "from module import item1, item2, item3"
+        },
+        {
+          "q": "Does Python cache imports?",
+          "a": "Yes (in sys.modules)"
+        },
+        {
+          "q": "What's __name__ when module is imported?",
+          "a": "Module name (e.g., 'mymodule')"
+        },
+        {
+          "q": "What's __name__ when module is run directly?",
+          "a": "__main__"
+        },
+        {
+          "q": "Difference between module and package?",
+          "a": "Module: .py file; Package: directory with __init__.py"
+        },
+        {
+          "q": "How to see all names in a module?",
+          "a": "dir(module)"
+        },
+        {
+          "q": "What's sys.path?",
+          "a": "List of directories Python searches for modules"
+        },
+        {
+          "q": "What's a standard library?",
+          "a": "Built-in modules/packages with Python installation"
+        },
+        {
+          "q": "What's a third-party library?",
+          "a": "External packages installed via pip"
+        },
+        {
+          "q": "How to install third-party library?",
+          "a": "pip install package or python -m pip install package"
+        },
+        {
+          "q": "Can you import from a subdirectory?",
+          "a": "Yes, if it has __init__.py (is a package)"
+        },
+        {
+          "q": "What runs when you import a package?",
+          "a": "__init__.py and top-level code"
+        },
+        {
+          "q": "Can a package contain other packages?",
+          "a": "Yes (subpackages)"
+        },
+        {
+          "q": "What's from package import module syntax?",
+          "a": "Imports specific module from package"
+        },
+        {
+          "q": "What's the difference between import x and import x.y?",
+          "a": "import x: imports package/module x; import x.y: imports submodule y from package x"
+        }
+      ]
+    }
+  }
+}
