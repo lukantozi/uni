@@ -113,10 +113,9 @@
             "bounds_case": {"arr": [3, 3, 4, 12, 12, 12, 14], "target": 12},
             "insert_middle": {"arr": [1, 5, 10], "target": 7}
         }
-    }
-}
+    },
 
-{
+    
     "queue": {
         "basic": "Implement queue using deque: enqueue, dequeue, front, is_empty, size.",
         "variants": [
@@ -231,4 +230,6 @@
             }
         }
     }
+
 }
+
