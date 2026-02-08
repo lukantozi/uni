@@ -55,7 +55,7 @@ def format_quiz(questions):
 
 def main():
     p = argparse.ArgumentParser(description="Generate Python quiz from question bank")
-    p.add_argument("--questions", default="python_questions.json", help="Path to questions JSON")
+    p.add_argument("--questions", default="questions.json", help="Path to questions JSON")
     p.add_argument("--out", default="drills", help="Output directory")
     p.add_argument("--count", type=int, default=10, help="Number of questions (default: 10)")
     p.add_argument("--gates", nargs="+", help="Filter by gate keywords (e.g., 'strings' 'lists')")
