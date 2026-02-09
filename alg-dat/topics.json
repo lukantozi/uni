@@ -90,12 +90,12 @@
         "tests": {
             "reverse": ["ainom", "hello"],
             "paren": ["(())", "(()", "(())()"],
-                "brackets": ["()", "([])", "([{}])", "{[(])}", "((())"],
-                    "decimal": [13, 156, 0],
-                    "palindrome": ["madam", "racecar", "12321", "hello"],
-                    "adj_dupes": ["abbaca", "abba", "azxxzy"],
-                    "rpn": ["23+", "23*54-+", "52-", "5"],
-                    "stack_sort": [4, 3, 2, 1]
+            "brackets": ["()", "([])", "([{}])", "{[(])}", "((())"],
+            "decimal": [13, 156, 0],
+            "palindrome": ["madam", "racecar", "12321", "hello"],
+            "adj_dupes": ["abbaca", "abba", "azxxzy"],
+            "rpn": ["23+", "23*54-+", "52-", "5"],
+            "stack_sort": [[4, 3, 2, 1]]
         }
     },
     "binary_search": {
@@ -114,8 +114,6 @@
             "insert_middle": {"arr": [1, 5, 10], "target": 7}
         }
     },
-
-    
     "queue": {
         "basic": "Implement queue using deque: enqueue, dequeue, front, is_empty, size.",
         "variants": [
@@ -132,104 +130,74 @@
         ],
         "tests": {
             "basic_ops": {
-                "enqueue": [
-                    1,
-                    2,
-                    3,
-                    4,
-                    5
-                ],
-                "dequeue_from": [
-                    10,
-                    20,
-                    30
-                ]
+                "enqueue": [1, 2, 3, 4, 5],
+                "dequeue_from": [10, 20, 30]
             },
-            "reverse": [
-                1,
-                2,
-                3,
-                4
-            ],
+            "reverse": [1, 2, 3, 4],
             "compare": {
-                "q1": [
-                    1,
-                    2,
-                    3
-                ],
-                "q2": [
-                    1,
-                    2,
-                    3
-                ],
-                "q3": [
-                    1,
-                    3,
-                    2
-                ]
+                "q1": [1, 2, 3],
+                "q2": [1, 2, 3],
+                "q3": [1, 3, 2]
             },
-            "max": [
-                2,
-                9,
-                4,
-                7
-            ],
+            "max": [2, 9, 4, 7],
             "rotate": {
-                "arr": [
-                    1,
-                    2,
-                    3,
-                    4,
-                    5
-                ],
+                "arr": [1, 2, 3, 4, 5],
                 "k": 2
             },
             "palindrome": {
-                "valid": [
-                    1,
-                    2,
-                    3,
-                    2,
-                    1
-                ],
-                "invalid": [
-                    1,
-                    2,
-                    3
-                ]
+                "valid": [1, 2, 3, 2, 1],
+                "invalid": [1, 2, 3]
             },
             "merge": {
-                "q1": [
-                    1,
-                    3,
-                    5
-                ],
-                "q2": [
-                    2,
-                    4,
-                    6,
-                    8
-                ]
+                "q1": [1, 3, 5],
+                "q2": [2, 4, 6, 8]
             },
             "subsequence": {
-                "small": [
-                    2,
-                    5
-                ],
-                "big": [
-                    1,
-                    2,
-                    3,
-                    4,
-                    5
-                ],
-                "not_sub": [
-                    2,
-                    6
-                ]
+                "small": [2, 5],
+                "big": [1, 2, 3, 4, 5],
+                "not_sub": [2, 6]
             }
         }
+    },
+    "hashmaps": {
+        "basic": "Implement frequency counter using dict.",
+        "variants": [
+            "Two Sum: find indices where nums[i] + nums[j] == target.",
+            "Group anagrams together.",
+            "Longest substring without repeating characters.",
+            "Subarray sum equals K (prefix sum technique).",
+            "First non-repeating character index.",
+            "Check if two strings are anagrams.",
+            "Top K frequent elements.",
+            "Intersection of two arrays (with duplicates).",
+            "Find all duplicates in array.",
+            "Missing number in range [0..n]."
+        ],
+        "tests": {
+            "frequency": [[1, 2, 2, 3, 3, 3], "hello", "mississippi"],
+            "two_sum": [
+                {"nums": [2, 7, 11, 15], "target": 9},
+                {"nums": [3, 2, 4], "target": 6}
+            ],
+            "anagrams": [["eat", "tea", "tan", "ate", "nat", "bat"]],
+            "longest_substring": ["abcabcbb", "bbbbb", "pwwkew"],
+            "subarray_sum": [
+                {"nums": [1, 1, 1], "k": 2},
+                {"nums": [1, 2, 3], "k": 3}
+            ],
+            "first_non_repeat": ["leetcode", "loveleetcode", "aabb"],
+            "anagram_check": [
+                {"a": "listen", "b": "silent"},
+                {"a": "hello", "b": "world"}
+            ],
+            "top_k": {"nums": [1, 1, 1, 2, 2, 3], "k": 2},
+            "intersect": [
+                {"a": [1, 2, 2, 1], "b": [2, 2]},
+                {"a": [4, 9, 5], "b": [9, 4, 9, 8, 4]}
+            ],
+            "duplicates": [[4, 3, 2, 7, 8, 2, 3, 1], [1, 1, 2]],
+            "missing": [[3, 0, 1], [0, 1], [9, 6, 4, 2, 3, 5, 7, 0, 1]]
+        }
     }
-
 }
 
