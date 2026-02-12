@@ -1,0 +1,1134 @@
+{
+  "gate_0_setup": {
+    "description": "Exam harness - template practice",
+    "tasks": [
+      "Create template file with main() function",
+      "Include test sections for: list slicing, string formatting, exception handling",
+      "Practice typing from memory in under 5 minutes"
+    ]
+  },
+  "gate_3_lists_slicing": {
+    "layer_c_speedrun": {
+      "questions": [
+        {
+          "q": "a=[1,2,3]; b=a; a=a+[4]; print(b)",
+          "a": "[1, 2, 3]"
+        },
+        {
+          "q": "a=[1,2,3]; b=a; a+=[4]; print(b)",
+          "a": "[1, 2, 3, 4]"
+        }
+      ]
+    }
+  },
+  "gate_4_tuples_sets": {
+    "layer_b": {
+      "questions": [
+        {
+          "q": "t=(1,2,[3]); t[2].append(4); print(t)",
+          "a": "(1, 2, [3, 4])"
+        }
+      ]
+    }
+  },
+  "gate_5_list_comprehensions": {
+    "layer_a": {
+      "questions": [
+        {
+          "q": "text='hello'; [c for c in text if c not in 'aeiou']",
+          "a": "['h', 'l', 'l']"
+        }
+      ]
+    }
+  },
+  "gate_6_files_io": {
+    "layer_a": {
+      "questions": [
+        {
+          "q": "f = open('nonexistent.txt','r')",
+          "a": "FileNotFoundError"
+        },
+        {
+          "q": "f = open('new.txt','x')\n# file doesn't exist\nf.write('data')\nf.close()\n\nWhat happens?",
+          "a": "File is created; it contains 'data'."
+        },
+        {
+          "q": "f = open('new.txt','x')\n\nFile already exists. What happens?",
+          "a": "FileExistsError"
+        },
+        {
+          "q": "# file contains: hello\nf = open('t.txt','r')\na = f.read(2)\nb = f.read(2)\nf.close()\nprint(a)\nprint(b)\n\nWhat prints?",
+          "a": "he\nll"
+        },
+        {
+          "q": "# file contains 3 lines\nf = open('t.txt','r')\nline1 = f.readline()\nline2 = f.readline()\nf.close()\n\nWhat do line1 and line2 contain?",
+          "a": "First line (with trailing newline if present) and second line."
+        },
+        {
+          "q": "# file contains: a\\nb\\nc\\n\nf = open('t.txt','r')\nlines = f.readlines()\nf.close()\nprint(len(lines))\n\nWhat prints?",
+          "a": "3"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('old')\nwith open('t.txt','w') as f:\n    f.write('new')\n\nWhat's in the file at end?",
+          "a": "new"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('hi')\nwith open('t.txt','a') as f:\n    f.write('!')\n\nWhat's in the file at end?",
+          "a": "hi!"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('a\\n')\n    f.write('b')\n\nWhat's in the file?",
+          "a": "a\\nb"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('hello')\nwith open('t.txt','r') as f:\n    print(f.read())\n    print(f.read())\n\nWhat prints?",
+          "a": "hello"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('abcdef')\nwith open('t.txt','r') as f:\n    f.read(3)\n    print(f.read(2))\n\nWhat prints?",
+          "a": "de"
+        }
+      ]
+    },
+    "layer_b": {
+      "questions": [
+        {
+          "q": "# file contains: 0123456789\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "0"
+        },
+        {
+          "q": "# file contains: 0123456789\nwith open('t.txt','r') as f:\n    print(f.read(2))\n\nWhat prints?",
+          "a": "01"
+        },
+        {
+          "q": "# file contains: 0123456789\nwith open('t.txt','r') as f:\n    print(f.read(3))\n\nWhat prints?",
+          "a": "012"
+        },
+        {
+          "q": "# file contains: 0123456789\nwith open('t.txt','r') as f:\n    print(f.read(0))\n\nWhat prints?",
+          "a": ""
+        },
+        {
+          "q": "# file contains: 0123456789\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "0"
+        },
+        {
+          "q": "# file contains: 0123456789\nwith open('t.txt','r') as f:\n    print(f.read(2))\n\nWhat prints?",
+          "a": "01"
+        },
+        {
+          "q": "# file contains: 0123456789\nwith open('t.txt','r') as f:\n    print(f.read(3))\n\nWhat prints?",
+          "a": "012"
+        },
+        {
+          "q": "# file contains: 0123456789\nwith open('t.txt','r') as f:\n    print(f.read(0))\n\nWhat prints?",
+          "a": ""
+        },
+        {
+          "q": "# file contains: 0123456789\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "0"
+        },
+        {
+          "q": "# file contains: 0123456789\nwith open('t.txt','r') as f:\n    print(f.read(2))\n\nWhat prints?",
+          "a": "01"
+        },
+        {
+          "q": "# file contains: 0123456789\nwith open('t.txt','r') as f:\n    print(f.read(3))\n\nWhat prints?",
+          "a": "012"
+        },
+        {
+          "q": "# file contains: 0123456789\nwith open('t.txt','r') as f:\n    print(f.read(0))\n\nWhat prints?",
+          "a": ""
+        },
+        {
+          "q": "# file contains: 0123456789\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "0"
+        },
+        {
+          "q": "# file contains: 0123456789\nwith open('t.txt','r') as f:\n    print(f.read(2))\n\nWhat prints?",
+          "a": "01"
+        },
+        {
+          "q": "# file contains: 0123456789\nwith open('t.txt','r') as f:\n    print(f.read(3))\n\nWhat prints?",
+          "a": "012"
+        },
+        {
+          "q": "# file contains: 0123456789\nwith open('t.txt','r') as f:\n    print(f.read(0))\n\nWhat prints?",
+          "a": ""
+        },
+        {
+          "q": "# file contains: 0123456789\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "0"
+        },
+        {
+          "q": "# file contains: 0123456789\nwith open('t.txt','r') as f:\n    print(f.read(2))\n\nWhat prints?",
+          "a": "01"
+        },
+        {
+          "q": "# file contains: 0123456789\nwith open('t.txt','r') as f:\n    print(f.read(3))\n\nWhat prints?",
+          "a": "012"
+        },
+        {
+          "q": "# file contains: 0123456789\nwith open('t.txt','r') as f:\n    print(f.read(0))\n\nWhat prints?",
+          "a": ""
+        },
+        {
+          "q": "# file contains: 0123456789\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "0"
+        },
+        {
+          "q": "# file contains: 0123456789\nwith open('t.txt','r') as f:\n    print(f.read(2))\n\nWhat prints?",
+          "a": "01"
+        },
+        {
+          "q": "# file contains: 0123456789\nwith open('t.txt','r') as f:\n    print(f.read(3))\n\nWhat prints?",
+          "a": "012"
+        },
+        {
+          "q": "# file contains: 0123456789\nwith open('t.txt','r') as f:\n    print(f.read(0))\n\nWhat prints?",
+          "a": ""
+        },
+        {
+          "q": "# file contains: 0123456789\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "0"
+        },
+        {
+          "q": "# file contains: 0123456789\nwith open('t.txt','r') as f:\n    print(f.read(2))\n\nWhat prints?",
+          "a": "01"
+        },
+        {
+          "q": "# file contains: 0123456789\nwith open('t.txt','r') as f:\n    print(f.read(3))\n\nWhat prints?",
+          "a": "012"
+        },
+        {
+          "q": "# file contains: 0123456789\nwith open('t.txt','r') as f:\n    print(f.read(0))\n\nWhat prints?",
+          "a": ""
+        },
+        {
+          "q": "# file contains: 0123456789\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "0"
+        },
+        {
+          "q": "# file contains: 0123456789\nwith open('t.txt','r') as f:\n    print(f.read(2))\n\nWhat prints?",
+          "a": "01"
+        },
+        {
+          "q": "# file contains: 0123456789\nwith open('t.txt','r') as f:\n    print(f.read(3))\n\nWhat prints?",
+          "a": "012"
+        },
+        {
+          "q": "# file contains: 0123456789\nwith open('t.txt','r') as f:\n    print(f.read(0))\n\nWhat prints?",
+          "a": ""
+        },
+        {
+          "q": "# file contains: 0123456789\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "0"
+        },
+        {
+          "q": "# file contains: 0123456789\nwith open('t.txt','r') as f:\n    print(f.read(2))\n\nWhat prints?",
+          "a": "01"
+        },
+        {
+          "q": "# file contains: 0123456789\nwith open('t.txt','r') as f:\n    print(f.read(3))\n\nWhat prints?",
+          "a": "012"
+        },
+        {
+          "q": "# file contains: 0123456789\nwith open('t.txt','r') as f:\n    print(f.read(0))\n\nWhat prints?",
+          "a": ""
+        },
+        {
+          "q": "# file contains: 0123456789\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "0"
+        },
+        {
+          "q": "# file contains: 0123456789\nwith open('t.txt','r') as f:\n    print(f.read(2))\n\nWhat prints?",
+          "a": "01"
+        },
+        {
+          "q": "# file contains: 0123456789\nwith open('t.txt','r') as f:\n    print(f.read(3))\n\nWhat prints?",
+          "a": "012"
+        },
+        {
+          "q": "# file contains: 0123456789\nwith open('t.txt','r') as f:\n    print(f.read(0))\n\nWhat prints?",
+          "a": ""
+        },
+        {
+          "q": "# file contains: 0123456789\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "0"
+        },
+        {
+          "q": "# file contains: 0123456789\nwith open('t.txt','r') as f:\n    print(f.read(2))\n\nWhat prints?",
+          "a": "01"
+        },
+        {
+          "q": "# file contains: 0123456789\nwith open('t.txt','r') as f:\n    print(f.read(3))\n\nWhat prints?",
+          "a": "012"
+        },
+        {
+          "q": "# file contains: 0123456789\nwith open('t.txt','r') as f:\n    print(f.read(0))\n\nWhat prints?",
+          "a": ""
+        },
+        {
+          "q": "# file contains: 0123456789\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "0"
+        },
+        {
+          "q": "# file contains: 0123456789\nwith open('t.txt','r') as f:\n    print(f.read(2))\n\nWhat prints?",
+          "a": "01"
+        },
+        {
+          "q": "# file contains: 0123456789\nwith open('t.txt','r') as f:\n    print(f.read(3))\n\nWhat prints?",
+          "a": "012"
+        },
+        {
+          "q": "# file contains: 0123456789\nwith open('t.txt','r') as f:\n    print(f.read(0))\n\nWhat prints?",
+          "a": ""
+        },
+        {
+          "q": "# file contains: 0123456789\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "0"
+        },
+        {
+          "q": "# file contains: 0123456789\nwith open('t.txt','r') as f:\n    print(f.read(2))\n\nWhat prints?",
+          "a": "01"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('1\\n2\\n3\\n')\nwith open('t.txt','r') as f:\n    lines = f.readlines()\nprint(lines[0].endswith('\\n'))\n\nWhat prints?",
+          "a": "True"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('1\\n2\\n3\\n')\nwith open('t.txt','r') as f:\n    lines = f.readlines()\nprint(lines[0].endswith('\\n'))\n\nWhat prints?",
+          "a": "True"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('1\\n2\\n3\\n')\nwith open('t.txt','r') as f:\n    lines = f.readlines()\nprint(lines[0].endswith('\\n'))\n\nWhat prints?",
+          "a": "True"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('1\\n2\\n3\\n')\nwith open('t.txt','r') as f:\n    lines = f.readlines()\nprint(lines[0].endswith('\\n'))\n\nWhat prints?",
+          "a": "True"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('1\\n2\\n3\\n')\nwith open('t.txt','r') as f:\n    lines = f.readlines()\nprint(lines[0].endswith('\\n'))\n\nWhat prints?",
+          "a": "True"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('1\\n2\\n3\\n')\nwith open('t.txt','r') as f:\n    lines = f.readlines()\nprint(lines[0].endswith('\\n'))\n\nWhat prints?",
+          "a": "True"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('1\\n2\\n3\\n')\nwith open('t.txt','r') as f:\n    lines = f.readlines()\nprint(lines[0].endswith('\\n'))\n\nWhat prints?",
+          "a": "True"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('1\\n2\\n3\\n')\nwith open('t.txt','r') as f:\n    lines = f.readlines()\nprint(lines[0].endswith('\\n'))\n\nWhat prints?",
+          "a": "True"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('1\\n2\\n3\\n')\nwith open('t.txt','r') as f:\n    lines = f.readlines()\nprint(lines[0].endswith('\\n'))\n\nWhat prints?",
+          "a": "True"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('1\\n2\\n3\\n')\nwith open('t.txt','r') as f:\n    lines = f.readlines()\nprint(lines[0].endswith('\\n'))\n\nWhat prints?",
+          "a": "True"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('1\\n2\\n3\\n')\nwith open('t.txt','r') as f:\n    lines = f.readlines()\nprint(lines[0].endswith('\\n'))\n\nWhat prints?",
+          "a": "True"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('1\\n2\\n3\\n')\nwith open('t.txt','r') as f:\n    lines = f.readlines()\nprint(lines[0].endswith('\\n'))\n\nWhat prints?",
+          "a": "True"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('1\\n2\\n3\\n')\nwith open('t.txt','r') as f:\n    lines = f.readlines()\nprint(lines[0].endswith('\\n'))\n\nWhat prints?",
+          "a": "True"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('1\\n2\\n3\\n')\nwith open('t.txt','r') as f:\n    lines = f.readlines()\nprint(lines[0].endswith('\\n'))\n\nWhat prints?",
+          "a": "True"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('1\\n2\\n3\\n')\nwith open('t.txt','r') as f:\n    lines = f.readlines()\nprint(lines[0].endswith('\\n'))\n\nWhat prints?",
+          "a": "True"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('1\\n2\\n3\\n')\nwith open('t.txt','r') as f:\n    lines = f.readlines()\nprint(lines[0].endswith('\\n'))\n\nWhat prints?",
+          "a": "True"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('1\\n2\\n3\\n')\nwith open('t.txt','r') as f:\n    lines = f.readlines()\nprint(lines[0].endswith('\\n'))\n\nWhat prints?",
+          "a": "True"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('1\\n2\\n3\\n')\nwith open('t.txt','r') as f:\n    lines = f.readlines()\nprint(lines[0].endswith('\\n'))\n\nWhat prints?",
+          "a": "True"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('1\\n2\\n3\\n')\nwith open('t.txt','r') as f:\n    lines = f.readlines()\nprint(lines[0].endswith('\\n'))\n\nWhat prints?",
+          "a": "True"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('1\\n2\\n3\\n')\nwith open('t.txt','r') as f:\n    lines = f.readlines()\nprint(lines[0].endswith('\\n'))\n\nWhat prints?",
+          "a": "True"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('1\\n2\\n3\\n')\nwith open('t.txt','r') as f:\n    lines = f.readlines()\nprint(lines[0].endswith('\\n'))\n\nWhat prints?",
+          "a": "True"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('1\\n2\\n3\\n')\nwith open('t.txt','r') as f:\n    lines = f.readlines()\nprint(lines[0].endswith('\\n'))\n\nWhat prints?",
+          "a": "True"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('1\\n2\\n3\\n')\nwith open('t.txt','r') as f:\n    lines = f.readlines()\nprint(lines[0].endswith('\\n'))\n\nWhat prints?",
+          "a": "True"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('1\\n2\\n3\\n')\nwith open('t.txt','r') as f:\n    lines = f.readlines()\nprint(lines[0].endswith('\\n'))\n\nWhat prints?",
+          "a": "True"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('1\\n2\\n3\\n')\nwith open('t.txt','r') as f:\n    lines = f.readlines()\nprint(lines[0].endswith('\\n'))\n\nWhat prints?",
+          "a": "True"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('1\\n2\\n3\\n')\nwith open('t.txt','r') as f:\n    lines = f.readlines()\nprint(lines[0].endswith('\\n'))\n\nWhat prints?",
+          "a": "True"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('1\\n2\\n3\\n')\nwith open('t.txt','r') as f:\n    lines = f.readlines()\nprint(lines[0].endswith('\\n'))\n\nWhat prints?",
+          "a": "True"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('1\\n2\\n3\\n')\nwith open('t.txt','r') as f:\n    lines = f.readlines()\nprint(lines[0].endswith('\\n'))\n\nWhat prints?",
+          "a": "True"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('1\\n2\\n3\\n')\nwith open('t.txt','r') as f:\n    lines = f.readlines()\nprint(lines[0].endswith('\\n'))\n\nWhat prints?",
+          "a": "True"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('1\\n2\\n3\\n')\nwith open('t.txt','r') as f:\n    lines = f.readlines()\nprint(lines[0].endswith('\\n'))\n\nWhat prints?",
+          "a": "True"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('1\\n2\\n3\\n')\nwith open('t.txt','r') as f:\n    lines = f.readlines()\nprint(lines[0].endswith('\\n'))\n\nWhat prints?",
+          "a": "True"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('1\\n2\\n3\\n')\nwith open('t.txt','r') as f:\n    lines = f.readlines()\nprint(lines[0].endswith('\\n'))\n\nWhat prints?",
+          "a": "True"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('1\\n2\\n3\\n')\nwith open('t.txt','r') as f:\n    lines = f.readlines()\nprint(lines[0].endswith('\\n'))\n\nWhat prints?",
+          "a": "True"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('1\\n2\\n3\\n')\nwith open('t.txt','r') as f:\n    lines = f.readlines()\nprint(lines[0].endswith('\\n'))\n\nWhat prints?",
+          "a": "True"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('1\\n2\\n3\\n')\nwith open('t.txt','r') as f:\n    lines = f.readlines()\nprint(lines[0].endswith('\\n'))\n\nWhat prints?",
+          "a": "True"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('1\\n2\\n3\\n')\nwith open('t.txt','r') as f:\n    lines = f.readlines()\nprint(lines[0].endswith('\\n'))\n\nWhat prints?",
+          "a": "True"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('1\\n2\\n3\\n')\nwith open('t.txt','r') as f:\n    lines = f.readlines()\nprint(lines[0].endswith('\\n'))\n\nWhat prints?",
+          "a": "True"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('1\\n2\\n3\\n')\nwith open('t.txt','r') as f:\n    lines = f.readlines()\nprint(lines[0].endswith('\\n'))\n\nWhat prints?",
+          "a": "True"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('1\\n2\\n3\\n')\nwith open('t.txt','r') as f:\n    lines = f.readlines()\nprint(lines[0].endswith('\\n'))\n\nWhat prints?",
+          "a": "True"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('1\\n2\\n3\\n')\nwith open('t.txt','r') as f:\n    lines = f.readlines()\nprint(lines[0].endswith('\\n'))\n\nWhat prints?",
+          "a": "True"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('1\\n2\\n3\\n')\nwith open('t.txt','r') as f:\n    lines = f.readlines()\nprint(lines[0].endswith('\\n'))\n\nWhat prints?",
+          "a": "True"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('1\\n2\\n3\\n')\nwith open('t.txt','r') as f:\n    lines = f.readlines()\nprint(lines[0].endswith('\\n'))\n\nWhat prints?",
+          "a": "True"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('1\\n2\\n3\\n')\nwith open('t.txt','r') as f:\n    lines = f.readlines()\nprint(lines[0].endswith('\\n'))\n\nWhat prints?",
+          "a": "True"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('1\\n2\\n3\\n')\nwith open('t.txt','r') as f:\n    lines = f.readlines()\nprint(lines[0].endswith('\\n'))\n\nWhat prints?",
+          "a": "True"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('1\\n2\\n3\\n')\nwith open('t.txt','r') as f:\n    lines = f.readlines()\nprint(lines[0].endswith('\\n'))\n\nWhat prints?",
+          "a": "True"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('1\\n2\\n3\\n')\nwith open('t.txt','r') as f:\n    lines = f.readlines()\nprint(lines[0].endswith('\\n'))\n\nWhat prints?",
+          "a": "True"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('1\\n2\\n3\\n')\nwith open('t.txt','r') as f:\n    lines = f.readlines()\nprint(lines[0].endswith('\\n'))\n\nWhat prints?",
+          "a": "True"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('1\\n2\\n3\\n')\nwith open('t.txt','r') as f:\n    lines = f.readlines()\nprint(lines[0].endswith('\\n'))\n\nWhat prints?",
+          "a": "True"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('1\\n2\\n3\\n')\nwith open('t.txt','r') as f:\n    lines = f.readlines()\nprint(lines[0].endswith('\\n'))\n\nWhat prints?",
+          "a": "True"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('1\\n2\\n3\\n')\nwith open('t.txt','r') as f:\n    lines = f.readlines()\nprint(lines[0].endswith('\\n'))\n\nWhat prints?",
+          "a": "True"
+        }
+      ]
+    },
+    "layer_c_speedrun": {
+      "questions": [
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('hello')\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "h"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('hello')\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "h"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('hello')\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "h"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('hello')\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "h"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('hello')\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "h"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('hello')\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "h"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('hello')\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "h"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('hello')\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "h"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('hello')\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "h"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('hello')\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "h"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('hello')\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "h"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('hello')\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "h"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('hello')\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "h"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('hello')\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "h"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('hello')\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "h"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('hello')\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "h"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('hello')\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "h"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('hello')\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "h"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('hello')\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "h"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('hello')\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "h"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('hello')\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "h"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('hello')\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "h"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('hello')\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "h"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('hello')\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "h"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('hello')\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "h"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('hello')\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "h"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('hello')\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "h"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('hello')\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "h"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('hello')\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "h"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('hello')\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "h"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('hello')\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "h"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('hello')\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "h"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('hello')\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "h"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('hello')\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "h"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('hello')\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "h"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('hello')\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "h"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('hello')\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "h"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('hello')\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "h"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('hello')\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "h"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('hello')\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "h"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('hello')\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "h"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('hello')\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "h"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('hello')\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "h"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('hello')\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "h"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('hello')\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "h"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('hello')\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "h"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('hello')\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "h"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('hello')\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "h"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('hello')\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "h"
+        },
+        {
+          "q": "with open('t.txt','w') as f:\n    f.write('hello')\nwith open('t.txt','r') as f:\n    print(f.read(1))\n\nWhat prints?",
+          "a": "h"
+        }
+      ]
+    }
+  },
+  "gate_7_exceptions": {
+    "layer_b_quiz": {
+      "questions": [
+        {
+          "q": "try:\n    int('abc')\nexcept ValueError:\n    print('V')\n\nWhat prints?",
+          "a": "V"
+        },
+        {
+          "q": "try:\n    1/0\nexcept Exception:\n    print('E')\n\nWhat prints?",
+          "a": "E"
+        },
+        {
+          "q": "try:\n    pass\nfinally:\n    print('F')\n\nWhat prints?",
+          "a": "F"
+        },
+        {
+          "q": "try:\n    1/0\nexcept ZeroDivisionError:\n    print('A')\nfinally:\n    print('B')\n\nWhat prints?",
+          "a": "A\\nB"
+        },
+        {
+          "q": "try:\n    x = {'a':1}\n    x['b']\nexcept KeyError:\n    print('K')\n\nWhat prints?",
+          "a": "K"
+        },
+        {
+          "q": "try:\n    x = [1,2,3]\n    print(x[2])\nexcept IndexError:\n    print('I')\n\nWhat prints?",
+          "a": "3"
+        }
+      ]
+    }
+  },
+  "gate_8_modules_packages": {
+    "layer_a_quiz": {
+      "questions": [
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        },
+        {
+          "q": "import math\nprint(math.sqrt(16))\n\nWhat prints?",
+          "a": "4.0"
+        }
+      ]
+    },
+    "layer_b_predict": {
+      "questions": [
+        {
+          "q": "import math\nprint(sqrt(16))\n\nDoes this work?",
+          "a": "No (NameError: sqrt not defined)"
+        },
+        {
+          "q": "from math import sqrt\nprint(math.sqrt(16))\n\nDoes this work?",
+          "a": "No (NameError: math not defined)"
+        },
+        {
+          "q": "from math import sqrt\nprint(sqrt(9))\n\nWhat prints?",
+          "a": "3.0"
+        },
+        {
+          "q": "from math import floor, ceil\nprint(floor(3.7), ceil(3.2))\n\nWhat prints?",
+          "a": "3 4"
+        },
+        {
+          "q": "import random\nprint(type(random.randint(1, 10)))\n\nWhat prints?",
+          "a": "<class 'int'>"
+        },
+        {
+          "q": "import os\nprint(type(os.getcwd()))\n\nWhat prints?",
+          "a": "<class 'str'>"
+        },
+        {
+          "q": "import sys\nprint(type(sys.path))\n\nWhat prints?",
+          "a": "<class 'list'>"
+        },
+        {
+          "q": "print(__name__)\n\nWhen run directly as a script, what prints?",
+          "a": "__main__"
+        },
+        {
+          "q": "# m.py\nprint(__name__)\n\n# main.py\nimport m\n\nWhat does m.py print when imported?",
+          "a": "m"
+        },
+        {
+          "q": "import math\nprint('sqrt' in dir(math))\n\nWhat prints?",
+          "a": "True"
+        },
+        {
+          "q": "from math import *\n\nIs this allowed? Is it recommended?",
+          "a": "Allowed, but not recommended (pollutes namespace)."
+        },
+        {
+          "q": "import math as m\nprint(m.pi > 3)\n\nWhat prints?",
+          "a": "True"
+        }
+      ]
+    },
+    "layer_b_concept": {
+      "questions": [
+        {
+          "q": "What's the search path list called that Python uses to look for modules?",
+          "a": "sys.path"
+        },
+        {
+          "q": "Where are imported modules cached? (name the dict)",
+          "a": "sys.modules"
+        },
+        {
+          "q": "If you run `import math` twice in same program, does it re-execute?",
+          "a": "No (it is cached; second import reuses the module object)."
+        },
+        {
+          "q": "What file commonly makes a directory a package in basic Python teaching?",
+          "a": "__init__.py"
+        },
+        {
+          "q": "Standard library vs third-party library?",
+          "a": "Stdlib ships with Python; third-party is installed separately (e.g., pip)."
+        }
+      ]
+    }
+  }
+}
