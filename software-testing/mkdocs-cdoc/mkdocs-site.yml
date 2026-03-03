@@ -1,0 +1,92 @@
+site_name: mkdocs-cdoc
+site_url: https://pawelsikora.github.io/mkdocs-cdoc/
+site_description: Generate browsable API documentation from C/C++ source comments in MkDocs
+site_author: Pawel Sikora
+
+repo_name: pawelsikora/mkdocs-cdoc
+repo_url: https://github.com/pawelsikora/mkdocs-cdoc
+
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: blue
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: blue
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.highlight
+    - content.code.copy
+    - toc.follow
+  icon:
+    repo: fontawesome/brands/github
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed:
+      alternate_style: true
+  - attr_list
+  - def_list
+  - tables
+  - toc:
+      permalink: true
+
+plugins:
+  - search
+
+nav:
+  - Home: index.md
+  - Getting Started:
+    - Installation: getting-started/installation.md
+    - Quick Start: getting-started/quickstart.md
+  - Configuration:
+    - Single-Source Setup: configuration/single-source.md
+    - Multi-Source Setup: configuration/multi-source.md
+    - Source Group Options: configuration/source-groups.md
+    - Global Options: configuration/global-options.md
+    - Custom Index Pages: configuration/custom-index-pages.md
+  - Features:
+    - Cross-References: features/cross-references.md
+    - Rendering: features/rendering.md
+    - Inline Directives: features/inline-directives.md
+    - gtk-doc Migration: features/gtkdoc-migration.md
+  - Guides:
+    - "Library + Tests Project": guides/multi-group-project.md
+  - IGT GPU Tools:
+    - Overview: igt/overview.md
+    - Enabling Test Mode: igt/enabling.md
+    - What It Parses: igt/parsing.md
+    - Generated Pages: igt/generated-pages.md
+    - Custom Test Frameworks: igt/custom-frameworks.md
+  - Example:
+    - Live Demo: example/demo.md
+  - Contributing: contributing.md
+  - Credits: credits.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/pawelsikora/mkdocs-cdoc
+    - icon: fontawesome/brands/python
+      link: https://pypi.org/project/mkdocs-cdoc/
+    - icon: fontawesome/brands/discord
+      link: https://discord.gg/dqadWt5p4g
