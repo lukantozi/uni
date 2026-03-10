@@ -1,7 +1,34 @@
-(1) Advanced Driver-Assistance Systems (ADAS): Lane Assistant
+(1) Function Definition:
+
+    Advanced Driver-Assistance Systems (ADAS): Lane Assistant
 
     Lane Assistant helps drivers stay within their lane by using cameras and sensors to monitor vehicle's position relative to road markings. If it detects unintentinal lane departure, it can alert the driver and provide corrective steering inputs to guide the vehicle back into its lane.
 
-(2) Hazard Identification and Analysis (HARA): Drifting into other lanes / Colliding with other vehicles
+(2) Hazard Identification and Analysis (HARA):
+
+    * Hazard: Loss of Steering Assistance due to malfunction in system
     
-    Scen
+    * Scenario: Drivers may become over-dependent users of Steering assistance, leading them to lose senses that were required for them to react in dangerous situations (i.e changing lanes on the highway). 
+    In case of system malfunction, drivers may still be expecting, due to over-reliance, the assistant to give them steering instructions, but before they realize it's not working, they may experience collision.
+
+(3) ASIL Parameter Estimation:
+    
+    * Severity (S): S3
+        A malfuntion of Lane assistant on a highway can cause unintended lane departeure, collision with another vehicle, or roadway departure.
+        At highway, such situations could lead to life-threatening / fatal injuries.
+
+    * Exposure (E): E4
+        Lane Assistant's operation situation involves normal driving on marked roads, more specifically on highways and major roads, where this function is commonly used.
+
+    * Conctrollability (C): C2
+        If the system malfunctions suddenly, some users still can react to possible danger, if they remain attentive. However, since drivers may rely on the assistance, the failure may be recognized late, and recovery during the highway driving becomes difficult. 
+
+(4) ASIL Determination:
+    
+    Looking up S3, E4, C2 in the ASIL table:
+
+    - Result: ASIL C
+
+(5) Summary:
+
+    The failure of the Lane Assistant system due to loss of steering assistance on a highway presents a high safety risk. The combination of potentially life-threatening or fatal injuries (S3), a common and foreseeable driving situation on marked highways and major roads (E4), and the driver's limited but still possible ability to regain control of the vehicle (C2) results in ASIL C. This means that the development of the software and hardware for the Lane Assistant function must follow strict safety requirements defined by ISO 26262, so that teh risk caused by such a malfunction is reduced to an acceptable level.
