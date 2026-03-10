@@ -1,0 +1,7 @@
+(1) Advanced Driver-Assistance Systems (ADAS): Lane Assistant
+
+    Lane Assistant helps drivers stay within their lane by using cameras and sensors to monitor vehicle's position relative to road markings. If it detects unintentinal lane departure, it can alert the driver and provide corrective steering inputs to guide the vehicle back into its lane.
+
+(2) Hazard Identification and Analysis (HARA): Drifting into other lanes / Colliding with other vehicles
+    
+    Scen
