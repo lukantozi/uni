@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+filename=$1
+
+gcc "${filename}" -lraylib -lGL -lm -lpthread -ldl -lrt -lX11 -o window -o "${filename%.*}"
