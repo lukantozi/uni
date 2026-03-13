@@ -18,6 +18,7 @@ int main(void) {
     srand(time(NULL));
 
     InitWindow(WIDTH, HEIGHT, "raylib [core] example - basic window");
+    SetTargetFPS(120);
     rect red_rect;
     red_rect.pos_x = 100;
     red_rect.pos_y = 100;
@@ -30,8 +31,8 @@ int main(void) {
 
             DrawRectangle(red_rect.pos_x, red_rect.pos_y, RECT_WIDTH, RECT_HEIGHT, RED);
 
-            red_rect.pos_x += cos(red_rect.direction) * 0.3;
-            red_rect.pos_y += sin(red_rect.direction) * 0.3;
+            red_rect.pos_x += cos(red_rect.direction) * 2;
+            red_rect.pos_y += sin(red_rect.direction) * 2;
 
             if (red_rect.pos_x > WIDTH) {
                 red_rect.pos_x = WIDTH - (float)RECT_WIDTH / 2;
