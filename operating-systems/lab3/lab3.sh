@@ -164,7 +164,7 @@ iostat
 
 # Task 24
 echo "Task 24"
-jounralctl -b
+journalctl -b
 # Mar 19 14:09:48 flumenport kernel: Linux version 6.19.6-arch1-1 (linux@archlinux) (gcc (GCC) 15.2.1 20260209, GNU ld >
 # Mar 19 14:09:48 flumenport kernel: Command line: initrd=\amd-ucode.img initrd=\initramfs-linux.img root=PARTUUID=3c19>
 # Mar 19 14:09:48 flumenport kernel: BIOS-provided physical RAM map:
