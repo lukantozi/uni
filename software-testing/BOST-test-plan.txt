@@ -1,0 +1,96 @@
+Objectives:
+    To verify that the mkdocs-cdoc plugin can be successfully installed, built, and executed across different operating systems, and that it correctly handles various project configurations and file structures. The goal is to ensure that core functionality, parsing source code comments, functions, and constants, and generating a browsable API website, works reliably before production use.
+
+Scope:
+ In Scope:
+    - Plugin installation and setup across different environments
+    - Configuration file parsing (valid and invalid configurations)
+    - Behavior when config elements are missing or incomplete
+    - Folder structure recognition and mapping in config
+    - Documentation generation from C source code comments
+    - Fallback behavior when libclang is not installed (regex fallback)
+    - CI/CD pipeline integration with GitHub Actions
+
+ Out of Scope:
+    - Performance and load testing
+    - Security vulnerability testing
+    - Visual UI/UX of the generated documentation website
+    - Testing non-C languages
+   
+Entry Criteria:
+    - Python 3.x installed (tested on 3.12.9 and 3.14.3)
+    - Virtual environment created and dependencies installed
+    - MkDocs installed and functional
+    - Repository forked and cloned locally
+    - Sample C project with comments exists for testing
+    - mkdocs serve runs without errors on base setup
+
+Exit Criteria:
+    - All planned test cases have been executed
+    - All discovered bugs have been reported with severity and status
+    - Both assigned feature areas are covered (Plugin Loading & Configuration, Static Analysis & CI/CD)
+    - All critical bugs are documented and assigned
+    - All identified configuration variations have been tested (single source, multiple sources, missing elements, invalid values)
+    - CI/CD pipeline successfully builds with all specified prerequisites on the target system
+
+Test Environment:
+    - Operating Systems: Arch Linux, Ubuntu Linux, macOS, Windows, with testing performed on the available team platforms and compared under similar setup conditions where possible.
+    - Python Versions: 3.x, multiple versions tested via pyenv; confirmed working on 3.12.9 and 3.14.3.
+    - Tools: pyenv, venv, pip install -e ., MkDocs, pytest, tox, flake8, pylint, mypy, GitHub Actions.
+    - Optional: libclang; if unavailable, the plugin falls back to regex parsing.
+
+Test Basis:
+    - mkdocs-cdoc repository source code [https://github.com/pawelsikora/mkdocs-cdoc]; forked [https://github.com/lukantozi/mkdocs-cdoc]
+    - Plugin README and documentation
+    - mkdocs.yml configuration examples and plugin settings
+    - setup.py and installation instructions
+    - GitHub Actions workflow files (for CI/CD testing)
+    - Sample C source code files with comments
+    - ISTQB Foundation Level syllabus (Chapters 1.4.1 Test activities and 5.1 Test planning for this deliverable; full syllabus will guide testing throughout semester)
+
+Test Approach:
+   **Plugin Loading & Configuration:**
+       Installation:
+       - Run `pip install -e .` in plugin directory
+       - Verify installation with `mkdocs --version`
+       - Test basic functionality with `cd example && mkdocs serve`
+
+       Configuration testing:
+       - Test single source folder configuration
+       - Test multiple source folders configuration
+       - Test duplicate folder entries in configuration
+       - Test missing configuration elements (main element, sub-elements)
+       - Verify plugin behavior when sub-elements exist without main element
+
+   **CI/CD:**
+       - Review existing GitHub Actions workflows in .github/workflows/ci.yml
+       - Note: Workflows disabled on fork (will enable for testing)
+       - Verify workflows trigger on push/PR when enabled
+       - Check workflow logs for successful plugin installation, static analysis, and build
+       - Test workflow failure scenarios (broken config, missing dependencies)
+
+Schedule:
+    - Week 3 (Now): Complete Test Plan
+    - Week 4: Environment setup across team, basic installation testing
+    - Week 5: Configuration testing (all variations)
+    - Week 6: Static analysis tools setup and execution
+    - Week 7: Build integration testing, mkdocs build/serve verification
+    - Week 8: Enable + test GitHub Actions CI/CD workflows
+    - Week 9: Bug reporting and prioritization
+    - Week 10: Test case documentation (ISTQB techniques)
+    - Week 11: Coverage analysis and final testing
+    - Week 12: Test summary report and handover
+
+7.1 Risks:
+    - Different team member OS environments cause inconsistent results
+    - libclang installation issues across platforms (fallback to regex may hide problems)
+    - Limited C parsing knowledge affects test case quality
+    - GitHub Actions workflows fail due to fork permissions or missing secrets
+    - Plugin API changes in upstream repository break tests mid-semester
+    - Static analysis tools produce too many false positives (need config tuning)
+
+Responsibilities:
+    - Test Lead (Luka): Overall coordination, test plan updates, bug prioritization
+    - Test Architect (Demre): Test environment setup, configuration testing
+    - Manual Test Engineer (Artem): Installation testing, mkdocs build/serve verification
+    - Test Automation Engineer (Jasser): Static analysis tools, CI/CD workflow testing
