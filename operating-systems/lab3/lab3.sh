@@ -146,7 +146,7 @@ sudo lshw
 #     product: NBLK-WAX9X (C178)
 #     vendor: HUAWEI
 #     version: M1020
-#     serial: M6TPM20507000947
+#     serial: <redacted>
 #     width: 64 bits
 #     capabilities: smbios-3.11.1 dmi-3.11.1 smp vsyscall32
 
