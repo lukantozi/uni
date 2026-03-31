@@ -1,0 +1,37 @@
+@startuml
+class Animal {
+    +number_of_animals : Integer
+    +name : String
+    +color : String
+    +number_of_legs : Integer
+    +how_many()
+    +description()
+}
+
+class Mammal {
+    +number_of_mammals : Integer
+}
+
+class Bird {
+    +number_of_birds : Integer
+}
+
+class Fish {
+    +number_of_fish : Integer
+}
+
+class Dog {
+    +number_of_dogs : Integer
+    +info()
+}
+
+class Cat {
+    +number_of_cats : Integer
+}
+
+Animal <|-- Mammal
+Animal <|-- Fish
+Animal <|-- Bird
+Mammal <|-- Cat
+Mammal <|-- Dog
+@enduml
