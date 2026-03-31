@@ -16,7 +16,6 @@ record of academic progress.
 | `alg-dat/` | Algorithms & Data Structures |
 | `elect-basics/` | Electronics Fundamentals |
 | `it-automotive/` | IT in Automotive |
-| `ms-google/` | MS & Google Tools |
 | `operating-systems/` | Operating Systems |
 | `physics/` | Physics |
 | `python-basics/` | Python — Basics |
