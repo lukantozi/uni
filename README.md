@@ -5,9 +5,8 @@ Wrocław, Poland.
 
 ## About
 
-Software Development student with a focus on systems programming,
-Python, and Linux. This repository serves as both a study log and a transparent
-record of academic progress.
+Coursework, labs, and notes from university Software Development studies.
+Tracks progression through programming, systems, and technical fundamentals.
 
 ## Contents
 
