@@ -5,7 +5,7 @@ Wrocław, Poland.
 
 ## About
 
-Second-year Software Development student with a focus on systems programming,
+Software Development student with a focus on systems programming,
 Python, and Linux. This repository serves as both a study log and a transparent
 record of academic progress.
 
