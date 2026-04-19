@@ -18,17 +18,17 @@ void updateRectPos(rect *red_rect) {
     red_rect->pos_x += cos(red_rect->direction) * 2;
     red_rect->pos_y += sin(red_rect->direction) * 2;
 
-    if (red_rect->pos_x > WIDTH) {
+    if (red_rect->pos_x > WIDTH - (float)RECT_WIDTH / 2) {
         red_rect->pos_x = WIDTH - (float)RECT_WIDTH / 2;
         red_rect->direction = (rand() % 360) * (M_PI / 180);
-    } else if (red_rect->pos_x < 0) {
+    } else if (red_rect->pos_x < (float)RECT_WIDTH / 2) {
         red_rect->pos_x = (float)RECT_WIDTH / 2;
         red_rect->direction = (rand() % 360) * (M_PI / 180);
     }
-    if (red_rect->pos_y > HEIGHT) {
+    if (red_rect->pos_y > HEIGHT - (float)RECT_HEIGHT / 2) {
         red_rect->pos_y = HEIGHT - (float)RECT_HEIGHT / 2;
         red_rect->direction = (rand() % 360) * (M_PI / 180);
-    } else if (red_rect->pos_y < 0) {
+    } else if (red_rect->pos_y < (float)RECT_HEIGHT / 2) {
         red_rect->pos_y = (float)RECT_HEIGHT;
         red_rect->direction = (rand() % 360) * (M_PI / 180);
     }
@@ -40,8 +40,8 @@ int main(void) {
     InitWindow(WIDTH, HEIGHT, "raylib [core] example - basic window");
     SetTargetFPS(120);
     rect red_rect;
-    red_rect.pos_x = 100;
-    red_rect.pos_y = 100;
+    red_rect.pos_x = rand() % WIDTH;
+    red_rect.pos_y = rand() % HEIGHT;
     red_rect.direction = (rand() % 360) * (M_PI / 180);
 
     while (!WindowShouldClose())
