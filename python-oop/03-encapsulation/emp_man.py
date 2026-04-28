@@ -8,17 +8,18 @@ EXP_MANAGER = 5
 
 class Employee:
     emp_count = 0
-    cur_team = 0
     def __init__(self, name, surname, birth_year, experience, position):
         self.birth_year = birth_year
         self.position = position
-        self.id_number = f"{(Employee.emp_count + 1):04}"
+        self.id_number = f"{(Employee.emp_count):04}"
         self.experience = experience
         self.name = name
         self.surname = surname
-        self.salary = 5000 * (1 + experience / 10)
+        self.__salary = 5000 * (1 + experience / 10)
         Employee.emp_count += 1
-        Employee.cur_team += 1
+
+    def get_salary(self):
+        return self.__salary
 
     @property
     def id_number(self):
@@ -26,9 +27,9 @@ class Employee:
     
     @id_number.setter
     def id_number(self, idn):
-        if (int(idn) % 20 == 0) and self.position != "Manager":
-            raise Exception("Current team is full. Hire new manager.")
-        self._id_number = idn
+        if not str(idn).isdigit():
+            raise ValueError("ID number must contain digits only")
+        self._id_number = f"{int(idn):04}"
 
     @property
     def birth_year(self):
@@ -36,9 +37,10 @@ class Employee:
 
     @birth_year.setter
     def birth_year(self, year):
-        if type(year) != int:
+        if not isinstance(year, int):
             raise ValueError("Please enter only integer values")
-        if 18 < NOW - int(year) > 99:
+        age = NOW - year
+        if not (18 < age < 100):
             raise ValueError("Valid range: 18-99")
         self._birth_year = int(year)
 
@@ -57,10 +59,10 @@ class Manager(Employee):
 
     def __init__(self, name, surname, birth_year, experience):
         super().__init__(name, surname, birth_year, experience, position="Manager")
-        self.salary = self.salary + 2000
+        self.__salary = super().get_salary() + 2000
 
-    def manages(self):
-        return f"Manages {Employee.emp_count - 1} employees"
+    def get_salary(self):
+        return self.__salary
 
     @property
     def experience(self):
@@ -73,16 +75,12 @@ class Manager(Employee):
         self._experience = xp
 
 
-emp = Manager("John", "Doe", 1999, 5)
-print(emp.email())
-print(emp.members_in_team())
-#print(emp.manages())
-print(emp.salary)
-print(emp.id_number)
-
-emp = Manager("John", "Doe", 1999, 5)
-print(emp.email())
-print(emp.members_in_team())
-#print(emp.manages())
-print(emp.salary)
-print(emp.id_number)
+emp = Employee("John", "Doe", 1988, 3, "acc")
+print(emp.experience)
+print(emp.get_salary())
+print(emp._Employee__salary)
+# man = Manager("John", "Harvard", 1970, 1) # -> will raise an error due to insufficient exp years
+man = Manager("John", "Harvard", 1970, 10)
+print(man.get_salary())
+# emp_1 = Employee("baby", "boss", 2025, 0, "ceo") # -> will raise an error because baby boss too young
+print(man.email())

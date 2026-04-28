@@ -1,0 +1,27 @@
+@startuml
+class Employee {
+    +{static} emp_count : int
+    +birth_year : int
+    +position : String
+    +id_number : String
+    +experience : int
+    +name : String
+    +surname : String
+    -__salary : float
+    +get_salary() : float
+    +get_id_number() : String
+    +set_id_number(idn: String) : void
+    +get_birth_year() : int
+    +set_birth_year(year: int) : void
+    +email() : String
+    +age() : int
+    +{static} memebers_in_team() : int
+}
+class Manager {
+    -__salary : float
+    +get_salary() : float
+    +get_experience() : int
+    +set_experience(xp: int) : void
+}
+Manager --|> Employee
+@enduml
