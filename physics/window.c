@@ -13,27 +13,32 @@
 #define RECT_HEIGHT 10
 
 typedef struct {
-    double pos_x;
-    double pos_y;
+    double x;
+    double y;
     double direction;
 } rect;
 
-void updateRectPos(rect *rect) {
-    rect->pos_x += cos(rect->direction) * 2;
-    rect->pos_y += sin(rect->direction) * 2;
+typedef struct {
+    double x;
+    double y;
+} wall;
 
-    if (rect->pos_x > WIDTH - (float)RECT_WIDTH / 2) {
-        rect->pos_x = WIDTH - (float)RECT_WIDTH / 2;
+void updateRectPos(rect *rect) {
+    rect->x += cos(rect->direction) * 2;
+    rect->y += sin(rect->direction) * 2;
+
+    if (rect->x > WIDTH - (float)RECT_WIDTH / 2) {
+        rect->x = WIDTH - (float)RECT_WIDTH / 2;
         rect->direction = (rand() % 360) * (M_PI / 180);
-    } else if (rect->pos_x < (float)RECT_WIDTH / 2) {
-        rect->pos_x = (float)RECT_WIDTH / 2;
+    } else if (rect->x < (float)RECT_WIDTH / 2) {
+        rect->x = (float)RECT_WIDTH / 2;
         rect->direction = (rand() % 360) * (M_PI / 180);
     }
-    if (rect->pos_y > HEIGHT - (float)RECT_HEIGHT / 2) {
-        rect->pos_y = HEIGHT - (float)RECT_HEIGHT / 2;
+    if (rect->y > HEIGHT - (float)RECT_HEIGHT / 2) {
+        rect->y = HEIGHT - (float)RECT_HEIGHT / 2;
         rect->direction = (rand() % 360) * (M_PI / 180);
-    } else if (rect->pos_y < (float)RECT_HEIGHT / 2) {
-        rect->pos_y = (float)RECT_HEIGHT;
+    } else if (rect->y < (float)RECT_HEIGHT / 2) {
+        rect->y = (float)RECT_HEIGHT;
         rect->direction = (rand() % 360) * (M_PI / 180);
     }
 }
@@ -45,22 +50,26 @@ int main(void) {
     SetTargetFPS(120);
     // red dot
     rect red_rect;
-    red_rect.pos_x = rand() % WIDTH;
-    red_rect.pos_y = rand() % HEIGHT;
+    red_rect.x = rand() % WIDTH;
+    red_rect.y = rand() % HEIGHT;
     red_rect.direction = (rand() % 360) * (M_PI / 180);
     // green dot
     rect green_rect;
-    green_rect.pos_x = rand() % WIDTH;
-    green_rect.pos_y = rand() % HEIGHT;
+    green_rect.x = rand() % WIDTH;
+    green_rect.y = rand() % HEIGHT;
     green_rect.direction = (rand() % 360) * (M_PI / 180);
 
     while (!WindowShouldClose())
     {
         BeginDrawing();
         ClearBackground(BLACK);
+        DrawRectangle(0, 0, 400, 5, RED);
+        DrawRectangle(0, 50, 350, 5, RED);
+        DrawRectangle(400, 0, 5, 400, RED);
+        DrawRectangle(350, 50, 5, 350, RED);
 
-        DrawRectangle(red_rect.pos_x, red_rect.pos_y, RECT_WIDTH, RECT_HEIGHT, RED);
-        DrawRectangle(green_rect.pos_x, green_rect.pos_y, RECT_WIDTH, RECT_HEIGHT, GREEN);
+        DrawRectangle(red_rect.x, red_rect.y, RECT_WIDTH, RECT_HEIGHT, RED);
+        DrawRectangle(green_rect.x, green_rect.y, RECT_WIDTH, RECT_HEIGHT, GREEN);
         updateRectPos(&red_rect);
         updateRectPos(&green_rect);
 
