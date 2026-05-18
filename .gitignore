@@ -4,4 +4,5 @@ __pycache__/
 .env
 *.pdf
 *.o
+a.out
 ms-google
