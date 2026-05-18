@@ -6,3 +6,4 @@ __pycache__/
 *.o
 a.out
 ms-google
+it-automotive/out*
