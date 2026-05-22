@@ -16,7 +16,7 @@ def flatten_questions(db):
             continue  # skip setup gate (no quiz questions)
         
         for layer_name, layer_data in gate_data.items():
-            if "questions" in layer_data:
+            if isinstance(layer_data, dict) and "questions" in layer_data:
                 for q_obj in layer_data["questions"]:
                     all_questions.append({
                         "gate": gate_name,
@@ -55,7 +55,7 @@ def format_quiz(questions):
 
 def main():
     p = argparse.ArgumentParser(description="Generate Python quiz from question bank")
-    p.add_argument("--questions", default="questions_advanced.json", help="Path to questions JSON")
+    p.add_argument("--questions", default="questions/questions.json", help="Path to questions JSON")
     p.add_argument("--out", default="drills", help="Output directory")
     p.add_argument("--count", type=int, default=10, help="Number of questions (default: 10)")
     p.add_argument("--gates", nargs="+", help="Filter by gate keywords (e.g., 'strings' 'lists')")
