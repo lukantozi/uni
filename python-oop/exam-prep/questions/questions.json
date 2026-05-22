@@ -1,0 +1,166 @@
+{
+  "gate0_setup": {
+    "note": "No quiz questions for gate 0 — setup only"
+  },
+  "gate1_oop_basics": {
+    "layer_a": {
+      "description": "Core OOP rules — class, __init__, __str__, class vs instance attrs, methods",
+      "questions": [
+        {
+          "q": "class Dog:\n    def __init__(self, name):\n        self.name = name\n\nd = Dog('Rex')\nprint(d.name)",
+          "a": "Rex"
+        },
+        {
+          "q": "class Dog:\n    def __init__(self, name):\n        self.name = name\n    def __str__(self):\n        return f'Dog: {self.name}'\n\nd = Dog('Rex')\nprint(d)",
+          "a": "Dog: Rex"
+        },
+        {
+          "q": "class Counter:\n    count = 0\n    def __init__(self):\n        Counter.count += 1\n\na = Counter()\nb = Counter()\nprint(Counter.count)",
+          "a": "2"
+        },
+        {
+          "q": "class Counter:\n    count = 0\n    def __init__(self):\n        Counter.count += 1\n\na = Counter()\nb = Counter()\nprint(a.count)\nprint(b.count)",
+          "a": "2\n2"
+        },
+        {
+          "q": "class Dog:\n    species = 'Canis familiaris'\n    def __init__(self, name):\n        self.name = name\n\nd = Dog('Rex')\nd.species = 'Wolf'\nprint(d.species)\nprint(Dog.species)",
+          "a": "Wolf\nCanis familiaris"
+        },
+        {
+          "q": "class Foo:\n    x = 10\n    def __init__(self):\n        self.x = 99\n\nf = Foo()\nprint(f.x)\nprint(Foo.x)",
+          "a": "99\n10"
+        },
+        {
+          "q": "class Student:\n    school = 'MIT'\n    def __init__(self, name):\n        self.name = name\n\ns1 = Student('Alice')\ns2 = Student('Bob')\nStudent.school = 'Harvard'\nprint(s1.school)\nprint(s2.school)",
+          "a": "Harvard\nHarvard"
+        },
+        {
+          "q": "class Box:\n    @staticmethod\n    def info():\n        return 'I am a box'\n\nprint(Box.info())",
+          "a": "I am a box"
+        },
+        {
+          "q": "class Box:\n    label = 'generic'\n\n    @classmethod\n    def change_label(cls, new_label):\n        cls.label = new_label\n\nBox.change_label('special')\nprint(Box.label)",
+          "a": "special"
+        },
+        {
+          "q": "class MyClass:\n    pass\n\nobj = MyClass()\nobj.color = 'red'\nprint(obj.color)",
+          "a": "red"
+        },
+        {
+          "q": "class Person:\n    def __init__(self, name):\n        self.name = name\n\np = Person('Alice')\nprint(type(p))",
+          "a": "<class '__main__.Person'>"
+        }
+      ]
+    },
+    "layer_b": {
+      "description": "Gotchas — mutable class attrs, shadowing, __repr__, self.count trap",
+      "questions": [
+        {
+          "q": "class Dog:\n    tricks = []\n    def __init__(self, name):\n        self.name = name\n    def add_trick(self, trick):\n        self.tricks.append(trick)\n\nd1 = Dog('Rex')\nd2 = Dog('Buddy')\nd1.add_trick('sit')\nprint(d2.tricks)",
+          "a": "['sit']"
+        },
+        {
+          "q": "class Counter:\n    count = 0\n    def __init__(self):\n        self.count += 1  # self.count, not Counter.count\n\na = Counter()\nb = Counter()\nprint(Counter.count)\nprint(a.count)",
+          "a": "0\n1"
+        },
+        {
+          "q": "class Person:\n    def __init__(self, name):\n        self.name = name\n\np1 = Person('Alice')\np2 = p1\np2.name = 'Bob'\nprint(p1.name)",
+          "a": "Bob"
+        },
+        {
+          "q": "class Config:\n    debug = False\n\nc = Config()\nc.debug = True\nprint(Config.debug)\nprint(c.debug)",
+          "a": "False\nTrue"
+        },
+        {
+          "q": "class Foo:\n    pass\n\nf = Foo()\nprint(type(f) == Foo)\nprint(type(f) == type(Foo))",
+          "a": "True\nFalse"
+        },
+        {
+          "q": "class A:\n    data = {}\n\na1 = A()\na2 = A()\na1.data['key'] = 'val'\nprint(a2.data)",
+          "a": "{'key': 'val'}"
+        },
+        {
+          "q": "class A:\n    val = []\n\na1 = A()\na2 = A()\na1.val.append(1)\nprint(a2.val)",
+          "a": "[1]"
+        },
+        {
+          "q": "class Counter:\n    count = 0\n    def __init__(self): Counter.count += 1\n    @classmethod\n    def reset(cls): cls.count = 0\n\nCounter(); Counter(); Counter()\nprint(Counter.count)\nCounter.reset()\nprint(Counter.count)",
+          "a": "3\n0"
+        },
+        {
+          "q": "class A:\n    val = 'class'\n\na = A()\nprint(a.val)\na.val = 'instance'\nprint(a.val)\nprint(A.val)",
+          "a": "class\ninstance\nclass"
+        },
+        {
+          "q": "class A:\n    x = 5\n    def __init__(self):\n        self.x = x  # bug: should be self.x = x? no — x not defined\n\na = A()",
+          "a": "NameError: name 'x' is not defined"
+        }
+      ]
+    },
+    "layer_c": {
+      "description": "Speed run — 30 mixed questions, timed",
+      "questions": [
+        {
+          "q": "class A:\n    x = 1\na = A()\nprint(a.x)",
+          "a": "1"
+        },
+        {
+          "q": "class A:\n    x = 1\na = A()\na.x = 99\nprint(A.x)",
+          "a": "1"
+        },
+        {
+          "q": "class A:\n    count = 0\n    def __init__(self): A.count += 1\nA(); A(); A()\nprint(A.count)",
+          "a": "3"
+        },
+        {
+          "q": "class A:\n    def __str__(self): return 'I am A'\nprint(A())",
+          "a": "I am A"
+        },
+        {
+          "q": "class A:\n    val = []\na1 = A(); a2 = A()\na1.val.append(1)\nprint(a2.val)",
+          "a": "[1]"
+        },
+        {
+          "q": "class A:\n    @staticmethod\n    def add(x, y): return x + y\nprint(A.add(3, 4))",
+          "a": "7"
+        },
+        {
+          "q": "class A:\n    x = 10\n    def __init__(self): self.x = 20\na = A()\nprint(a.x)\nprint(A.x)",
+          "a": "20\n10"
+        },
+        {
+          "q": "class A:\n    count = 0\n    def __init__(self): self.count += 1\na = A()\nprint(A.count)\nprint(a.count)",
+          "a": "0\n1"
+        },
+        {
+          "q": "class A:\n    def __repr__(self): return 'A-repr'\n    def __str__(self): return 'A-str'\na = A()\nprint(a)\nprint(repr(a))",
+          "a": "A-str\nA-repr"
+        },
+        {
+          "q": "class A:\n    val = 0\na = A()\na.val = 10\ndel a.val\nprint(a.val)",
+          "a": "0"
+        },
+        {
+          "q": "class A:\n    def __init__(self, x): self.x = x\na1 = A(1); a2 = A(1)\nprint(a1 == a2)",
+          "a": "False"
+        },
+        {
+          "q": "class A:\n    @classmethod\n    def who(cls): return cls.__name__\nprint(A.who())",
+          "a": "A"
+        },
+        {
+          "q": "class A:\n    x = []\n    def __init__(self): self.x = []\na1 = A(); a2 = A()\na1.x.append(1)\nprint(A.x)",
+          "a": "[]"
+        },
+        {
+          "q": "class A:\n    def __init__(self, n): self.n = n\n    def __str__(self): return f'n={self.n}'\na = A(42)\na.n = 0\nprint(a)",
+          "a": "n=0"
+        },
+        {
+          "q": "class A:\n    pass\na = A()\na.new_attr = 'dynamic'\nprint(hasattr(a, 'new_attr'))\nprint(hasattr(A, 'new_attr'))",
+          "a": "True\nFalse"
+        }
+      ]
+    }
+  }
+}
