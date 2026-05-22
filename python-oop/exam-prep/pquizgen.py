@@ -1,1 +1,1 @@
-../../python-basics/pquizgen.py
+../../python-basics/exam-prep/pquizgen.py
