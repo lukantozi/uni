@@ -750,17 +750,3 @@ print(A.val)
 **Pass: 27/30 correct, under 20 minutes, no notes.**
 
 ---
-
-## Gate 1 — W3Schools Exercises
-
-Complete these directly on W3Schools (open-book, but try from memory first):
-- https://www.w3schools.com/python/exercise.asp?filename=exercise_classes1
-- https://www.w3schools.com/python/exercise.asp?filename=exercise_inheritance1
-
-Work through **all** exercises under: **Classes**, **Class Methods**, **Static Methods**.
-
----
-
-## Gate 1 Complete ✓
-
-When all three layers pass, put a `[x]` next to Gate 1 in `README.md` and move to Gate 2.
