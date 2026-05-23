@@ -456,7 +456,7 @@ print([str(d) for d in dogs])
 | 6 | `Bob` — both `p1` and `p2` point to the same object |
 | 7 | `[]` — `self.items = []` in `__init__` creates a fresh instance attr, class attr not touched |
 | 8 | `10` then `20` — `self.x` falls through to class attr; changing `MyClass.x` affects all lookups |
-| 9 | `False` then `Validator` |
+| 9 | `False` then `I am Validator` |
 | 10 | `Animal: Lion` then `Animal: Lion` — `str(a)` and `print(a)` both call `__str__` |
 | 11 | `True` then `False` — `type(f) == Foo` is True; `type(f) == type(Foo)` compares `Foo` to `type` (metaclass) |
 | 12 | `False` then `True` — instance attr `c.debug` shadows class attr but doesn't change it |
