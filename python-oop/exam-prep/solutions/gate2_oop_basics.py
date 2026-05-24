@@ -3,7 +3,6 @@
 Layer A
 ============================================================
 """
-
 # Task 1-2-3 (original version from homework)
 class Animal:
     animal_count = 0
@@ -102,7 +101,81 @@ class Square(Shape):
         return self.side**2
 
 
-# Test layer a implementations
+"""
+============================================================
+Layer B
+============================================================
+"""
+# Task 1
+class A:
+    def __init__(self):
+        self.x = "A"
+
+class B(A):
+    def __init__(self):
+        """
+        without super, caller may assume
+        that the derived class will inherit
+        base class attributes.
+        """
+        super().__init__()
+        self.y = "B"
+
+# Task 2
+class Vehicle:
+    def __init__(self, brand):
+        self.brand = brand
+
+    def describe(self):
+        print(f"Brand: {self.brand}")
+
+
+class Car(Vehicle):
+    def __init__(self, brand, model):
+        super().__init__(brand)
+        self.model = model
+
+    def describe(self):
+        super().describe()
+        print(f"Model: {self.model}")
+
+
+class ElectricCar(Car):
+    def __init__(self, brand, model, coverage):
+        super().__init__(brand, model)
+        self.coverage = coverage
+
+    def describe(self):
+        super().describe()
+        print(f"Coverage: {self.coverage}")
+
+
+# Task 3 - already created above
+# Animal()
+
+# Task 4
+class Ae:
+    def __init__(self):
+        self.value = self.default()
+    def default(self):
+        return 0
+
+
+class Be(Ae):
+    def default(self):
+        return 42
+
+
+class Ce(Be):
+    def default(self):
+        return -1
+
+
+"""
+============================================================
+Test implementations
+============================================================
+"""
 def layer_a():
     def task_123():
         d1 = Dog("Jack", "grey")
@@ -122,3 +195,29 @@ def layer_a():
         figs = [Circle(5), Square(4), Shape()]
         for f in figs:
             print(f.area())
+
+
+def layer_b():
+    def task_1():
+        b = B()
+        print(b.y)
+        print(b.x)
+
+    def task_2():
+        ev = ElectricCar("Toyota", "R5", 300)
+        ev.describe()
+
+    def task_3():
+        d1 = Dog("Shep", "Brown")
+        c1 = Cat("Sis", "Orange")
+        b1 = Bird("Rio", "Blue")
+        print(d1.dog_count)
+        print(c1.cat_count)
+        print(b1.bird_count)
+        print(Animal.animal_count)
+
+    def task_4():
+        b = Be()
+        c = Ce()
+        print(b.value)
+        print(c.value)
