@@ -1,166 +1,418 @@
 {
-  "gate0_setup": {
-    "note": "No quiz questions for gate 0 — setup only"
-  },
-  "gate1_oop_basics": {
-    "layer_a": {
-      "description": "Core OOP rules — class, __init__, __str__, class vs instance attrs, methods",
-      "questions": [
-        {
-          "q": "class Dog:\n    def __init__(self, name):\n        self.name = name\n\nd = Dog('Rex')\nprint(d.name)",
-          "a": "Rex"
+    "gate0_setup": {
+        "note": "No quiz questions for gate 0 — setup only"
+    },
+    "gate1_oop_basics": {
+        "layer_a": {
+            "description": "Core OOP rules — class, __init__, __str__, class vs instance attrs, methods",
+            "questions": [
+                {
+                    "q": "class Dog:\n    def __init__(self, name):\n        self.name = name\n\nd = Dog('Rex')\nprint(d.name)",
+                    "a": "Rex"
+                },
+                {
+                    "q": "class Dog:\n    def __init__(self, name):\n        self.name = name\n    def __str__(self):\n        return f'Dog: {self.name}'\n\nd = Dog('Rex')\nprint(d)",
+                    "a": "Dog: Rex"
+                },
+                {
+                    "q": "class Counter:\n    count = 0\n    def __init__(self):\n        Counter.count += 1\n\na = Counter()\nb = Counter()\nprint(Counter.count)",
+                    "a": "2"
+                },
+                {
+                    "q": "class Counter:\n    count = 0\n    def __init__(self):\n        Counter.count += 1\n\na = Counter()\nb = Counter()\nprint(a.count)\nprint(b.count)",
+                    "a": "2\n2"
+                },
+                {
+                    "q": "class Dog:\n    species = 'Canis familiaris'\n    def __init__(self, name):\n        self.name = name\n\nd = Dog('Rex')\nd.species = 'Wolf'\nprint(d.species)\nprint(Dog.species)",
+                    "a": "Wolf\nCanis familiaris"
+                },
+                {
+                    "q": "class Foo:\n    x = 10\n    def __init__(self):\n        self.x = 99\n\nf = Foo()\nprint(f.x)\nprint(Foo.x)",
+                    "a": "99\n10"
+                },
+                {
+                    "q": "class Student:\n    school = 'MIT'\n    def __init__(self, name):\n        self.name = name\n\ns1 = Student('Alice')\ns2 = Student('Bob')\nStudent.school = 'Harvard'\nprint(s1.school)\nprint(s2.school)",
+                    "a": "Harvard\nHarvard"
+                },
+                {
+                    "q": "class Box:\n    @staticmethod\n    def info():\n        return 'I am a box'\n\nprint(Box.info())",
+                    "a": "I am a box"
+                },
+                {
+                    "q": "class Box:\n    label = 'generic'\n\n    @classmethod\n    def change_label(cls, new_label):\n        cls.label = new_label\n\nBox.change_label('special')\nprint(Box.label)",
+                    "a": "special"
+                },
+                {
+                    "q": "class MyClass:\n    pass\n\nobj = MyClass()\nobj.color = 'red'\nprint(obj.color)",
+                    "a": "red"
+                },
+                {
+                    "q": "class Person:\n    def __init__(self, name):\n        self.name = name\n\np = Person('Alice')\nprint(type(p))",
+                    "a": "<class '__main__.Person'>"
+                }
+            ]
         },
-        {
-          "q": "class Dog:\n    def __init__(self, name):\n        self.name = name\n    def __str__(self):\n        return f'Dog: {self.name}'\n\nd = Dog('Rex')\nprint(d)",
-          "a": "Dog: Rex"
+        "layer_b": {
+            "description": "Gotchas — mutable class attrs, shadowing, __repr__, self.count trap",
+            "questions": [
+                {
+                    "q": "class Dog:\n    tricks = []\n    def __init__(self, name):\n        self.name = name\n    def add_trick(self, trick):\n        self.tricks.append(trick)\n\nd1 = Dog('Rex')\nd2 = Dog('Buddy')\nd1.add_trick('sit')\nprint(d2.tricks)",
+                    "a": "['sit']"
+                },
+                {
+                    "q": "class Counter:\n    count = 0\n    def __init__(self):\n        self.count += 1  # self.count, not Counter.count\n\na = Counter()\nb = Counter()\nprint(Counter.count)\nprint(a.count)",
+                    "a": "0\n1"
+                },
+                {
+                    "q": "class Person:\n    def __init__(self, name):\n        self.name = name\n\np1 = Person('Alice')\np2 = p1\np2.name = 'Bob'\nprint(p1.name)",
+                    "a": "Bob"
+                },
+                {
+                    "q": "class Config:\n    debug = False\n\nc = Config()\nc.debug = True\nprint(Config.debug)\nprint(c.debug)",
+                    "a": "False\nTrue"
+                },
+                {
+                    "q": "class Foo:\n    pass\n\nf = Foo()\nprint(type(f) == Foo)\nprint(type(f) == type(Foo))",
+                    "a": "True\nFalse"
+                },
+                {
+                    "q": "class A:\n    data = {}\n\na1 = A()\na2 = A()\na1.data['key'] = 'val'\nprint(a2.data)",
+                    "a": "{'key': 'val'}"
+                },
+                {
+                    "q": "class A:\n    val = []\n\na1 = A()\na2 = A()\na1.val.append(1)\nprint(a2.val)",
+                    "a": "[1]"
+                },
+                {
+                    "q": "class Counter:\n    count = 0\n    def __init__(self): Counter.count += 1\n    @classmethod\n    def reset(cls): cls.count = 0\n\nCounter(); Counter(); Counter()\nprint(Counter.count)\nCounter.reset()\nprint(Counter.count)",
+                    "a": "3\n0"
+                },
+                {
+                    "q": "class A:\n    val = 'class'\n\na = A()\nprint(a.val)\na.val = 'instance'\nprint(a.val)\nprint(A.val)",
+                    "a": "class\ninstance\nclass"
+                },
+                {
+                    "q": "class A:\n    x = 5\n    def __init__(self):\n        self.x = x  # bug: should be self.x = x? no — x not defined\n\na = A()",
+                    "a": "NameError: name 'x' is not defined"
+                }
+            ]
         },
-        {
-          "q": "class Counter:\n    count = 0\n    def __init__(self):\n        Counter.count += 1\n\na = Counter()\nb = Counter()\nprint(Counter.count)",
-          "a": "2"
-        },
-        {
-          "q": "class Counter:\n    count = 0\n    def __init__(self):\n        Counter.count += 1\n\na = Counter()\nb = Counter()\nprint(a.count)\nprint(b.count)",
-          "a": "2\n2"
-        },
-        {
-          "q": "class Dog:\n    species = 'Canis familiaris'\n    def __init__(self, name):\n        self.name = name\n\nd = Dog('Rex')\nd.species = 'Wolf'\nprint(d.species)\nprint(Dog.species)",
-          "a": "Wolf\nCanis familiaris"
-        },
-        {
-          "q": "class Foo:\n    x = 10\n    def __init__(self):\n        self.x = 99\n\nf = Foo()\nprint(f.x)\nprint(Foo.x)",
-          "a": "99\n10"
-        },
-        {
-          "q": "class Student:\n    school = 'MIT'\n    def __init__(self, name):\n        self.name = name\n\ns1 = Student('Alice')\ns2 = Student('Bob')\nStudent.school = 'Harvard'\nprint(s1.school)\nprint(s2.school)",
-          "a": "Harvard\nHarvard"
-        },
-        {
-          "q": "class Box:\n    @staticmethod\n    def info():\n        return 'I am a box'\n\nprint(Box.info())",
-          "a": "I am a box"
-        },
-        {
-          "q": "class Box:\n    label = 'generic'\n\n    @classmethod\n    def change_label(cls, new_label):\n        cls.label = new_label\n\nBox.change_label('special')\nprint(Box.label)",
-          "a": "special"
-        },
-        {
-          "q": "class MyClass:\n    pass\n\nobj = MyClass()\nobj.color = 'red'\nprint(obj.color)",
-          "a": "red"
-        },
-        {
-          "q": "class Person:\n    def __init__(self, name):\n        self.name = name\n\np = Person('Alice')\nprint(type(p))",
-          "a": "<class '__main__.Person'>"
+        "layer_c": {
+            "description": "Speed run — 30 mixed questions, timed",
+            "questions": [
+                {
+                    "q": "class A:\n    x = 1\na = A()\nprint(a.x)",
+                    "a": "1"
+                },
+                {
+                    "q": "class A:\n    x = 1\na = A()\na.x = 99\nprint(A.x)",
+                    "a": "1"
+                },
+                {
+                    "q": "class A:\n    count = 0\n    def __init__(self): A.count += 1\nA(); A(); A()\nprint(A.count)",
+                    "a": "3"
+                },
+                {
+                    "q": "class A:\n    def __str__(self): return 'I am A'\nprint(A())",
+                    "a": "I am A"
+                },
+                {
+                    "q": "class A:\n    val = []\na1 = A(); a2 = A()\na1.val.append(1)\nprint(a2.val)",
+                    "a": "[1]"
+                },
+                {
+                    "q": "class A:\n    @staticmethod\n    def add(x, y): return x + y\nprint(A.add(3, 4))",
+                    "a": "7"
+                },
+                {
+                    "q": "class A:\n    x = 10\n    def __init__(self): self.x = 20\na = A()\nprint(a.x)\nprint(A.x)",
+                    "a": "20\n10"
+                },
+                {
+                    "q": "class A:\n    count = 0\n    def __init__(self): self.count += 1\na = A()\nprint(A.count)\nprint(a.count)",
+                    "a": "0\n1"
+                },
+                {
+                    "q": "class A:\n    def __repr__(self): return 'A-repr'\n    def __str__(self): return 'A-str'\na = A()\nprint(a)\nprint(repr(a))",
+                    "a": "A-str\nA-repr"
+                },
+                {
+                    "q": "class A:\n    val = 0\na = A()\na.val = 10\ndel a.val\nprint(a.val)",
+                    "a": "0"
+                },
+                {
+                    "q": "class A:\n    def __init__(self, x): self.x = x\na1 = A(1); a2 = A(1)\nprint(a1 == a2)",
+                    "a": "False"
+                },
+                {
+                    "q": "class A:\n    @classmethod\n    def who(cls): return cls.__name__\nprint(A.who())",
+                    "a": "A"
+                },
+                {
+                    "q": "class A:\n    x = []\n    def __init__(self): self.x = []\na1 = A(); a2 = A()\na1.x.append(1)\nprint(A.x)",
+                    "a": "[]"
+                },
+                {
+                    "q": "class A:\n    def __init__(self, n): self.n = n\n    def __str__(self): return f'n={self.n}'\na = A(42)\na.n = 0\nprint(a)",
+                    "a": "n=0"
+                },
+                {
+                    "q": "class A:\n    pass\na = A()\na.new_attr = 'dynamic'\nprint(hasattr(a, 'new_attr'))\nprint(hasattr(A, 'new_attr'))",
+                    "a": "True\nFalse"
+                }
+            ]
         }
-      ]
+    }, "gate2_inheritance": {
+    "layer_a": {
+        "description": "Inheritance basics: parent/child, super(), overriding, isinstance, issubclass, simple polymorphism",
+        "questions": [
+            {
+                "q": "class Animal:\n    def __init__(self, name):\n        self.name = name\n\nclass Dog(Animal):\n    pass\n\nd = Dog('Rex')\nprint(d.name)",
+                "a": "Rex"
+            },
+            {
+                "q": "class Animal:\n    def __init__(self, name):\n        self.name = name\n    def speak(self):\n        return '...'\n\nclass Dog(Animal):\n    def speak(self):\n        return 'Woof'\n\nd = Dog('Rex')\nprint(d.speak())",
+                "a": "Woof"
+            },
+            {
+                "q": "class Animal:\n    def __init__(self, name):\n        self.name = name\n    def speak(self):\n        return '...'\n\nclass Dog(Animal):\n    pass\n\nd = Dog('Rex')\nprint(d.speak())",
+                "a": "..."
+            },
+            {
+                "q": "class Person:\n    def __init__(self, name, age):\n        self.name = name\n        self.age = age\n\nclass Student(Person):\n    def __init__(self, name, age, grade):\n        super().__init__(name, age)\n        self.grade = grade\n\ns = Student('Alice', 20, 'A')\nprint(s.name)\nprint(s.grade)",
+                "a": "Alice\nA"
+            },
+            {
+                "q": "class Person:\n    def __init__(self, name, age):\n        self.name = name\n        self.age = age\n\nclass Student(Person):\n    def __init__(self, name, age, grade):\n        super().__init__(name, age)\n        self.grade = grade\n\ns = Student('Alice', 20, 'A')\nprint(isinstance(s, Student))\nprint(isinstance(s, Person))",
+                "a": "True\nTrue"
+            },
+            {
+                "q": "class A:\n    pass\n\nclass B(A):\n    pass\n\nprint(issubclass(B, A))\nprint(issubclass(A, B))",
+                "a": "True\nFalse"
+            },
+            {
+                "q": "class Animal:\n    def __init__(self, name):\n        self.name = name\n    def describe(self):\n        return f'I am {self.name}'\n\nclass Cat(Animal):\n    def describe(self):\n        return f'I am a cat named {self.name}'\n\nc = Cat('Whiskers')\nprint(c.describe())",
+                "a": "I am a cat named Whiskers"
+            },
+            {
+                "q": "class Vehicle:\n    def __init__(self, brand):\n        self.brand = brand\n    def __str__(self):\n        return f'Vehicle: {self.brand}'\n\nclass Car(Vehicle):\n    def __init__(self, brand, model):\n        super().__init__(brand)\n        self.model = model\n\nc = Car('BMW', 'X5')\nprint(c)",
+                "a": "Vehicle: BMW"
+            },
+            {
+                "q": "class A:\n    def hello(self):\n        return 'Hello from A'\n\nclass B(A):\n    pass\n\nclass C(B):\n    pass\n\nobj = C()\nprint(obj.hello())",
+                "a": "Hello from A"
+            },
+            {
+                "q": "class Animal:\n    number_of_animals = 0\n    def __init__(self, name):\n        self.name = name\n        Animal.number_of_animals += 1\n\nclass Dog(Animal):\n    pass\n\nclass Cat(Animal):\n    pass\n\nd = Dog('Rex')\nc = Cat('Whiskers')\nprint(Animal.number_of_animals)",
+                "a": "2"
+            },
+            {
+                "q": "class Person:\n    def __init__(self, name):\n        self.name = name\n\nclass Student(Person):\n    def __init__(self, name, grade):\n        super().__init__(name)\n        self.grade = grade\n    def __str__(self):\n        return f'{self.name} - {self.grade}'\n\ns = Student('Bob', 'B+')\nprint(s)",
+                "a": "Bob - B+"
+            },
+            {
+                "q": "class Shape:\n    def area(self):\n        return 0\n\nclass Circle(Shape):\n    def __init__(self, radius):\n        self.radius = radius\n    def area(self):\n        return 3.14 * self.radius ** 2\n\nclass Square(Shape):\n    def __init__(self, side):\n        self.side = side\n    def area(self):\n        return self.side ** 2\n\nshapes = [Circle(5), Square(4)]\nfor s in shapes:\n    print(s.area())",
+                "a": "78.5\n16"
+            },
+            {
+                "q": "class Animal:\n    def __init__(self, name):\n        self.name = name\n\nclass Dog(Animal):\n    def __init__(self, name, breed):\n        super().__init__(name)\n        self.breed = breed\n\nd = Dog('Rex', 'Labrador')\nprint(type(d).__name__)\nprint(isinstance(d, Animal))",
+                "a": "Dog\nTrue"
+            },
+            {
+                "q": "class A:\n    x = 'A'\n\nclass B(A):\n    pass\n\nclass C(A):\n    x = 'C'\n\nprint(B.x)\nprint(C.x)",
+                "a": "A\nC"
+            },
+            {
+                "q": "class Animal:\n    def __init__(self, name):\n        self.name = name\n    def speak(self):\n        return f'{self.name} says ...'\n\nclass Dog(Animal):\n    def speak(self):\n        return f'{self.name} says Woof'\n\nclass Cat(Animal):\n    def speak(self):\n        return f'{self.name} says Meow'\n\nanimals = [Dog('Rex'), Cat('Whiskers'), Animal('Unknown')]\nfor a in animals:\n    print(a.speak())",
+                "a": "Rex says Woof\nWhiskers says Meow\nUnknown says ..."
+            }
+        ]
     },
     "layer_b": {
-      "description": "Gotchas — mutable class attrs, shadowing, __repr__, self.count trap",
-      "questions": [
-        {
-          "q": "class Dog:\n    tricks = []\n    def __init__(self, name):\n        self.name = name\n    def add_trick(self, trick):\n        self.tricks.append(trick)\n\nd1 = Dog('Rex')\nd2 = Dog('Buddy')\nd1.add_trick('sit')\nprint(d2.tricks)",
-          "a": "['sit']"
-        },
-        {
-          "q": "class Counter:\n    count = 0\n    def __init__(self):\n        self.count += 1  # self.count, not Counter.count\n\na = Counter()\nb = Counter()\nprint(Counter.count)\nprint(a.count)",
-          "a": "0\n1"
-        },
-        {
-          "q": "class Person:\n    def __init__(self, name):\n        self.name = name\n\np1 = Person('Alice')\np2 = p1\np2.name = 'Bob'\nprint(p1.name)",
-          "a": "Bob"
-        },
-        {
-          "q": "class Config:\n    debug = False\n\nc = Config()\nc.debug = True\nprint(Config.debug)\nprint(c.debug)",
-          "a": "False\nTrue"
-        },
-        {
-          "q": "class Foo:\n    pass\n\nf = Foo()\nprint(type(f) == Foo)\nprint(type(f) == type(Foo))",
-          "a": "True\nFalse"
-        },
-        {
-          "q": "class A:\n    data = {}\n\na1 = A()\na2 = A()\na1.data['key'] = 'val'\nprint(a2.data)",
-          "a": "{'key': 'val'}"
-        },
-        {
-          "q": "class A:\n    val = []\n\na1 = A()\na2 = A()\na1.val.append(1)\nprint(a2.val)",
-          "a": "[1]"
-        },
-        {
-          "q": "class Counter:\n    count = 0\n    def __init__(self): Counter.count += 1\n    @classmethod\n    def reset(cls): cls.count = 0\n\nCounter(); Counter(); Counter()\nprint(Counter.count)\nCounter.reset()\nprint(Counter.count)",
-          "a": "3\n0"
-        },
-        {
-          "q": "class A:\n    val = 'class'\n\na = A()\nprint(a.val)\na.val = 'instance'\nprint(a.val)\nprint(A.val)",
-          "a": "class\ninstance\nclass"
-        },
-        {
-          "q": "class A:\n    x = 5\n    def __init__(self):\n        self.x = x  # bug: should be self.x = x? no — x not defined\n\na = A()",
-          "a": "NameError: name 'x' is not defined"
-        }
-      ]
+        "description": "Inheritance gotchas: missing super(), MRO, runtime method resolution, class vs instance attributes in hierarchies",
+        "questions": [
+            {
+                "q": "class A:\n    def __init__(self):\n        self.x = 'A'\n\nclass B(A):\n    def __init__(self):\n        self.y = 'B'\n\nb = B()\nprint(b.y)\nprint(b.x)",
+                "a": "B\nAttributeError: 'B' object has no attribute 'x'"
+            },
+            {
+                "q": "class A:\n    def method(self):\n        return 'A'\n\nclass B(A):\n    def method(self):\n        return 'B'\n\nclass C(B):\n    pass\n\nprint(C().method())",
+                "a": "B"
+            },
+            {
+                "q": "class A:\n    def method(self):\n        return 'A'\n\nclass B(A):\n    def method(self):\n        result = super().method()\n        return f'B -> {result}'\n\nprint(B().method())",
+                "a": "B -> A"
+            },
+            {
+                "q": "class Animal:\n    def __init__(self, name):\n        self.name = name\n    def speak(self):\n        return '...'\n\nclass Dog(Animal):\n    def speak(self):\n        parent = super().speak()\n        return f'Woof (parent said: {parent})'\n\nd = Dog('Rex')\nprint(d.speak())",
+                "a": "Woof (parent said: ...)"
+            },
+            {
+                "q": "class A:\n    def __init__(self):\n        self.x = 1\n        self.setup()\n    def setup(self):\n        pass\n\nclass B(A):\n    def setup(self):\n        self.y = 2\n\nb = B()\nprint(b.x)\nprint(b.y)",
+                "a": "1\n2"
+            },
+            {
+                "q": "class Person:\n    def __init__(self, name):\n        self.name = name\n\nclass Student(Person):\n    def __init__(self, name, grade):\n        super().__init__(name)\n        self.grade = grade\n\nclass GradStudent(Student):\n    def __init__(self, name, grade, thesis):\n        super().__init__(name, grade)\n        self.thesis = thesis\n\ng = GradStudent('Alice', 'A', 'OOP in Python')\nprint(g.name)\nprint(g.grade)\nprint(g.thesis)\nprint(isinstance(g, Person))",
+                "a": "Alice\nA\nOOP in Python\nTrue"
+            },
+            {
+                "q": "class A:\n    class_var = 'A'\n\nclass B(A):\n    pass\n\nb = B()\nb.class_var = 'B-instance'\nprint(B.class_var)\nprint(b.class_var)",
+                "a": "A\nB-instance"
+            },
+            {
+                "q": "class Animal:\n    def __init__(self, name):\n        self.name = name\n    def __str__(self):\n        return f'Animal: {self.name}'\n\nclass Dog(Animal):\n    def __init__(self, name, breed):\n        super().__init__(name)\n        self.breed = breed\n\nd = Dog('Rex', 'Labrador')\nprint(d)",
+                "a": "Animal: Rex"
+            },
+            {
+                "q": "class A:\n    def greet(self):\n        return f'Hello from {type(self).__name__}'\n\nclass B(A):\n    pass\n\nprint(B().greet())",
+                "a": "Hello from B"
+            },
+            {
+                "q": "class Counter:\n    count = 0\n    def __init__(self):\n        Counter.count += 1\n\nclass SpecialCounter(Counter):\n    pass\n\nCounter()\nSpecialCounter()\nSpecialCounter()\nprint(Counter.count)\nprint(SpecialCounter.count)",
+                "a": "3\n3"
+            },
+            {
+                "q": "class A:\n    def __init__(self, x):\n        self.x = x\n\nclass B(A):\n    def __init__(self, x, y):\n        super().__init__(x)\n        self.y = y\n    def total(self):\n        return self.x + self.y\n\nb = B(3, 4)\nprint(b.total())\nprint(issubclass(type(b), A))",
+                "a": "7\nTrue"
+            },
+            {
+                "q": "class Vehicle:\n    def __init__(self, brand):\n        self.brand = brand\n    def describe(self):\n        return f'Brand: {self.brand}'\n\nclass Car(Vehicle):\n    def __init__(self, brand, model):\n        super().__init__(brand)\n        self.model = model\n    def describe(self):\n        return f'{super().describe()}, Model: {self.model}'\n\nc = Car('Toyota', 'Corolla')\nprint(c.describe())",
+                "a": "Brand: Toyota, Model: Corolla"
+            },
+            {
+                "q": "class A:\n    def __init__(self):\n        self.value = self.default()\n    def default(self):\n        return 0\n\nclass B(A):\n    def default(self):\n        return 42\n\nb = B()\nprint(b.value)",
+                "a": "42"
+            },
+            {
+                "q": "class Animal:\n    legs = 4\n    def __init__(self, name):\n        self.name = name\n\nclass Bird(Animal):\n    legs = 2\n\nclass Dog(Animal):\n    pass\n\nprint(Dog.legs)\nprint(Bird.legs)\nb = Bird('Tweety')\nprint(b.legs)\nprint(isinstance(b, Animal))",
+                "a": "4\n2\n2\nTrue"
+            }
+        ]
     },
     "layer_c": {
-      "description": "Speed run — 30 mixed questions, timed",
-      "questions": [
-        {
-          "q": "class A:\n    x = 1\na = A()\nprint(a.x)",
-          "a": "1"
-        },
-        {
-          "q": "class A:\n    x = 1\na = A()\na.x = 99\nprint(A.x)",
-          "a": "1"
-        },
-        {
-          "q": "class A:\n    count = 0\n    def __init__(self): A.count += 1\nA(); A(); A()\nprint(A.count)",
-          "a": "3"
-        },
-        {
-          "q": "class A:\n    def __str__(self): return 'I am A'\nprint(A())",
-          "a": "I am A"
-        },
-        {
-          "q": "class A:\n    val = []\na1 = A(); a2 = A()\na1.val.append(1)\nprint(a2.val)",
-          "a": "[1]"
-        },
-        {
-          "q": "class A:\n    @staticmethod\n    def add(x, y): return x + y\nprint(A.add(3, 4))",
-          "a": "7"
-        },
-        {
-          "q": "class A:\n    x = 10\n    def __init__(self): self.x = 20\na = A()\nprint(a.x)\nprint(A.x)",
-          "a": "20\n10"
-        },
-        {
-          "q": "class A:\n    count = 0\n    def __init__(self): self.count += 1\na = A()\nprint(A.count)\nprint(a.count)",
-          "a": "0\n1"
-        },
-        {
-          "q": "class A:\n    def __repr__(self): return 'A-repr'\n    def __str__(self): return 'A-str'\na = A()\nprint(a)\nprint(repr(a))",
-          "a": "A-str\nA-repr"
-        },
-        {
-          "q": "class A:\n    val = 0\na = A()\na.val = 10\ndel a.val\nprint(a.val)",
-          "a": "0"
-        },
-        {
-          "q": "class A:\n    def __init__(self, x): self.x = x\na1 = A(1); a2 = A(1)\nprint(a1 == a2)",
-          "a": "False"
-        },
-        {
-          "q": "class A:\n    @classmethod\n    def who(cls): return cls.__name__\nprint(A.who())",
-          "a": "A"
-        },
-        {
-          "q": "class A:\n    x = []\n    def __init__(self): self.x = []\na1 = A(); a2 = A()\na1.x.append(1)\nprint(A.x)",
-          "a": "[]"
-        },
-        {
-          "q": "class A:\n    def __init__(self, n): self.n = n\n    def __str__(self): return f'n={self.n}'\na = A(42)\na.n = 0\nprint(a)",
-          "a": "n=0"
-        },
-        {
-          "q": "class A:\n    pass\na = A()\na.new_attr = 'dynamic'\nprint(hasattr(a, 'new_attr'))\nprint(hasattr(A, 'new_attr'))",
-          "a": "True\nFalse"
-        }
-      ]
+        "description": "Speed run — 30 mixed inheritance questions, timed",
+        "questions": [
+            {
+                "q": "class A:\n    def hello(self): return 'A'\nclass B(A): pass\nprint(B().hello())",
+                "a": "A"
+            },
+            {
+                "q": "class A:\n    def hello(self): return 'A'\nclass B(A):\n    def hello(self): return 'B'\nprint(B().hello())",
+                "a": "B"
+            },
+            {
+                "q": "class A:\n    x = 10\nclass B(A): pass\nprint(B.x)",
+                "a": "10"
+            },
+            {
+                "q": "class A:\n    def __init__(self): self.x = 1\nclass B(A):\n    def __init__(self):\n        super().__init__()\n        self.y = 2\nb = B()\nprint(b.x, b.y)",
+                "a": "1 2"
+            },
+            {
+                "q": "class A:\n    def __init__(self): self.x = 1\nclass B(A):\n    def __init__(self): self.y = 2\nb = B()\nprint(b.y)\nprint(b.x)",
+                "a": "2\nAttributeError"
+            },
+            {
+                "q": "class A: pass\nclass B(A): pass\nclass C(B): pass\nprint(issubclass(C, A))",
+                "a": "True"
+            },
+            {
+                "q": "class A: pass\nclass B(A): pass\nobj = B()\nprint(isinstance(obj, A))\nprint(isinstance(obj, B))",
+                "a": "True\nTrue"
+            },
+            {
+                "q": "class A:\n    def method(self): return 'A'\nclass B(A):\n    def method(self): return super().method() + 'B'\nprint(B().method())",
+                "a": "AB"
+            },
+            {
+                "q": "class Animal:\n    def __init__(self, name): self.name = name\n    def __str__(self): return f'Animal({self.name})'\nclass Dog(Animal): pass\nprint(Dog('Rex'))",
+                "a": "Animal(Rex)"
+            },
+            {
+                "q": "class A:\n    count = 0\n    def __init__(self): A.count += 1\nclass B(A): pass\nA(); B(); B()\nprint(A.count)",
+                "a": "3"
+            },
+            {
+                "q": "class A:\n    def greet(self): return f'I am {type(self).__name__}'\nclass B(A): pass\nprint(B().greet())",
+                "a": "I am B"
+            },
+            {
+                "q": "class Shape:\n    def area(self): return 0\nclass Circle(Shape):\n    def __init__(self, r): self.r = r\n    def area(self): return 3.14 * self.r ** 2\nprint(Circle(1).area())",
+                "a": "3.14"
+            },
+            {
+                "q": "class A:\n    x = 'class_A'\nclass B(A):\n    x = 'class_B'\nclass C(B): pass\nprint(C.x)",
+                "a": "class_B"
+            },
+            {
+                "q": "class A:\n    def __init__(self, n): self.n = n\nclass B(A):\n    def __init__(self, n, m):\n        super().__init__(n)\n        self.m = m\nb = B(1, 2)\nprint(b.n, b.m)",
+                "a": "1 2"
+            },
+            {
+                "q": "class A: pass\nclass B(A): pass\nprint(issubclass(A, B))\nprint(issubclass(B, A))",
+                "a": "False\nTrue"
+            },
+            {
+                "q": "class Animal:\n    def speak(self): return '...'\nclass Dog(Animal):\n    def speak(self): return 'Woof'\nclass Cat(Animal):\n    def speak(self): return 'Meow'\nfor a in [Dog(), Cat(), Animal()]:\n    print(a.speak())",
+                "a": "Woof\nMeow\n..."
+            },
+            {
+                "q": "class A:\n    def __init__(self): self.val = self.get_val()\n    def get_val(self): return 0\nclass B(A):\n    def get_val(self): return 99\nprint(B().val)",
+                "a": "99"
+            },
+            {
+                "q": "class A:\n    def method(self): return 'A'\nclass B(A):\n    def method(self): return 'B'\nclass C(A):\n    def method(self): return 'C'\nclass D(B, C): pass\nprint(D().method())",
+                "a": "B"
+            },
+            {
+                "q": "class Vehicle:\n    def __init__(self, brand): self.brand = brand\nclass Car(Vehicle):\n    def __init__(self, brand, model):\n        super().__init__(brand)\n        self.model = model\nc = Car('BMW', 'X5')\nprint(isinstance(c, Vehicle))\nprint(type(c).__name__)",
+                "a": "True\nCar"
+            },
+            {
+                "q": "class A:\n    label = 'A'\nclass B(A): pass\nb = B()\nB.label = 'B'\nprint(b.label)\nprint(A.label)",
+                "a": "B\nA"
+            },
+            {
+                "q": "class A:\n    def __str__(self): return 'A'\nclass B(A):\n    pass\nprint(B())",
+                "a": "A"
+            },
+            {
+                "q": "class A:\n    def __init__(self, x): self.x = x\nclass B(A):\n    def double(self): return self.x * 2\nb = B(5)\nprint(b.double())",
+                "a": "10"
+            },
+            {
+                "q": "class A: pass\nclass B(A): pass\nclass C(B): pass\nobj = C()\nprint(isinstance(obj, A))\nprint(issubclass(C, A))",
+                "a": "True\nTrue"
+            },
+            {
+                "q": "class A:\n    def method(self): return 'A'\nclass B(A):\n    def method(self):\n        return super().method() + '+B'\nclass C(B):\n    def method(self):\n        return super().method() + '+C'\nprint(C().method())",
+                "a": "A+B+C"
+            },
+            {
+                "q": "class Animal:\n    number = 0\n    def __init__(self): Animal.number += 1\nclass Dog(Animal):\n    number = 0\n    def __init__(self):\n        super().__init__()\n        Dog.number += 1\nDog(); Dog()\nprint(Animal.number)\nprint(Dog.number)",
+                "a": "2\n2"
+            },
+            {
+                "q": "class A:\n    def __init__(self, x): self.x = x\n    def __str__(self): return f'A({self.x})'\nclass B(A):\n    def __init__(self, x, y):\n        super().__init__(x)\n        self.y = y\n    def __str__(self): return f'B({self.x},{self.y})'\nprint(B(1, 2))",
+                "a": "B(1,2)"
+            },
+            {
+                "q": "class A:\n    val = []\nclass B(A): pass\nB.val.append(1)\nprint(A.val)",
+                "a": "[1]"
+            },
+            {
+                "q": "class Person:\n    def __init__(self, name): self.name = name\nclass Student(Person):\n    def __init__(self, name, gpa):\n        super().__init__(name)\n        self.gpa = gpa\ns = Student('Alice', 4.0)\nprint(s.name, s.gpa)",
+                "a": "Alice 4.0"
+            },
+            {
+                "q": "class A:\n    def method(self): return 'A'\nclass B(A): pass\nclass C(B):\n    def method(self): return 'C'\nprint(C().method())\nprint(B().method())",
+                "a": "C\nA"
+            },
+            {
+                "q": "class Base:\n    def info(self): return 'Base'\nclass Mid(Base):\n    def info(self): return f'Mid->{super().info()}'\nclass Top(Mid):\n    def info(self): return f'Top->{super().info()}'\nprint(Top().info())",
+                "a": "Top->Mid->Base"
+            }
+        ]
     }
-  }
+    }
 }
