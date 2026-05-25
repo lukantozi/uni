@@ -414,5 +414,81 @@
             }
         ]
     }
+    }, 
+    "gate3_encapsulation_dunder": {
+        "layer_a": {
+            "description": "Encapsulation core rules — _x vs __x, name mangling, @property, basic dunders: __len__, __eq__, __add__, __contains__, __getitem__, __call__, __bool__",
+            "questions": [
+                {"q": "class Person:\n    def __init__(self, name):\n        self._name = name\np = Person('Alice')\nprint(p._name)", "a": "Alice"},
+                {"q": "class Person:\n    def __init__(self, name):\n        self.__name = name\np = Person('Alice')\nprint(p.__name)", "a": "AttributeError"},
+                {"q": "class Person:\n    def __init__(self, name):\n        self.__name = name\np = Person('Alice')\nprint(p._Person__name)", "a": "Alice"},
+                {"q": "class Circle:\n    def __init__(self, r):\n        self._r = r\n    @property\n    def radius(self):\n        return self._r\nc = Circle(5)\nprint(c.radius)", "a": "5"},
+                {"q": "class Circle:\n    def __init__(self, r):\n        self._r = r\n    @property\n    def radius(self):\n        return self._r\n    @radius.setter\n    def radius(self, v):\n        self._r = v\nc = Circle(5)\nc.radius = 10\nprint(c.radius)", "a": "10"},
+                {"q": "class Vector:\n    def __init__(self, x, y):\n        self.x = x\n        self.y = y\n    def __repr__(self):\n        return f'Vector({self.x}, {self.y})'\nv = Vector(1, 2)\nprint(v)\nprint(repr(v))", "a": "Vector(1, 2)\nVector(1, 2)"},
+                {"q": "class Box:\n    def __init__(self, items):\n        self.items = items\n    def __len__(self):\n        return len(self.items)\nb = Box([1, 2, 3])\nprint(len(b))", "a": "3"},
+                {"q": "class Point:\n    def __init__(self, x, y):\n        self.x = x\n        self.y = y\n    def __eq__(self, other):\n        return self.x == other.x and self.y == other.y\np1 = Point(1, 2)\np2 = Point(1, 2)\np3 = Point(3, 4)\nprint(p1 == p2)\nprint(p1 == p3)", "a": "True\nFalse"},
+                {"q": "class Bag:\n    def __init__(self, items):\n        self.items = items\n    def __contains__(self, item):\n        return item in self.items\nb = Bag(['apple', 'banana', 'cherry'])\nprint('banana' in b)\nprint('grape' in b)", "a": "True\nFalse"},
+                {"q": "class Vector:\n    def __init__(self, x, y):\n        self.x = x\n        self.y = y\n    def __add__(self, other):\n        return Vector(self.x + other.x, self.y + other.y)\n    def __repr__(self):\n        return f'Vector({self.x}, {self.y})'\nv1 = Vector(1, 2)\nv2 = Vector(3, 4)\nprint(v1 + v2)", "a": "Vector(4, 6)"},
+                {"q": "class MyList:\n    def __init__(self, data):\n        self.data = data\n    def __getitem__(self, index):\n        return self.data[index]\nm = MyList([10, 20, 30])\nprint(m[1])", "a": "20"},
+                {"q": "class Counter:\n    def __init__(self):\n        self.count = 0\n    def __call__(self):\n        self.count += 1\n        return self.count\nc = Counter()\nprint(c())\nprint(c())\nprint(c())", "a": "1\n2\n3"},
+                {"q": "class MyNum:\n    def __init__(self, val):\n        self.val = val\n    def __bool__(self):\n        return self.val != 0\nprint(bool(MyNum(5)))\nprint(bool(MyNum(0)))", "a": "True\nFalse"},
+                {"q": "class Temperature:\n    def __init__(self, celsius):\n        self._celsius = celsius\n    @property\n    def fahrenheit(self):\n        return self._celsius * 9 / 5 + 32\nt = Temperature(100)\nprint(t.fahrenheit)", "a": "212.0"},
+                {"q": "class Point:\n    def __init__(self, x, y):\n        self.x = x\n        self.y = y\n    def __lt__(self, other):\n        return self.x < other.x\np1 = Point(1, 5)\np2 = Point(3, 2)\nprint(p1 < p2)", "a": "True"}
+            ]
+        },
+        "layer_b": {
+            "description": "Encapsulation gotchas — name mangling in subclasses, __eq__ breaks hashing, property without setter, __repr__ in containers, __call__ state, vars() with mangled names",
+            "questions": [
+                {"q": "class A:\n    def __init__(self):\n        self.__x = 10\na = A()\na.__x = 99\nprint(a.__x)\nprint(a._A__x)", "a": "99\n10"},
+                {"q": "class Celsius:\n    def __init__(self, temp):\n        self._temp = temp\n    @property\n    def temp(self):\n        return self._temp\n    @temp.setter\n    def temp(self, value):\n        if value < -273.15:\n            raise ValueError('Too cold')\n        self._temp = value\nc = Celsius(25)\nc.temp = -300", "a": "ValueError: Too cold"},
+                {"q": "class A:\n    def __init__(self, x):\n        self.__x = x\n    def get(self):\n        return self.__x\nclass B(A):\n    def get_b(self):\n        return self.__x\nb = B(5)\nprint(b.get())\nprint(b.get_b())", "a": "5\nAttributeError"},
+                {"q": "class Point:\n    def __init__(self, x, y):\n        self.x = x\n        self.y = y\n    def __eq__(self, other):\n        return self.x == other.x and self.y == other.y\np1 = Point(1, 2)\np2 = Point(1, 2)\nprint(p1 == p2)\nprint(p1 is p2)\ntry:\n    s = {p1, p2}\nexcept TypeError:\n    print('TypeError')", "a": "True\nFalse\nTypeError"},
+                {"q": "class MyStr:\n    def __init__(self, s):\n        self.s = s\n    def __repr__(self):\n        return f'MyStr({self.s!r})'\n    def __str__(self):\n        return self.s\nm = MyStr('hello')\nprint(m)\nprint(repr(m))\nprint([m])", "a": "hello\nMyStr('hello')\n[MyStr('hello')]"},
+                {"q": "class Box:\n    def __init__(self, val):\n        self._val = val\n    @property\n    def val(self):\n        return self._val\nb = Box(10)\nb.val = 20", "a": "AttributeError: can't set attribute"},
+                {"q": "class A:\n    def __init__(self, x):\n        self.__x = x\nclass B(A):\n    def __init__(self, x, y):\n        super().__init__(x)\n        self.__y = y\n    def show(self):\n        return self._A__x, self.__y\nb = B(1, 2)\nprint(b.show())", "a": "(1, 2)"},
+                {"q": "class Vector:\n    def __init__(self, x, y):\n        self.x = x\n        self.y = y\n    def __add__(self, other):\n        return Vector(self.x + other.x, self.y + other.y)\n    def __repr__(self):\n        return f'({self.x},{self.y})'\n    def __eq__(self, other):\n        return self.x == other.x and self.y == other.y\nv3 = Vector(1, 2) + Vector(3, 4)\nprint(v3)\nprint(v3 == Vector(4, 6))", "a": "(4,6)\nTrue"},
+                {"q": "class MyList:\n    def __init__(self, data):\n        self._data = data\n    def __len__(self):\n        return len(self._data)\n    def __bool__(self):\n        return len(self._data) > 0\nm1 = MyList([])\nm2 = MyList([1, 2])\nprint(bool(m1))\nprint(bool(m2))\nprint(len(m2))", "a": "False\nTrue\n2"},
+                {"q": "class Counter:\n    def __init__(self):\n        self._n = 0\n    def __call__(self, step=1):\n        self._n += step\n        return self._n\n    def __repr__(self):\n        return f'Counter({self._n})'\nc = Counter()\nc(); c(); c(5)\nprint(c)", "a": "Counter(7)"},
+                {"q": "class Range:\n    def __init__(self, start, end):\n        self.start = start\n        self.end = end\n    def __contains__(self, item):\n        return self.start <= item < self.end\nr = Range(1, 10)\nprint(5 in r)\nprint(10 in r)\nprint(0 in r)", "a": "True\nFalse\nFalse"},
+                {"q": "class A:\n    def __init__(self, n):\n        self._n = n\n    @property\n    def n(self):\n        return self._n\n    @n.setter\n    def n(self, val):\n        self._n = val * 2\na = A(3)\nprint(a.n)\na.n = 5\nprint(a.n)", "a": "3\n10"},
+                {"q": "class A:\n    def __init__(self, x):\n        self.__x = x\na = A(10)\nprint(vars(a))", "a": "{'_A__x': 10}"},
+                {"q": "class Pair:\n    def __init__(self, a, b):\n        self.a = a\n        self.b = b\n    def __iter__(self):\n        return iter([self.a, self.b])\n    def __repr__(self):\n        return f'Pair({self.a}, {self.b})'\np = Pair(10, 20)\nx, y = p\nprint(x, y)\nprint(list(p))", "a": "10 20\n[10, 20]"}
+            ]
+        },
+        "layer_c": {
+            "description": "Speed run — 30 mixed encapsulation and dunder questions, timed",
+            "questions": [
+                {"q": "class A:\n    def __init__(self):\n        self._x = 1\na = A()\nprint(a._x)", "a": "1"},
+                {"q": "class A:\n    def __init__(self):\n        self.__x = 1\na = A()\nprint(a.__x)", "a": "AttributeError"},
+                {"q": "class A:\n    def __init__(self):\n        self.__x = 1\na = A()\nprint(a._A__x)", "a": "1"},
+                {"q": "class A:\n    def __init__(self):\n        self.__x = 10\na = A()\na.__x = 99\nprint(a.__x)\nprint(a._A__x)", "a": "99\n10"},
+                {"q": "class C:\n    def __init__(self, v):\n        self._v = v\n    @property\n    def v(self):\n        return self._v\nc = C(42)\nprint(c.v)", "a": "42"},
+                {"q": "class C:\n    def __init__(self, v):\n        self._v = v\n    @property\n    def v(self):\n        return self._v\nc = C(42)\nc.v = 99", "a": "AttributeError: can't set attribute"},
+                {"q": "class C:\n    def __init__(self, v):\n        self._v = v\n    @property\n    def v(self):\n        return self._v\n    @v.setter\n    def v(self, val):\n        self._v = val\nc = C(1)\nc.v = 5\nprint(c.v)", "a": "5"},
+                {"q": "class A:\n    def __repr__(self): return 'repr'\n    def __str__(self): return 'str'\na = A()\nprint(a)\nprint(repr(a))", "a": "str\nrepr"},
+                {"q": "class A:\n    def __repr__(self): return 'repr'\na = A()\nprint(a)\nprint(str(a))", "a": "repr\nrepr"},
+                {"q": "class A:\n    def __init__(self, items):\n        self.items = items\n    def __len__(self):\n        return len(self.items)\na = A([1, 2, 3, 4])\nprint(len(a))", "a": "4"},
+                {"q": "class A:\n    def __init__(self, items):\n        self.items = items\n    def __contains__(self, x):\n        return x in self.items\na = A([1, 2, 3])\nprint(2 in a)\nprint(5 in a)", "a": "True\nFalse"},
+                {"q": "class A:\n    def __init__(self, x):\n        self.x = x\n    def __eq__(self, other):\n        return self.x == other.x\na1 = A(5)\na2 = A(5)\nprint(a1 == a2)\nprint(a1 is a2)", "a": "True\nFalse"},
+                {"q": "class V:\n    def __init__(self, x, y):\n        self.x = x\n        self.y = y\n    def __add__(self, other):\n        return V(self.x + other.x, self.y + other.y)\n    def __repr__(self):\n        return f'V({self.x},{self.y})'\nprint(V(1, 2) + V(3, 4))", "a": "V(4,6)"},
+                {"q": "class A:\n    def __init__(self, data):\n        self.data = data\n    def __getitem__(self, i):\n        return self.data[i]\na = A([10, 20, 30])\nprint(a[2])", "a": "30"},
+                {"q": "class A:\n    def __call__(self, x):\n        return x * 2\na = A()\nprint(a(5))", "a": "10"},
+                {"q": "class A:\n    def __init__(self, n):\n        self.n = n\n    def __bool__(self):\n        return self.n > 0\nprint(bool(A(3)))\nprint(bool(A(-1)))\nprint(bool(A(0)))", "a": "True\nFalse\nFalse"},
+                {"q": "class A:\n    def __init__(self, x):\n        self.x = x\n    def __lt__(self, other):\n        return self.x < other.x\nitems = [A(3), A(1), A(2)]\nprint(sorted(items, key=lambda a: a.x)[0].x)", "a": "1"},
+                {"q": "class A:\n    def __init__(self, x):\n        self.__x = x\nprint(vars(A(5)))", "a": "{'_A__x': 5}"},
+                {"q": "class A:\n    def __init__(self, x):\n        self._x = x\nclass B(A):\n    def get(self):\n        return self._x\nprint(B(99).get())", "a": "99"},
+                {"q": "class A:\n    def __init__(self, x):\n        self.__x = x\nclass B(A):\n    def get(self):\n        return self.__x\nprint(B(5).get())", "a": "AttributeError"},
+                {"q": "class A:\n    def __init__(self, items):\n        self._items = items\n    def __iter__(self):\n        return iter(self._items)\na = A([1, 2, 3])\nprint(list(a))", "a": "[1, 2, 3]"},
+                {"q": "class A:\n    def __init__(self, n):\n        self._n = n\n    @property\n    def n(self):\n        return self._n\n    @n.setter\n    def n(self, v):\n        self._n = v * 2\na = A(3)\na.n = 4\nprint(a.n)", "a": "8"},
+                {"q": "class A:\n    def __init__(self, x):\n        self.x = x\n    def __eq__(self, other):\n        return self.x == other.x\na = A(1)\nb = A(1)\ntry:\n    s = {a, b}\n    print(len(s))\nexcept TypeError:\n    print('TypeError')", "a": "TypeError"},
+                {"q": "class A:\n    def __init__(self, x, y):\n        self.x = x\n        self.y = y\n    def __iter__(self):\n        return iter([self.x, self.y])\nx, y = A(3, 7)\nprint(x, y)", "a": "3 7"},
+                {"q": "class A:\n    def __init__(self, n):\n        self.n = n\n    def __repr__(self):\n        return f'A({self.n})'\nitems = [A(1), A(2), A(3)]\nprint(items)", "a": "[A(1), A(2), A(3)]"},
+                {"q": "class A:\n    def __init__(self):\n        self.__x = 10\na = A()\na.__x = 99\nprint(vars(a))", "a": "{'_A__x': 10, '__x': 99}"},
+                {"q": "class C:\n    def __init__(self):\n        self._count = 0\n    def __call__(self):\n        self._count += 1\n    def __repr__(self):\n        return f'C({self._count})'\nc = C()\nc(); c(); c()\nprint(c)", "a": "C(3)"},
+                {"q": "class A:\n    def __init__(self, x):\n        self._x = x\n    @property\n    def x(self):\n        return self._x\n    @x.deleter\n    def x(self):\n        del self._x\na = A(5)\ndel a.x\nprint(hasattr(a, '_x'))", "a": "False"},
+                {"q": "class A:\n    def __init__(self, a, b):\n        self.a = a\n        self.b = b\n    def __eq__(self, other):\n        return self.a == other.a and self.b == other.b\n    def __hash__(self):\n        return hash((self.a, self.b))\ns = {A(1, 2), A(1, 2), A(3, 4)}\nprint(len(s))", "a": "2"},
+                {"q": "class A:\n    def __init__(self, x):\n        self.__x = x\n    def __repr__(self):\n        return f'A({self.__x})'\na = A(42)\nprint(a)\nprint(a._A__x)", "a": "A(42)\n42"}
+            ]
+        }
     }
 }
