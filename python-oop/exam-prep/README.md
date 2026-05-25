@@ -6,7 +6,7 @@
 |------|-------|---------|---------|---------|
 | G1 | OOP Basics | [x] 14/15, drills | [x] 12/14, drills | [x] 27/30 |
 | G2 | Inheritance | [x] 15/15, drills | [x] 11/14, drills | [x] 27/30 |
-| G3 | Encapsulation | [ ] | [ ] | [ ] |
+| G3 | Encapsulation | [x] 15/15 | [ ] | [ ] |
 | G4 | Unit Testing | [ ] | [ ] | [ ] |
 | G5 | NumPy | [ ] | [ ] | [ ] |
 | G6 | Pandas + JSON/CSV | [ ] | [ ] | [ ] |
