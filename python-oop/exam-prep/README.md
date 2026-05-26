@@ -6,7 +6,7 @@
 |------|-------|---------|---------|---------|
 | G1 | OOP Basics | [x] 14/15, drills | [x] 12/14, drills | [x] 27/30 |
 | G2 | Inheritance | [x] 15/15, drills | [x] 11/14, drills | [x] 27/30 |
-| G3 | Encapsulation | [x] 15/15 | [ ] | [ ] |
+| G3 | Encapsulation | [x] 15/15, drills | [x] 11/14, drills | [ ] |
 | G4 | Unit Testing | [ ] | [ ] | [ ] |
 | G5 | NumPy | [ ] | [ ] | [ ] |
 | G6 | Pandas + JSON/CSV | [ ] | [ ] | [ ] |
@@ -30,3 +30,6 @@
 | G2 | C | Q11 greet `type(self).__name__` | `I'm type B` | `I am B` |
 | G2 | C | Q27 mutable class attr in subclass | `[]` | `[1]` |
 | G2 | C | Q28 float print formatting | `Alice 4.` | `Alice 4.0` |
+| G3 | B | Q1 `a.__x = 99` outside class body   | `AttributeError` | `99` then `10` (mangling only inside class body) |
+| G3 | B | Q12 setter in `__init__` vs property  | `6` then `10` | `3` then `10` (`__init__` sets `_n` directly, no doubling) |
+| G3 | B | Q13 `vars()` output format | `_A__x` | `{'_A__x': 10}` (full dict with key and value) |
