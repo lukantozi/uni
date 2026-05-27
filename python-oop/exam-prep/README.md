@@ -7,7 +7,7 @@
 | G1 | OOP Basics | [x] 14/15, drills | [x] 12/14, drills | [x] 27/30 |
 | G2 | Inheritance | [x] 15/15, drills | [x] 11/14, drills | [x] 27/30 |
 | G3 | Encapsulation | [x] 15/15, drills | [x] 11/14, drills | [x] 29/30 |
-| G4 | Unit Testing | [x] 14/15, drills | [ ] | [ ] |
+| G4 | Unit Testing | [x] 14/15, drills | [x] 13/14, drills | [ ] |
 | G5 | NumPy | [ ] | [ ] | [ ] |
 | G6 | Pandas + JSON/CSV | [ ] | [ ] | [ ] |
 | G7 | Tkinter / GUI | [ ] | [ ] | [ ] |
@@ -35,3 +35,4 @@
 | G3 | B | Q13 `vars()` output format | `_A__x` | `{'_A__x': 10}` (full dict with key and value) |
 | G3 | C | Q6 `@property` no setter vs `__x` outside class | created new attr | `AttributeError: can't set attribute` (property descriptor blocks it) |
 | G4 | A | Q11 `assertRaises(ValueError)` when `'a' + 1` raises `TypeError` | `True` | `False` (wrong exception type → test fails) |
+| G4 | B | Q13 `tearDown` with class variable `results` | `0\nTrue` | `2\nTrue` (class var persists across tests, tearDown appends after each) |

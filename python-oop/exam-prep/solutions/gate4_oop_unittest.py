@@ -1,10 +1,11 @@
+import unittest
+
+
 """
 ============================================================
 Layer A
 ============================================================
 """
-import unittest
-
 # Task 1
 class Adder:
     def add(self, a, b):
@@ -139,5 +140,167 @@ class TestBankAccount(unittest.TestCase):
             self.ba.withdraw(10)
 
 
+"""
+============================================================
+Layer B
+============================================================
+"""
+# Task 1
+class Stack:
+    def __init__(self):
+        self._items = []
+
+    def push(self, item):
+        self._items.append(item)
+
+    def pop(self):
+        if not self._items:
+            raise IndexError("pop from empty stack")
+        return self._items.pop()
+
+    def peek(self):
+        if not self._items:
+            raise IndexError("peek at empty stack")
+        return self._items[-1]
+
+    def __len__(self):
+        return len(self._items)
+
+
+class TestStack(unittest.TestCase):
+    def setUp(self):
+        self.s = Stack()
+
+    def test_len_after_push(self):
+        prev_len = len(self.s)
+        self.s.push(2)
+        self.assertGreater(len(self.s), prev_len)
+
+    def test_pop(self):
+        self.s.push(3)
+        self.assertEqual(self.s.peek(), self.s.pop())
+
+    def test_pop_empty(self):
+        with self.assertRaises(IndexError):
+            self.s.pop()
+
+    def test_peek_not_remove(self):
+        self.s.push(5)
+        self.s.peek()
+        self.assertEqual(len(self.s), 1)
+
+    def test_peek_empty(self):
+        with self.assertRaises(IndexError):
+            self.s.peek()
+
+
+# Task 2
+class Temperature:
+    def __init__(self, c):
+        self.celsius = c
+
+    @property
+    def celsius(self):
+        return self._celsius
+
+    @celsius.setter
+    def celsius(self, c):
+        if not isinstance(c, (int, float)):
+            raise TypeError("celsius must be a number")
+        if c < -273.15:
+            raise ValueError("below absolute zero")
+        self._celsius = c
+
+    @property
+    def fahrenheit(self):
+        return self._celsius * 9 / 5 + 32
+
+
+class TestTemperature(unittest.TestCase):
+    def setUp(self):
+        self.t = Temperature(31)
+
+    def test_temp_creation(self):
+        self.assertTrue(self.t)
+
+    def test_temp_conversion_f(self):
+        self.assertAlmostEqual(self.t.fahrenheit, 87.8)
+
+    def test_temp_string(self):
+        with self.assertRaises(TypeError):
+            self.t.celsius = "30"
+
+    def test_temp_below_k0(self):
+        with self.assertRaises(ValueError):
+            self.t.celsius = -290
+
+
+# Task 3
+class TestTear(unittest.TestCase):
+    tears = []
+
+    def tearDown(self):
+        self.tears.append("torn")
+
+    def test_example_1(self):
+        self.assertEqual(1, 1)
+
+    def test_example_2(self):
+        pass
+        #self.assertEqual(1, 2)
+
+    def test_example_3(self):
+        self.assertEqual(2, 2)
+
+
+# Task 4
+class Employee:
+    raise_amt = 1.10
+
+    def __init__(self, name, pay):
+        self.name = name
+        self.pay = pay
+
+    def apply_raise(self):
+        self.pay = self.pay * self.raise_amt
+
+    @property
+    def pay(self):
+        return self._pay
+
+    @pay.setter
+    def pay(self, s):
+        if not isinstance(s, (int, float)):
+            raise TypeError("must be an integer")
+        if s < 0:
+            raise ValueError("must be non-negative")
+        self._pay = s
+
+
+class TestEmployee(unittest.TestCase):
+    def setUp(self):
+        self.e = Employee("Alice", 50000)
+
+    def test_employee_name(self):
+        self.assertEqual(self.e.name, "Alice")
+
+    def test_employee_pay(self):
+        self.assertEqual(self.e.pay, 50000)
+
+    def test_employee_raise(self):
+        self.e.apply_raise()
+        self.assertAlmostEqual(self.e.pay, 55000.0000, places=4)
+
+    def test_employee_neg(self):
+        with self.assertRaises(ValueError):
+            Employee("Alice", -4)
+
+
+"""
+============================================================
+Test implementations
+============================================================
+"""
 result = unittest.main(argv=[""], exit=False, verbosity=2)
 print(result.result.wasSuccessful())
+print(TestTear.tears)
