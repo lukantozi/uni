@@ -491,254 +491,503 @@
             ]
         }
     },
-        "gate4_unit_testing": {
-            "layer_a": {
-                "questions": [
-                    {
-                        "q": "import unittest\nclass T(unittest.TestCase):\n    def test_pass(self):\n        self.assertEqual(1 + 1, 2)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
-                        "a": "True"
-                    },
-                    {
-                        "q": "import unittest\nclass T(unittest.TestCase):\n    def test_fail(self):\n        self.assertEqual(1 + 1, 3)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
-                        "a": "False"
-                    },
-                    {
-                        "q": "import unittest\nclass T(unittest.TestCase):\n    def test_true(self):\n        self.assertTrue(5 > 3)\n    def test_false(self):\n        self.assertFalse(2 > 10)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.testsRun)\nprint(result.result.wasSuccessful())",
-                        "a": "2\nTrue"
-                    },
-                    {
-                        "q": "import unittest\nclass T(unittest.TestCase):\n    def test_none(self):\n        x = None\n        self.assertIsNone(x)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
-                        "a": "True"
-                    },
-                    {
-                        "q": "import unittest\nclass T(unittest.TestCase):\n    def test_in(self):\n        self.assertIn(3, [1, 2, 3, 4])\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
-                        "a": "True"
-                    },
-                    {
-                        "q": "import unittest\nclass Calculator:\n    def divide(self, a, b):\n        if b == 0:\n            raise ValueError('Cannot divide by zero')\n        return a / b\nclass TestCalc(unittest.TestCase):\n    def test_divide_by_zero(self):\n        c = Calculator()\n        with self.assertRaises(ValueError):\n            c.divide(10, 0)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
-                        "a": "True"
-                    },
-                    {
-                        "q": "import unittest\nclass T(unittest.TestCase):\n    def setUp(self):\n        self.value = 42\n    def test_value(self):\n        self.assertEqual(self.value, 42)\n    def test_double(self):\n        self.assertEqual(self.value * 2, 84)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.testsRun)\nprint(result.result.wasSuccessful())",
-                        "a": "2\nTrue"
-                    },
-                    {
-                        "q": "import unittest\nclass T(unittest.TestCase):\n    def test_ne(self):\n        self.assertNotEqual(1, 2)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
-                        "a": "True"
-                    },
-                    {
-                        "q": "import unittest\nclass Stack:\n    def __init__(self):\n        self.items = []\n    def push(self, item):\n        self.items.append(item)\n    def pop(self):\n        return self.items.pop()\n    def is_empty(self):\n        return len(self.items) == 0\nclass TestStack(unittest.TestCase):\n    def setUp(self):\n        self.s = Stack()\n    def test_empty(self):\n        self.assertTrue(self.s.is_empty())\n    def test_push_pop(self):\n        self.s.push(1)\n        self.assertEqual(self.s.pop(), 1)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.testsRun)\nprint(result.result.wasSuccessful())",
-                        "a": "2\nTrue"
-                    },
-                    {
-                        "q": "import unittest\nclass T(unittest.TestCase):\n    def test_raises(self):\n        with self.assertRaises(TypeError):\n            x = 'a' + 1\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
-                        "a": "True"
-                    },
-                    {
-                        "q": "import unittest\nclass T(unittest.TestCase):\n    def test_raises(self):\n        with self.assertRaises(ValueError):\n            x = 'a' + 1\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
-                        "a": "False"
-                    },
-                    {
-                        "q": "import unittest\nclass T(unittest.TestCase):\n    def setUp(self):\n        self.data = []\n    def test_append(self):\n        self.data.append(1)\n        self.assertIn(1, self.data)\n    def test_still_empty(self):\n        self.assertEqual(len(self.data), 0)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.testsRun)\nprint(result.result.wasSuccessful())",
-                        "a": "2\nTrue"
-                    },
-                    {
-                        "q": "import unittest\nclass T(unittest.TestCase):\n    def test_is_none(self):\n        self.assertIsNone(None)\n    def test_is_not_none(self):\n        self.assertIsNotNone(42)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.testsRun)\nprint(result.result.wasSuccessful())",
-                        "a": "2\nTrue"
-                    },
-                    {
-                        "q": "import unittest\nclass MyClass:\n    def greet(self):\n        return 'hello'\nclass TestMyClass(unittest.TestCase):\n    def setUp(self):\n        self.obj = MyClass()\n    def test_greet(self):\n        self.assertEqual(self.obj.greet(), 'hello')\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
-                        "a": "True"
-                    },
-                    {
-                        "q": "import unittest\nclass T(unittest.TestCase):\n    def test_one(self):\n        self.assertEqual(1, 1)\n    def test_two(self):\n        self.assertEqual(1, 2)\n    def test_three(self):\n        self.assertTrue(True)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.testsRun)\nprint(result.result.wasSuccessful())",
-                        "a": "3\nFalse"
-                    }
-                ]
-            },
-            "layer_b": {
-                "questions": [
-                    {
-                        "q": "import unittest\nclass T(unittest.TestCase):\n    def setUp(self):\n        self.items = []\n    def test_a(self):\n        self.items.append('x')\n        self.assertEqual(len(self.items), 1)\n    def test_b(self):\n        self.assertEqual(len(self.items), 0)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
-                        "a": "True"
-                    },
-                    {
-                        "q": "import unittest\nclass T(unittest.TestCase):\n    def setUp(self):\n        self.log = []\n    def tearDown(self):\n        self.log.append('tear')\n    def test_one(self):\n        self.log.append('test')\n        self.assertEqual(len(self.log), 1)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
-                        "a": "True"
-                    },
-                    {
-                        "q": "import unittest\nclass T(unittest.TestCase):\n    def test_msg(self):\n        with self.assertRaises(ValueError) as ctx:\n            raise ValueError('bad input')\n        self.assertEqual(str(ctx.exception), 'bad input')\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
-                        "a": "True"
-                    },
-                    {
-                        "q": "import unittest\nclass T(unittest.TestCase):\n    def test_normal(self):\n        self.assertEqual(1, 1)\n    @unittest.skip('not implemented yet')\n    def test_skipped(self):\n        self.assertEqual(1, 2)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.testsRun)\nprint(result.result.wasSuccessful())",
-                        "a": "1\nTrue"
-                    },
-                    {
-                        "q": "import unittest\nclass Validator:\n    def validate(self, x):\n        if not isinstance(x, int):\n            raise TypeError('must be int')\n        if x < 0:\n            raise ValueError('must be non-negative')\n        return True\nclass T(unittest.TestCase):\n    def setUp(self):\n        self.v = Validator()\n    def test_valid(self):\n        self.assertTrue(self.v.validate(5))\n    def test_type_error(self):\n        with self.assertRaises(TypeError):\n            self.v.validate('hello')\n    def test_value_error(self):\n        with self.assertRaises(ValueError):\n            self.v.validate(-1)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.testsRun)\nprint(result.result.wasSuccessful())",
-                        "a": "3\nTrue"
-                    },
-                    {
-                        "q": "import unittest\nclass T(unittest.TestCase):\n    def test_wrong_exception(self):\n        with self.assertRaises(ValueError):\n            raise TypeError('wrong type')\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
-                        "a": "False"
-                    },
-                    {
-                        "q": "import unittest\nclass T(unittest.TestCase):\n    def test_no_exception(self):\n        with self.assertRaises(ValueError):\n            x = 1 + 1\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
-                        "a": "False"
-                    },
-                    {
-                        "q": "import unittest\nclass MyList:\n    def __init__(self):\n        self.data = []\n    def add(self, item):\n        self.data.append(item)\n    def get(self, index):\n        return self.data[index]\nclass T(unittest.TestCase):\n    def setUp(self):\n        self.lst = MyList()\n        self.lst.add(10)\n        self.lst.add(20)\n    def test_get(self):\n        self.assertEqual(self.lst.get(0), 10)\n    def test_second(self):\n        self.assertEqual(self.lst.get(1), 20)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.testsRun)\nprint(result.result.wasSuccessful())",
-                        "a": "2\nTrue"
-                    },
-                    {
-                        "q": "import unittest\nclass T(unittest.TestCase):\n    def test_empty_string(self):\n        self.assertEqual(len(''), 0)\n        self.assertFalse('')\n    def test_zero(self):\n        self.assertEqual(0, 0)\n        self.assertFalse(0)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
-                        "a": "True"
-                    },
-                    {
-                        "q": "import unittest\nclass T(unittest.TestCase):\n    def test_multi(self):\n        self.assertEqual(1 + 1, 2)\n        self.assertEqual(2 + 2, 5)\n        self.assertEqual(3 + 3, 6)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
-                        "a": "False"
-                    },
-                    {
-                        "q": "import unittest\nclass T(unittest.TestCase):\n    def test_in_string(self):\n        self.assertIn('ell', 'hello')\n    def test_in_dict(self):\n        self.assertIn('key', {'key': 1})\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
-                        "a": "True"
-                    },
-                    {
-                        "q": "import unittest\nclass Calc:\n    def square(self, n):\n        return n * n\nclass T(unittest.TestCase):\n    def setUp(self):\n        self.c = Calc()\n    def test_positive(self):\n        self.assertEqual(self.c.square(3), 9)\n    def test_negative(self):\n        self.assertEqual(self.c.square(-4), 16)\n    def test_zero(self):\n        self.assertEqual(self.c.square(0), 0)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.testsRun)\nprint(result.result.wasSuccessful())",
-                        "a": "3\nTrue"
-                    },
-                    {
-                        "q": "import unittest\nclass T(unittest.TestCase):\n    results = []\n    def tearDown(self):\n        self.results.append('done')\n    def test_one(self): pass\n    def test_two(self): pass\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(len(T.results))\nprint(result.result.wasSuccessful())",
-                        "a": "2\nTrue"
-                    },
-                    {
-                        "q": "import unittest\nclass T(unittest.TestCase):\n    def test_list(self):\n        self.assertEqual([1, 2, 3], [1, 2, 3])\n    def test_dict(self):\n        self.assertEqual({'a': 1}, {'a': 1})\n    def test_identity(self):\n        a = [1, 2]\n        b = [1, 2]\n        self.assertEqual(a, b)\n        self.assertFalse(a is b)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.testsRun)\nprint(result.result.wasSuccessful())",
-                        "a": "3\nTrue"
-                    }
-                ]
-            },
-            "layer_c": {
-                "questions": [
-                    {
-                        "q": "import unittest\nclass T(unittest.TestCase):\n    def test_pass(self):\n        self.assertEqual(2 + 2, 4)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
-                        "a": "True"
-                    },
-                    {
-                        "q": "import unittest\nclass T(unittest.TestCase):\n    def test_fail(self):\n        self.assertEqual(2 + 2, 5)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
-                        "a": "False"
-                    },
-                    {
-                        "q": "import unittest\nclass T(unittest.TestCase):\n    def test_a(self):\n        self.assertTrue(True)\n    def test_b(self):\n        self.assertTrue(False)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.testsRun)\nprint(result.result.wasSuccessful())",
-                        "a": "2\nFalse"
-                    },
-                    {
-                        "q": "import unittest\nclass T(unittest.TestCase):\n    def setUp(self):\n        self.x = 10\n    def test_one(self):\n        self.x = 99\n        self.assertEqual(self.x, 99)\n    def test_two(self):\n        self.assertEqual(self.x, 10)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
-                        "a": "True"
-                    },
-                    {
-                        "q": "import unittest\nclass T(unittest.TestCase):\n    def test_raises(self):\n        with self.assertRaises(ZeroDivisionError):\n            x = 1 / 0\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
-                        "a": "True"
-                    },
-                    {
-                        "q": "import unittest\nclass T(unittest.TestCase):\n    def test_raises(self):\n        with self.assertRaises(ValueError):\n            x = 1 / 0\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
-                        "a": "False"
-                    },
-                    {
-                        "q": "import unittest\nclass T(unittest.TestCase):\n    def test_no_raise(self):\n        with self.assertRaises(ValueError):\n            x = 1 + 1\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
-                        "a": "False"
-                    },
-                    {
-                        "q": "import unittest\nclass T(unittest.TestCase):\n    def test_in(self):\n        self.assertIn('a', ['a', 'b', 'c'])\n    def test_not_in(self):\n        self.assertNotIn('z', ['a', 'b', 'c'])\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
-                        "a": "True"
-                    },
-                    {
-                        "q": "import unittest\nclass T(unittest.TestCase):\n    def test_none(self):\n        self.assertIsNone(None)\n    def test_not_none(self):\n        self.assertIsNone(0)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
-                        "a": "False"
-                    },
-                    {
-                        "q": "import unittest\nclass T(unittest.TestCase):\n    def setUp(self):\n        self.data = []\n    def test_a(self):\n        self.data.append(1)\n        self.assertEqual(len(self.data), 1)\n    def test_b(self):\n        self.assertEqual(len(self.data), 0)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
-                        "a": "True"
-                    },
-                    {
-                        "q": "import unittest\nclass T(unittest.TestCase):\n    def test_equal_lists(self):\n        self.assertEqual([1, 2, 3], [1, 2, 3])\n    def test_equal_dicts(self):\n        self.assertEqual({'a': 1}, {'a': 1})\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
-                        "a": "True"
-                    },
-                    {
-                        "q": "import unittest\nclass T(unittest.TestCase):\n    def test_multi(self):\n        self.assertEqual(1, 1)\n        self.assertEqual(2, 3)\n        self.assertEqual(4, 4)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
-                        "a": "False"
-                    },
-                    {
-                        "q": "import unittest\nclass T(unittest.TestCase):\n    @unittest.skip('skip me')\n    def test_skipped(self):\n        self.assertEqual(1, 2)\n    def test_normal(self):\n        self.assertEqual(1, 1)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.testsRun)\nprint(result.result.wasSuccessful())",
-                        "a": "1\nTrue"
-                    },
-                    {
-                        "q": "import unittest\nclass T(unittest.TestCase):\n    def test_raises_msg(self):\n        with self.assertRaises(ValueError) as ctx:\n            raise ValueError('oops')\n        self.assertEqual(str(ctx.exception), 'oops')\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
-                        "a": "True"
-                    },
-                    {
-                        "q": "import unittest\nclass T(unittest.TestCase):\n    results = []\n    def tearDown(self):\n        self.results.append(1)\n    def test_a(self): pass\n    def test_b(self): pass\n    def test_c(self): pass\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(len(T.results))",
-                        "a": "3"
-                    },
-                    {
-                        "q": "import unittest\nclass T(unittest.TestCase):\n    def test_almost(self):\n        self.assertAlmostEqual(0.1 + 0.2, 0.3, places=5)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
-                        "a": "True"
-                    },
-                    {
-                        "q": "import unittest\nclass T(unittest.TestCase):\n    def test_almost_fail(self):\n        self.assertAlmostEqual(0.1, 0.9, places=5)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
-                        "a": "False"
-                    },
-                    {
-                        "q": "import unittest\nclass T(unittest.TestCase):\n    def test_identity(self):\n        a = [1, 2]\n        b = [1, 2]\n        self.assertEqual(a, b)\n        self.assertIsNot(a, b)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
-                        "a": "True"
-                    },
-                    {
-                        "q": "import unittest\nclass T(unittest.TestCase):\n    def test_type(self):\n        self.assertIsInstance(42, int)\n        self.assertIsInstance('hi', str)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
-                        "a": "True"
-                    },
-                    {
-                        "q": "import unittest\nclass T(unittest.TestCase):\n    def test_raises_wrong(self):\n        with self.assertRaises(ValueError):\n            raise TypeError('wrong')\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
-                        "a": "False"
-                    },
-                    {
-                        "q": "import unittest\nclass T(unittest.TestCase):\n    def setUp(self):\n        self.val = 0\n    def tearDown(self):\n        self.val = -1\n    def test_one(self):\n        self.val += 1\n        self.assertEqual(self.val, 1)\n    def test_two(self):\n        self.assertEqual(self.val, 0)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
-                        "a": "True"
-                    },
-                    {
-                        "q": "import unittest\nclass T(unittest.TestCase):\n    def test_not_equal(self):\n        self.assertNotEqual(1, 2)\n        self.assertNotEqual('a', 'b')\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
-                        "a": "True"
-                    },
-                    {
-                        "q": "import unittest\nclass T(unittest.TestCase):\n    def test_false(self):\n        self.assertFalse(0)\n        self.assertFalse([])\n        self.assertFalse('')\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
-                        "a": "True"
-                    },
-                    {
-                        "q": "import unittest\nclass T(unittest.TestCase):\n    def test_true(self):\n        self.assertTrue(1)\n        self.assertTrue([1])\n        self.assertTrue('a')\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
-                        "a": "True"
-                    },
-                    {
-                        "q": "import unittest\nclass T(unittest.TestCase):\n    def test_raises_catches_subclass(self):\n        with self.assertRaises(Exception):\n            raise ValueError('sub')\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
-                        "a": "True"
-                    },
-                    {
-                        "q": "import unittest\nclass T(unittest.TestCase):\n    def test_a(self):\n        self.fail('forced failure')\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
-                        "a": "False"
-                    },
-                    {
-                        "q": "import unittest\nclass T(unittest.TestCase):\n    def setUp(self):\n        self.items = [1, 2, 3]\n    def test_len(self):\n        self.assertEqual(len(self.items), 3)\n    def test_contains(self):\n        self.assertIn(2, self.items)\n    def test_not_contains(self):\n        self.assertNotIn(5, self.items)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.testsRun)\nprint(result.result.wasSuccessful())",
-                        "a": "3\nTrue"
-                    },
-                    {
-                        "q": "import unittest\nclass T(unittest.TestCase):\n    def test_is(self):\n        a = None\n        self.assertIs(a, None)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
-                        "a": "True"
-                    },
-                    {
-                        "q": "import unittest\nclass T(unittest.TestCase):\n    def test_raises_no_block(self):\n        self.assertRaises(ValueError, int, 'abc')\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
-                        "a": "True"
-                    },
-                    {
-                        "q": "import unittest\nclass T(unittest.TestCase):\n    def test_one(self): self.assertEqual(1, 1)\n    def test_two(self): self.assertEqual(2, 2)\n    def test_three(self): self.assertEqual(1, 2)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.testsRun)\nprint(result.result.wasSuccessful())",
-                        "a": "3\nFalse"
-                    }
-                ]
-            }
+    "gate4_unit_testing": {
+        "layer_a": {
+            "questions": [
+                {
+                    "q": "import unittest\nclass T(unittest.TestCase):\n    def test_pass(self):\n        self.assertEqual(1 + 1, 2)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
+                    "a": "True"
+                },
+                {
+                    "q": "import unittest\nclass T(unittest.TestCase):\n    def test_fail(self):\n        self.assertEqual(1 + 1, 3)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
+                    "a": "False"
+                },
+                {
+                    "q": "import unittest\nclass T(unittest.TestCase):\n    def test_true(self):\n        self.assertTrue(5 > 3)\n    def test_false(self):\n        self.assertFalse(2 > 10)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.testsRun)\nprint(result.result.wasSuccessful())",
+                    "a": "2\nTrue"
+                },
+                {
+                    "q": "import unittest\nclass T(unittest.TestCase):\n    def test_none(self):\n        x = None\n        self.assertIsNone(x)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
+                    "a": "True"
+                },
+                {
+                    "q": "import unittest\nclass T(unittest.TestCase):\n    def test_in(self):\n        self.assertIn(3, [1, 2, 3, 4])\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
+                    "a": "True"
+                },
+                {
+                    "q": "import unittest\nclass Calculator:\n    def divide(self, a, b):\n        if b == 0:\n            raise ValueError('Cannot divide by zero')\n        return a / b\nclass TestCalc(unittest.TestCase):\n    def test_divide_by_zero(self):\n        c = Calculator()\n        with self.assertRaises(ValueError):\n            c.divide(10, 0)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
+                    "a": "True"
+                },
+                {
+                    "q": "import unittest\nclass T(unittest.TestCase):\n    def setUp(self):\n        self.value = 42\n    def test_value(self):\n        self.assertEqual(self.value, 42)\n    def test_double(self):\n        self.assertEqual(self.value * 2, 84)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.testsRun)\nprint(result.result.wasSuccessful())",
+                    "a": "2\nTrue"
+                },
+                {
+                    "q": "import unittest\nclass T(unittest.TestCase):\n    def test_ne(self):\n        self.assertNotEqual(1, 2)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
+                    "a": "True"
+                },
+                {
+                    "q": "import unittest\nclass Stack:\n    def __init__(self):\n        self.items = []\n    def push(self, item):\n        self.items.append(item)\n    def pop(self):\n        return self.items.pop()\n    def is_empty(self):\n        return len(self.items) == 0\nclass TestStack(unittest.TestCase):\n    def setUp(self):\n        self.s = Stack()\n    def test_empty(self):\n        self.assertTrue(self.s.is_empty())\n    def test_push_pop(self):\n        self.s.push(1)\n        self.assertEqual(self.s.pop(), 1)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.testsRun)\nprint(result.result.wasSuccessful())",
+                    "a": "2\nTrue"
+                },
+                {
+                    "q": "import unittest\nclass T(unittest.TestCase):\n    def test_raises(self):\n        with self.assertRaises(TypeError):\n            x = 'a' + 1\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
+                    "a": "True"
+                },
+                {
+                    "q": "import unittest\nclass T(unittest.TestCase):\n    def test_raises(self):\n        with self.assertRaises(ValueError):\n            x = 'a' + 1\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
+                    "a": "False"
+                },
+                {
+                    "q": "import unittest\nclass T(unittest.TestCase):\n    def setUp(self):\n        self.data = []\n    def test_append(self):\n        self.data.append(1)\n        self.assertIn(1, self.data)\n    def test_still_empty(self):\n        self.assertEqual(len(self.data), 0)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.testsRun)\nprint(result.result.wasSuccessful())",
+                    "a": "2\nTrue"
+                },
+                {
+                    "q": "import unittest\nclass T(unittest.TestCase):\n    def test_is_none(self):\n        self.assertIsNone(None)\n    def test_is_not_none(self):\n        self.assertIsNotNone(42)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.testsRun)\nprint(result.result.wasSuccessful())",
+                    "a": "2\nTrue"
+                },
+                {
+                    "q": "import unittest\nclass MyClass:\n    def greet(self):\n        return 'hello'\nclass TestMyClass(unittest.TestCase):\n    def setUp(self):\n        self.obj = MyClass()\n    def test_greet(self):\n        self.assertEqual(self.obj.greet(), 'hello')\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
+                    "a": "True"
+                },
+                {
+                    "q": "import unittest\nclass T(unittest.TestCase):\n    def test_one(self):\n        self.assertEqual(1, 1)\n    def test_two(self):\n        self.assertEqual(1, 2)\n    def test_three(self):\n        self.assertTrue(True)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.testsRun)\nprint(result.result.wasSuccessful())",
+                    "a": "3\nFalse"
+                }
+            ]
+        },
+        "layer_b": {
+            "questions": [
+                {
+                    "q": "import unittest\nclass T(unittest.TestCase):\n    def setUp(self):\n        self.items = []\n    def test_a(self):\n        self.items.append('x')\n        self.assertEqual(len(self.items), 1)\n    def test_b(self):\n        self.assertEqual(len(self.items), 0)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
+                    "a": "True"
+                },
+                {
+                    "q": "import unittest\nclass T(unittest.TestCase):\n    def setUp(self):\n        self.log = []\n    def tearDown(self):\n        self.log.append('tear')\n    def test_one(self):\n        self.log.append('test')\n        self.assertEqual(len(self.log), 1)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
+                    "a": "True"
+                },
+                {
+                    "q": "import unittest\nclass T(unittest.TestCase):\n    def test_msg(self):\n        with self.assertRaises(ValueError) as ctx:\n            raise ValueError('bad input')\n        self.assertEqual(str(ctx.exception), 'bad input')\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
+                    "a": "True"
+                },
+                {
+                    "q": "import unittest\nclass T(unittest.TestCase):\n    def test_normal(self):\n        self.assertEqual(1, 1)\n    @unittest.skip('not implemented yet')\n    def test_skipped(self):\n        self.assertEqual(1, 2)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.testsRun)\nprint(result.result.wasSuccessful())",
+                    "a": "1\nTrue"
+                },
+                {
+                    "q": "import unittest\nclass Validator:\n    def validate(self, x):\n        if not isinstance(x, int):\n            raise TypeError('must be int')\n        if x < 0:\n            raise ValueError('must be non-negative')\n        return True\nclass T(unittest.TestCase):\n    def setUp(self):\n        self.v = Validator()\n    def test_valid(self):\n        self.assertTrue(self.v.validate(5))\n    def test_type_error(self):\n        with self.assertRaises(TypeError):\n            self.v.validate('hello')\n    def test_value_error(self):\n        with self.assertRaises(ValueError):\n            self.v.validate(-1)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.testsRun)\nprint(result.result.wasSuccessful())",
+                    "a": "3\nTrue"
+                },
+                {
+                    "q": "import unittest\nclass T(unittest.TestCase):\n    def test_wrong_exception(self):\n        with self.assertRaises(ValueError):\n            raise TypeError('wrong type')\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
+                    "a": "False"
+                },
+                {
+                    "q": "import unittest\nclass T(unittest.TestCase):\n    def test_no_exception(self):\n        with self.assertRaises(ValueError):\n            x = 1 + 1\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
+                    "a": "False"
+                },
+                {
+                    "q": "import unittest\nclass MyList:\n    def __init__(self):\n        self.data = []\n    def add(self, item):\n        self.data.append(item)\n    def get(self, index):\n        return self.data[index]\nclass T(unittest.TestCase):\n    def setUp(self):\n        self.lst = MyList()\n        self.lst.add(10)\n        self.lst.add(20)\n    def test_get(self):\n        self.assertEqual(self.lst.get(0), 10)\n    def test_second(self):\n        self.assertEqual(self.lst.get(1), 20)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.testsRun)\nprint(result.result.wasSuccessful())",
+                    "a": "2\nTrue"
+                },
+                {
+                    "q": "import unittest\nclass T(unittest.TestCase):\n    def test_empty_string(self):\n        self.assertEqual(len(''), 0)\n        self.assertFalse('')\n    def test_zero(self):\n        self.assertEqual(0, 0)\n        self.assertFalse(0)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
+                    "a": "True"
+                },
+                {
+                    "q": "import unittest\nclass T(unittest.TestCase):\n    def test_multi(self):\n        self.assertEqual(1 + 1, 2)\n        self.assertEqual(2 + 2, 5)\n        self.assertEqual(3 + 3, 6)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
+                    "a": "False"
+                },
+                {
+                    "q": "import unittest\nclass T(unittest.TestCase):\n    def test_in_string(self):\n        self.assertIn('ell', 'hello')\n    def test_in_dict(self):\n        self.assertIn('key', {'key': 1})\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
+                    "a": "True"
+                },
+                {
+                    "q": "import unittest\nclass Calc:\n    def square(self, n):\n        return n * n\nclass T(unittest.TestCase):\n    def setUp(self):\n        self.c = Calc()\n    def test_positive(self):\n        self.assertEqual(self.c.square(3), 9)\n    def test_negative(self):\n        self.assertEqual(self.c.square(-4), 16)\n    def test_zero(self):\n        self.assertEqual(self.c.square(0), 0)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.testsRun)\nprint(result.result.wasSuccessful())",
+                    "a": "3\nTrue"
+                },
+                {
+                    "q": "import unittest\nclass T(unittest.TestCase):\n    results = []\n    def tearDown(self):\n        self.results.append('done')\n    def test_one(self): pass\n    def test_two(self): pass\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(len(T.results))\nprint(result.result.wasSuccessful())",
+                    "a": "2\nTrue"
+                },
+                {
+                    "q": "import unittest\nclass T(unittest.TestCase):\n    def test_list(self):\n        self.assertEqual([1, 2, 3], [1, 2, 3])\n    def test_dict(self):\n        self.assertEqual({'a': 1}, {'a': 1})\n    def test_identity(self):\n        a = [1, 2]\n        b = [1, 2]\n        self.assertEqual(a, b)\n        self.assertFalse(a is b)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.testsRun)\nprint(result.result.wasSuccessful())",
+                    "a": "3\nTrue"
+                }
+            ]
+        },
+        "layer_c": {
+            "questions": [
+                {
+                    "q": "import unittest\nclass T(unittest.TestCase):\n    def test_pass(self):\n        self.assertEqual(2 + 2, 4)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
+                    "a": "True"
+                },
+                {
+                    "q": "import unittest\nclass T(unittest.TestCase):\n    def test_fail(self):\n        self.assertEqual(2 + 2, 5)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
+                    "a": "False"
+                },
+                {
+                    "q": "import unittest\nclass T(unittest.TestCase):\n    def test_a(self):\n        self.assertTrue(True)\n    def test_b(self):\n        self.assertTrue(False)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.testsRun)\nprint(result.result.wasSuccessful())",
+                    "a": "2\nFalse"
+                },
+                {
+                    "q": "import unittest\nclass T(unittest.TestCase):\n    def setUp(self):\n        self.x = 10\n    def test_one(self):\n        self.x = 99\n        self.assertEqual(self.x, 99)\n    def test_two(self):\n        self.assertEqual(self.x, 10)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
+                    "a": "True"
+                },
+                {
+                    "q": "import unittest\nclass T(unittest.TestCase):\n    def test_raises(self):\n        with self.assertRaises(ZeroDivisionError):\n            x = 1 / 0\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
+                    "a": "True"
+                },
+                {
+                    "q": "import unittest\nclass T(unittest.TestCase):\n    def test_raises(self):\n        with self.assertRaises(ValueError):\n            x = 1 / 0\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
+                    "a": "False"
+                },
+                {
+                    "q": "import unittest\nclass T(unittest.TestCase):\n    def test_no_raise(self):\n        with self.assertRaises(ValueError):\n            x = 1 + 1\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
+                    "a": "False"
+                },
+                {
+                    "q": "import unittest\nclass T(unittest.TestCase):\n    def test_in(self):\n        self.assertIn('a', ['a', 'b', 'c'])\n    def test_not_in(self):\n        self.assertNotIn('z', ['a', 'b', 'c'])\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
+                    "a": "True"
+                },
+                {
+                    "q": "import unittest\nclass T(unittest.TestCase):\n    def test_none(self):\n        self.assertIsNone(None)\n    def test_not_none(self):\n        self.assertIsNone(0)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
+                    "a": "False"
+                },
+                {
+                    "q": "import unittest\nclass T(unittest.TestCase):\n    def setUp(self):\n        self.data = []\n    def test_a(self):\n        self.data.append(1)\n        self.assertEqual(len(self.data), 1)\n    def test_b(self):\n        self.assertEqual(len(self.data), 0)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
+                    "a": "True"
+                },
+                {
+                    "q": "import unittest\nclass T(unittest.TestCase):\n    def test_equal_lists(self):\n        self.assertEqual([1, 2, 3], [1, 2, 3])\n    def test_equal_dicts(self):\n        self.assertEqual({'a': 1}, {'a': 1})\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
+                    "a": "True"
+                },
+                {
+                    "q": "import unittest\nclass T(unittest.TestCase):\n    def test_multi(self):\n        self.assertEqual(1, 1)\n        self.assertEqual(2, 3)\n        self.assertEqual(4, 4)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
+                    "a": "False"
+                },
+                {
+                    "q": "import unittest\nclass T(unittest.TestCase):\n    @unittest.skip('skip me')\n    def test_skipped(self):\n        self.assertEqual(1, 2)\n    def test_normal(self):\n        self.assertEqual(1, 1)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.testsRun)\nprint(result.result.wasSuccessful())",
+                    "a": "1\nTrue"
+                },
+                {
+                    "q": "import unittest\nclass T(unittest.TestCase):\n    def test_raises_msg(self):\n        with self.assertRaises(ValueError) as ctx:\n            raise ValueError('oops')\n        self.assertEqual(str(ctx.exception), 'oops')\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
+                    "a": "True"
+                },
+                {
+                    "q": "import unittest\nclass T(unittest.TestCase):\n    results = []\n    def tearDown(self):\n        self.results.append(1)\n    def test_a(self): pass\n    def test_b(self): pass\n    def test_c(self): pass\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(len(T.results))",
+                    "a": "3"
+                },
+                {
+                    "q": "import unittest\nclass T(unittest.TestCase):\n    def test_almost(self):\n        self.assertAlmostEqual(0.1 + 0.2, 0.3, places=5)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
+                    "a": "True"
+                },
+                {
+                    "q": "import unittest\nclass T(unittest.TestCase):\n    def test_almost_fail(self):\n        self.assertAlmostEqual(0.1, 0.9, places=5)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
+                    "a": "False"
+                },
+                {
+                    "q": "import unittest\nclass T(unittest.TestCase):\n    def test_identity(self):\n        a = [1, 2]\n        b = [1, 2]\n        self.assertEqual(a, b)\n        self.assertIsNot(a, b)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
+                    "a": "True"
+                },
+                {
+                    "q": "import unittest\nclass T(unittest.TestCase):\n    def test_type(self):\n        self.assertIsInstance(42, int)\n        self.assertIsInstance('hi', str)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
+                    "a": "True"
+                },
+                {
+                    "q": "import unittest\nclass T(unittest.TestCase):\n    def test_raises_wrong(self):\n        with self.assertRaises(ValueError):\n            raise TypeError('wrong')\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
+                    "a": "False"
+                },
+                {
+                    "q": "import unittest\nclass T(unittest.TestCase):\n    def setUp(self):\n        self.val = 0\n    def tearDown(self):\n        self.val = -1\n    def test_one(self):\n        self.val += 1\n        self.assertEqual(self.val, 1)\n    def test_two(self):\n        self.assertEqual(self.val, 0)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
+                    "a": "True"
+                },
+                {
+                    "q": "import unittest\nclass T(unittest.TestCase):\n    def test_not_equal(self):\n        self.assertNotEqual(1, 2)\n        self.assertNotEqual('a', 'b')\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
+                    "a": "True"
+                },
+                {
+                    "q": "import unittest\nclass T(unittest.TestCase):\n    def test_false(self):\n        self.assertFalse(0)\n        self.assertFalse([])\n        self.assertFalse('')\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
+                    "a": "True"
+                },
+                {
+                    "q": "import unittest\nclass T(unittest.TestCase):\n    def test_true(self):\n        self.assertTrue(1)\n        self.assertTrue([1])\n        self.assertTrue('a')\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
+                    "a": "True"
+                },
+                {
+                    "q": "import unittest\nclass T(unittest.TestCase):\n    def test_raises_catches_subclass(self):\n        with self.assertRaises(Exception):\n            raise ValueError('sub')\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
+                    "a": "True"
+                },
+                {
+                    "q": "import unittest\nclass T(unittest.TestCase):\n    def test_a(self):\n        self.fail('forced failure')\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
+                    "a": "False"
+                },
+                {
+                    "q": "import unittest\nclass T(unittest.TestCase):\n    def setUp(self):\n        self.items = [1, 2, 3]\n    def test_len(self):\n        self.assertEqual(len(self.items), 3)\n    def test_contains(self):\n        self.assertIn(2, self.items)\n    def test_not_contains(self):\n        self.assertNotIn(5, self.items)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.testsRun)\nprint(result.result.wasSuccessful())",
+                    "a": "3\nTrue"
+                },
+                {
+                    "q": "import unittest\nclass T(unittest.TestCase):\n    def test_is(self):\n        a = None\n        self.assertIs(a, None)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
+                    "a": "True"
+                },
+                {
+                    "q": "import unittest\nclass T(unittest.TestCase):\n    def test_raises_no_block(self):\n        self.assertRaises(ValueError, int, 'abc')\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.wasSuccessful())",
+                    "a": "True"
+                },
+                {
+                    "q": "import unittest\nclass T(unittest.TestCase):\n    def test_one(self): self.assertEqual(1, 1)\n    def test_two(self): self.assertEqual(2, 2)\n    def test_three(self): self.assertEqual(1, 2)\nresult = unittest.main(argv=[''], exit=False, verbosity=0)\nprint(result.result.testsRun)\nprint(result.result.wasSuccessful())",
+                    "a": "3\nFalse"
+                }
+            ]
         }
+    }, "gate5_numpy": {
+    "layer_a": {
+        "questions": [
+            {
+                "q": "import numpy as np\\na = np.array([1, 2, 3, 4, 5])\\nprint(a[0])\\nprint(a[-1])",
+                "a": "1\\n5"
+            },
+            {
+                "q": "import numpy as np\\na = np.array([10, 20, 30, 40, 50])\\nprint(a[1:4])",
+                "a": "[20 30 40]"
+            },
+            {
+                "q": "import numpy as np\\na = np.array([1, 2, 3, 4, 5, 6])\\nprint(a[::2])",
+                "a": "[1 3 5]"
+            },
+            {
+                "q": "import numpy as np\\na = np.array([[1, 2, 3], [4, 5, 6]])\\nprint(a.shape)\\nprint(a.ndim)",
+                "a": "(2, 3)\\n2"
+            },
+            {
+                "q": "import numpy as np\\na = np.array([[1, 2, 3], [4, 5, 6]])\\nprint(a[0][1])\\nprint(a[1, 2])",
+                "a": "2\\n6"
+            },
+            {
+                "q": "import numpy as np\\na = np.array([1, 2, 3, 4, 5, 6])\\nb = a.reshape(2, 3)\\nprint(b.shape)\\nprint(b[1, 0])",
+                "a": "(2, 3)\\n4"
+            },
+            {
+                "q": "import numpy as np\\na = np.array([1, 2, 3, 4, 5, 6])\\nb = a[2:5]\\nb[0] = 99\\nprint(a)",
+                "a": "[ 1  2 99  4  5  6]"
+            },
+            {
+                "q": "import numpy as np\\na = np.array([1, 2, 3, 4, 5, 6])\\nb = a[2:5].copy()\\nb[0] = 99\\nprint(a)",
+                "a": "[1 2 3 4 5 6]"
+            },
+            {
+                "q": "import numpy as np\\na = np.array([1, 2, 3])\\nb = np.array([10, 20, 30])\\nprint(a + b)",
+                "a": "[11 22 33]"
+            },
+            {
+                "q": "import numpy as np\\na = np.array([1, 2, 3, 4, 5])\\nprint(np.sum(a))\\nprint(np.mean(a))",
+                "a": "15\\n3.0"
+            },
+            {
+                "q": "import numpy as np\\na = np.array([3, 1, 4, 1, 5, 9, 2, 6])\\nprint(np.sort(a))\\nprint(a)",
+                "a": "[1 1 2 3 4 5 6 9]\\n[3 1 4 1 5 9 2 6]"
+            },
+            {
+                "q": "import numpy as np\\na = np.array([1, 2, 3, 4, 5])\\nprint(a[a > 3])",
+                "a": "[4 5]"
+            },
+            {
+                "q": "import numpy as np\\na = np.array([1, 2, 3, 4, 5])\\nb = np.array([10, 20, 30])\\nprint(np.concatenate((a[:2], b)))",
+                "a": "[ 1  2 10 20 30]"
+            },
+            {
+                "q": "import numpy as np\\na = np.array([[1, 2], [3, 4]])\\nb = np.array([[5, 6]])\\nprint(np.vstack((a, b)))",
+                "a": "[[1 2]\\n [3 4]\\n [5 6]]"
+            },
+            {
+                "q": "import numpy as np\\na = np.array([1, 2, 3, 4, 5])\\nresult = np.where(a > 3, 1, 0)\\nprint(result)",
+                "a": "[0 0 0 1 1]"
+            }
+        ]
+    },
+    "layer_b": {
+        "questions": [
+            {
+                "q": "import numpy as np\\na = np.array([1, 2, 3, 4, 5, 6])\\nb = a\\nb[0] = 99\\nprint(a[0])",
+                "a": "99"
+            },
+            {
+                "q": "import numpy as np\\na = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])\\nprint(a[:, 1])",
+                "a": "[2 5 8]"
+            },
+            {
+                "q": "import numpy as np\\na = np.arange(1, 10).reshape(3, 3)\\nprint(a[1:, 1:])",
+                "a": "[[5 6]\\n [8 9]]"
+            },
+            {
+                "q": "import numpy as np\\na = np.array([1, 2, 3])\\nprint(a * 3)",
+                "a": "[3 6 9]"
+            },
+            {
+                "q": "import numpy as np\\na = np.array([[1, 2], [3, 4]])\\nprint(np.sum(a, axis=0))\\nprint(np.sum(a, axis=1))",
+                "a": "[4 6]\\n[3 7]"
+            },
+            {
+                "q": "import numpy as np\\na = np.array([1, 2, 3, 4, 5, 6])\\nb = a.reshape(3, 2)\\nc = b.reshape(6)\\nc[0] = 99\\nprint(a[0])",
+                "a": "99"
+            },
+            {
+                "q": "import numpy as np\\na = np.array([1, 2, 3, 4, 5])\\nb = np.where(a % 2 == 0, a * 10, a)\\nprint(b)",
+                "a": "[ 1 20  3 40  5]"
+            },
+            {
+                "q": "import numpy as np\\na = np.array([[1, 2], [3, 4]])\\nb = np.array([[5, 6], [7, 8]])\\nprint(np.hstack((a, b)))",
+                "a": "[[1 2 5 6]\\n [3 4 7 8]]"
+            },
+            {
+                "q": "import numpy as np\\na = np.zeros((2, 3), dtype=int)\\na[0] = [1, 2, 3]\\nprint(a)",
+                "a": "[[1 2 3]\\n [0 0 0]]"
+            },
+            {
+                "q": "import numpy as np\\na = np.array([10, 20, 30])\\nb = np.array([[1], [2], [3]])\\nprint(a + b)",
+                "a": "[[11 21 31]\\n [12 22 32]\\n [13 23 33]]"
+            },
+            {
+                "q": "import numpy as np\\na = np.array([3, 1, 4, 1, 5])\\nprint(np.unique(a))",
+                "a": "[1 3 4 5]"
+            },
+            {
+                "q": "import numpy as np\\na = np.arange(12).reshape(4, 3)\\nprint(a.shape)\\nprint(a[2, 1])",
+                "a": "(4, 3)\\n7"
+            },
+            {
+                "q": "import numpy as np\\na = np.array([1, 2, 3, 4, 5])\\nb = a.copy()\\nb *= 10\\nprint(a)\\nprint(b)",
+                "a": "[1 2 3 4 5]\\n[10 20 30 40 50]"
+            },
+            {
+                "q": "import numpy as np\\na = np.array([[1, 2, 3], [4, 5, 6]])\\nprint(a.flatten())\\nprint(a.shape)",
+                "a": "[1 2 3 4 5 6]\\n(2, 3)"
+            }
+        ]
+    },
+    "layer_c": {
+        "questions": [
+            {
+                "q": "import numpy as np\\nprint(np.array([1,2,3])[1])",
+                "a": "2"
+            },
+            {
+                "q": "import numpy as np\\nprint(np.array([1,2,3,4,5])[1:4])",
+                "a": "[2 3 4]"
+            },
+            {
+                "q": "import numpy as np\\nprint(np.array([1,2,3,4,5,6])[::3])",
+                "a": "[1 4]"
+            },
+            {
+                "q": "import numpy as np\\nprint(np.array([[1,2],[3,4]]).shape)",
+                "a": "(2, 2)"
+            },
+            {
+                "q": "import numpy as np\\nprint(np.array([[1,2],[3,4]]).ndim)",
+                "a": "2"
+            },
+            {
+                "q": "import numpy as np\\nprint(np.array([[1,2],[3,4]])[1,0])",
+                "a": "3"
+            },
+            {
+                "q": "import numpy as np\\nprint(np.arange(6).reshape(2,3).shape)",
+                "a": "(2, 3)"
+            },
+            {
+                "q": "import numpy as np\\na = np.array([1,2,3,4,5,6])\\nb = a[1:3]\\nb[0] = 99\\nprint(a[1])",
+                "a": "99"
+            },
+            {
+                "q": "import numpy as np\\na = np.array([1,2,3,4,5])\\nb = a.copy()\\nb[0] = 99\\nprint(a[0])",
+                "a": "1"
+            },
+            {
+                "q": "import numpy as np\\na = np.array([1,2,3])\\nb = a\\nb[0] = 99\\nprint(a[0])",
+                "a": "99"
+            },
+            {
+                "q": "import numpy as np\\nprint(np.array([1,2,3]) + np.array([4,5,6]))",
+                "a": "[5 7 9]"
+            },
+            {
+                "q": "import numpy as np\\nprint(np.array([1,2,3]) * 2)",
+                "a": "[2 4 6]"
+            },
+            {
+                "q": "import numpy as np\\nprint(np.sum(np.array([1,2,3,4,5])))",
+                "a": "15"
+            },
+            {
+                "q": "import numpy as np\\nprint(np.mean(np.array([1,2,3,4,5])))",
+                "a": "3.0"
+            },
+            {
+                "q": "import numpy as np\\nprint(np.max(np.array([3,1,4,1,5,9])))",
+                "a": "9"
+            },
+            {
+                "q": "import numpy as np\\na = np.array([3,1,2])\\nb = np.sort(a)\\nprint(a)",
+                "a": "[3 1 2]"
+            },
+            {
+                "q": "import numpy as np\\na = np.array([1,2,3,4,5])\\nprint(a[a > 3])",
+                "a": "[4 5]"
+            },
+            {
+                "q": "import numpy as np\\na = np.array([1,2,3,4,5])\\nprint(np.where(a > 3, 1, 0))",
+                "a": "[0 0 0 1 1]"
+            },
+            {
+                "q": "import numpy as np\\nprint(np.vstack((np.array([1,2]), np.array([3,4]))).shape)",
+                "a": "(2, 2)"
+            },
+            {
+                "q": "import numpy as np\\nprint(np.hstack((np.array([[1],[2]]), np.array([[3],[4]]))).shape)",
+                "a": "(2, 2)"
+            },
+            {
+                "q": "import numpy as np\\nprint(np.zeros((2,3)).shape)",
+                "a": "(2, 3)"
+            },
+            {
+                "q": "import numpy as np\\nprint(np.ones((3,3)).ndim)",
+                "a": "2"
+            },
+            {
+                "q": "import numpy as np\\nprint(np.arange(0, 10, 2))",
+                "a": "[0 2 4 6 8]"
+            },
+            {
+                "q": "import numpy as np\\nprint(np.linspace(0, 1, 5))",
+                "a": "[0.   0.25 0.5  0.75 1.  ]"
+            },
+            {
+                "q": "import numpy as np\\nprint(np.array([[1,2,3],[4,5,6]])[:,1])",
+                "a": "[2 5]"
+            },
+            {
+                "q": "import numpy as np\\nprint(np.array([[1,2],[3,4],[5,6]])[1:, 0])",
+                "a": "[3 5]"
+            },
+            {
+                "q": "import numpy as np\\na = np.array([1,2,3,4,5,6])\\nb = a.reshape(3,2).flatten()\\nb[0] = 99\\nprint(a[0])",
+                "a": "1"
+            },
+            {
+                "q": "import numpy as np\\nprint(np.array([[1,2],[3,4]]).sum(axis=0))",
+                "a": "[4 6]"
+            },
+            {
+                "q": "import numpy as np\\nprint(np.array([[1,2],[3,4]]).sum(axis=1))",
+                "a": "[3 7]"
+            },
+            {
+                "q": "import numpy as np\\nprint(np.unique(np.array([1,1,2,3,3,4])))",
+                "a": "[1 2 3 4]"
+            }
+        ]
+    }
+    }
 }
