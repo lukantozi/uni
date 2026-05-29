@@ -8,7 +8,7 @@
 | G2 | Inheritance | [x] 15/15, drills | [x] 11/14, drills | [x] 27/30 |
 | G3 | Encapsulation | [x] 15/15, drills | [x] 11/14, drills | [x] 29/30 |
 | G4 | Unit Testing | [x] 14/15, drills | [x] 13/14, drills | [x] 30/30 |
-| G5 | NumPy | [ ] | [ ] | [ ] |
+| G5 | NumPy | [x] 10/15, drills | [ ] | [ ] |
 | G6 | Pandas + JSON/CSV | [ ] | [ ] | [ ] |
 | G7 | Tkinter / GUI | [ ] | [ ] | [ ] |
 | G8 | Mixed Mocks | [ ] | [ ] | [ ] |
@@ -36,3 +36,8 @@
 | G3 | C | Q6 `@property` no setter vs `__x` outside class | created new attr | `AttributeError: can't set attribute` (property descriptor blocks it) |
 | G4 | A | Q11 `assertRaises(ValueError)` when `'a' + 1` raises `TypeError` | `True` | `False` (wrong exception type → test fails) |
 | G4 | B | Q13 `tearDown` with class variable `results` | `0\nTrue` | `2\nTrue` (class var persists across tests, tearDown appends after each) |
+| G5 | B | Q8 print variable after modify | `[99 4 5]` | printed `a`, not `b` |
+| G5 | B | Q10 division result dtype | `3` | `3.0` (float dtype) |
+| G5 | B | Q11 two `print()` calls | missed second `print()` | original array also printed |
+| G5 | B | Q13 `concatenate` `axis=0` | `[3 4 5 10 20 30]` | stacks rows, doesn't flatten |
+| G5 | B | Q14 `vstack` on 2D array | `Error` | adds new row below existing 2D array |
