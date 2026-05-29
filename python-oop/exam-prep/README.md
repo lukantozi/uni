@@ -8,7 +8,7 @@
 | G2 | Inheritance | [x] 15/15, drills | [x] 11/14, drills | [x] 27/30 |
 | G3 | Encapsulation | [x] 15/15, drills | [x] 11/14, drills | [x] 29/30 |
 | G4 | Unit Testing | [x] 14/15, drills | [x] 13/14, drills | [x] 30/30 |
-| G5 | NumPy | [x] 10/15, drills | [ ] | [ ] |
+| G5 | NumPy | [x] 10/15, drills | [x] 11/15,  | [ ] |
 | G6 | Pandas + JSON/CSV | [ ] | [ ] | [ ] |
 | G7 | Tkinter / GUI | [ ] | [ ] | [ ] |
 | G8 | Mixed Mocks | [ ] | [ ] | [ ] |
@@ -41,3 +41,6 @@
 | G5 | B | Q11 two `print()` calls | missed second `print()` | original array also printed |
 | G5 | B | Q13 `concatenate` `axis=0` | `[3 4 5 10 20 30]` | stacks rows, doesn't flatten |
 | G5 | B | Q14 `vstack` on 2D array | `Error` | adds new row below existing 2D array |
+| G5 | A | Q1 `arange` slice | `[1]` | `[99]` (assigns in-place, knew the rule) |
+| G5 | A | Q5 `np.sum(arr, axis=0)` | reversed axes | `axis=0` sums down **columns**, not across rows |
+| G5 | A | Q10 reshape to column vector | `[11, 22, 33]` | `[[11 21 31] [12 22 32] [13 23 33]]` didn't know broadcasting rules |
