@@ -44,3 +44,6 @@
 | G5 | A | Q1 `arange` slice | `[1]` | `[99]` (assigns in-place, knew the rule) |
 | G5 | A | Q5 `np.sum(arr, axis=0)` | reversed axes | `axis=0` sums down **columns**, not across rows |
 | G5 | A | Q10 reshape to column vector | `[11, 22, 33]` | `[[11 21 31] [12 22 32] [13 23 33]]` didn't know broadcasting rules |
+| G5 | C | Q17 boolean indexing vs `np.where` | `[0 0 0 1 1]` | `[4 5]` - confused boolean mask with np.where output |
+| G5 | C | Q20 hstack shape on column vectors | `[[1 3] [2 4]]` | `(2, 2)` - gave values instead of shape |
+| G5 | C | Q26 2D slice `[1:, 0]` | `[2 4]` | `[3 5]` - off by one on row index |
