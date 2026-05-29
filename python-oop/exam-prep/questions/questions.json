@@ -989,5 +989,76 @@
             }
         ]
     }
+    },
+    "gate6_pandas_json": {
+        "layer_a": {
+            "description": "Pandas + JSON basics: DataFrame creation, shape, iloc, loc, dropna, fillna, json.loads/dumps",
+            "questions": [
+                {"q": "import pandas as pd\ndf = pd.DataFrame({'a': [1,2,3], 'b': [4,5,6]})\nprint(df['a'][1])", "a": "2"},
+                {"q": "import pandas as pd\ndf = pd.DataFrame({'x': [10,20,30]})\nprint(df.shape)", "a": "(3, 1)"},
+                {"q": "import pandas as pd\ndf = pd.DataFrame({'name': ['Alice','Bob'], 'age': [25,30]})\nprint(df.columns.tolist())", "a": "['name', 'age']"},
+                {"q": "import pandas as pd\ndf = pd.DataFrame({'a': [1,2,3], 'b': [4,5,6]})\nprint(df.iloc[1, 1])", "a": "5"},
+                {"q": "import pandas as pd\ndf = pd.DataFrame({'a': [1,2,3], 'b': [4,5,6]}, index=['x','y','z'])\nprint(df.loc['y', 'b'])", "a": "5"},
+                {"q": "import pandas as pd\ndf = pd.DataFrame({'val': [10,20,30,40]})\nprint(df[df['val'] > 20])", "a": "   val\n2   30\n3   40"},
+                {"q": "import pandas as pd\ndf = pd.DataFrame({'a': [1,2,3]})\nprint(type(df['a']))", "a": "<class 'pandas.core.series.Series'>"},
+                {"q": "import pandas as pd\ndf = pd.DataFrame({'a': [1,2,3], 'b': [4,5,6]})\nprint(df.iloc[0])", "a": "a    1\nb    4\nName: 0, dtype: int64"},
+                {"q": "import pandas as pd\ndf = pd.DataFrame({'a': [1,2,3], 'b': [4,5,6]})\nprint(df.iloc[:, 0].tolist())", "a": "[1, 2, 3]"},
+                {"q": "import pandas as pd\nimport json\ndata = '{\"name\": \"Alice\", \"age\": 30}'\nd = json.loads(data)\nprint(d['name'])", "a": "Alice"},
+                {"q": "import pandas as pd\ndf = pd.DataFrame({'score': [55,70,80,90]})\nprint(df[df['score'] >= 70]['score'].tolist())", "a": "[70, 80, 90]"},
+                {"q": "import pandas as pd\ndf = pd.DataFrame({'a': [1,2,3]})\ndf['b'] = df['a'] * 2\nprint(df)", "a": "   a  b\n0  1  2\n1  2  4\n2  3  6"}
+            ]
+        },
+        "layer_b": {
+            "description": "Pandas gotchas: loc vs iloc inclusive ends, Series vs DataFrame, axis on dropna, json.dumps type, numpy.int64",
+            "questions": [
+                {"q": "import pandas as pd\ndf = pd.DataFrame({'a': [1,2,3]})\nprint(df['a'][0])\nprint(type(df['a'][0]))", "a": "1\n<class 'numpy.int64'>"},
+                {"q": "import pandas as pd\ndf = pd.DataFrame({'a': [1,2,3], 'b': [4,5,6]})\nprint(df.iloc[1])\nprint(df.iloc[1, 0])", "a": "a    2\nb    5\nName: 1, dtype: int64\n2"},
+                {"q": "import pandas as pd\ndf = pd.DataFrame({'a': [1,2,3], 'b': [4,5,6]})\nprint(df[['a']].shape)\nprint(df['a'].shape)", "a": "(3, 1)\n(3,)"},
+                {"q": "import pandas as pd\ndf = pd.DataFrame({'a': [1,2,3], 'b': [4,5,6]})\ndf['c'] = df['a'] + df['b']\nprint(df['c'].tolist())", "a": "[5, 7, 9]"},
+                {"q": "import pandas as pd\nimport json\ndata = [{\"name\": \"Alice\"}, {\"name\": \"Bob\"}]\ns = json.dumps(data)\nprint(type(s))\nprint(s[0])", "a": "<class 'str'>\n["},
+                    {"q": "import pandas as pd\ndf = pd.DataFrame({'score': [40,70,85]})\ndf['pass'] = df['score'] >= 60\nprint(df['pass'].tolist())", "a": "[False, True, True]"},
+                    {"q": "import pandas as pd\ndf = pd.DataFrame({'a': [1,2,3]})\nprint(df.iloc[-1, 0])", "a": "3"},
+                    {"q": "import pandas as pd\nimport json\nd = {'x': 1, 'y': 2}\ns = json.dumps(d)\nd2 = json.loads(s)\nprint(d2['x'] + d2['y'])", "a": "3"},
+                    {"q": "import pandas as pd\ndf = pd.DataFrame({'a': [None,None,None]})\nprint(df.fillna(99)['a'].tolist())", "a": "[99.0, 99.0, 99.0]"},
+                    {"q": "import pandas as pd\ndf = pd.DataFrame({'a': [1,2,3], 'b': [4,5,6]})\nprint(df.loc[0:1, 'a'])", "a": "0    1\n1    2\nName: a, dtype: int64"},
+                    {"q": "import pandas as pd\ndf = pd.DataFrame({'a': [1,2,3], 'b': [4,5,6]})\nprint(df.iloc[:2, :1])", "a": "   a\n0  1\n1  2"},
+                    {"q": "import pandas as pd\ndf = pd.DataFrame({'val': [1,2,3,4,5]})\ndf2 = df[df['val'] > 2]\nprint(df2.reset_index(drop=True)['val'].tolist())", "a": "[3, 4, 5]"}
+                ]
+        },
+        "layer_c": {
+            "description": "Speed run — Pandas + JSON core patterns",
+            "questions": [
+                {"q": "pd.DataFrame({'a': [1,2,3]}).shape", "a": "(3, 1)"},
+                {"q": "df.iloc[0, 0] — uses position or label?", "a": "position"},
+                {"q": "df.loc['x', 'a'] — uses position or label?", "a": "label"},
+                {"q": "df.dropna() — drops rows or columns by default?", "a": "rows (axis=0)"},
+                {"q": "df.fillna(0) — modifies original?", "a": "No — returns new DataFrame"},
+                {"q": "df['a'] returns what type?", "a": "Series"},
+                {"q": "df[['a']] returns what type?", "a": "DataFrame"},
+                {"q": "df.shape returns what type?", "a": "tuple"},
+                {"q": "json.loads('{\"x\": 1}') returns what type?", "a": "dict"},
+                {"q": "json.dumps({'x': 1}) returns what type?", "a": "str"},
+                {"q": "pd.DataFrame({'a': [1,2,3]}).iloc[-1, 0]", "a": "3"},
+                {"q": "df.dropna(axis=1) — drops rows or columns?", "a": "columns"},
+                {"q": "df.loc[0:2] — is endpoint inclusive?", "a": "Yes"},
+                {"q": "df.iloc[0:2] — is endpoint inclusive?", "a": "No"},
+                {"q": "pd.DataFrame({'a':[1,None,3]}).fillna(0)['a'].tolist()", "a": "[1.0, 0.0, 3.0]"},
+                {"q": "type(df['a'][0]) for integer column", "a": "numpy.int64"},
+                {"q": "json.dumps([1,2,3])", "a": "'[1, 2, 3]'"},
+                {"q": "json.loads('[1,2,3]') returns what type?", "a": "list"},
+                {"q": "pd.DataFrame({'a':[1,2],'b':[3,4]}).iloc[:, 1].tolist()", "a": "[3, 4]"},
+                {"q": "df.dropna() — returns new DataFrame or modifies in place?", "a": "returns new DataFrame"},
+                {"q": "double bracket df[['a']] vs single df['a'] — which is DataFrame?", "a": "df[['a']]"},
+                {"q": "pd.DataFrame({'a':[None,None]}).dropna().shape", "a": "(0, 1)"},
+                {"q": "json.loads(json.dumps({'k': 'v'}))['k']", "a": "v"},
+                {"q": "df[df['a'] > 2] — what does this return?", "a": "filtered DataFrame"},
+                {"q": "pd.DataFrame({'a':[1,2,3]}).iloc[0:2].shape", "a": "(2, 1)"},
+                {"q": "pd.DataFrame({'a': [1,2,3], 'b': [4,5,6]}).loc[1:2, 'b'].tolist()", "a": "[5, 6]"},
+                {"q": "pd.read_csv reads from what?", "a": "file path or file-like object"},
+                {"q": "df.to_csv('f.csv', index=False) — what does index=False do?", "a": "omits row index column from CSV"},
+                {"q": "pd.DataFrame({'a':[1,2,3]}).iloc[1, 0]", "a": "2"},
+                {"q": "pd.DataFrame({'a': [1,2,3]}).iloc[0:2].shape", "a": "(2, 1)"}
+            ]
+        }
     }
 }
