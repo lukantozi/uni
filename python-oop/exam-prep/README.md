@@ -9,7 +9,7 @@
 | G3 | Encapsulation | [x] 15/15, drills | [x] 11/14, drills | [x] 29/30 |
 | G4 | Unit Testing | [x] 14/15, drills | [x] 13/14, drills | [x] 30/30 |
 | G5 | NumPy | [x] 10/15, drills | [x] 11/15, drills | [x] 27/30 |
-| G6 | Pandas + JSON/CSV | [x] 11/15, drills | [ ] | [ ] |
+| G6 | Pandas + JSON/CSV | [x] 11/15, drills | [x] 15/15, drills | [ ] |
 | G7 | Mixed Mocks | [ ] | [ ] | [ ] |
 
 ## Mistakes Log
