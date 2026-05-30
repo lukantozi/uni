@@ -9,7 +9,7 @@
 | G3 | Encapsulation | [x] 15/15, drills | [x] 11/14, drills | [x] 29/30 |
 | G4 | Unit Testing | [x] 14/15, drills | [x] 13/14, drills | [x] 30/30 |
 | G5 | NumPy | [x] 10/15, drills | [x] 11/15, drills | [x] 27/30 |
-| G6 | Pandas + JSON/CSV | [x] 11/15, drills | [x] 15/15, drills | [ ] |
+| G6 | Pandas + JSON/CSV | [x] 11/15, drills | [x] 15/15, drills | [x] 24/30 |
 | G7 | Mixed Mocks | [ ] | [ ] | [ ] |
 
 ## Mistakes Log
@@ -50,3 +50,9 @@
 | G6 | A | Q3 `df.columns.tolist()` | `['Alice', 25]` | `['name', 'age']` - columns gives names, not values |
 | G6 | A | Q7 `df.loc['y', 'b']` | `[4, 5, 6]` | `5` - loc with two args returns a single cell |
 | G6 | A | Q9 `type(df['a'])` | `int64` | `<class 'pandas.core.series.Series'>` - `type()` always prints full class path |
+| G6 | C | Q13 df.columns return type | Series | Index (pandas Index object) |
+| G6 | C | Q14 `df.loc[0:2]` inclusive? | No | Yes - loc is inclusive on both ends |
+| G6 | C | Q15 `df.iloc[0:2]` inclusive? | Yes | No - iloc excludes end like Python slicing |
+| G6 | C | Q19 `json.loads('[1,2,3]')` return type | `[{1,2,3}]` | `list` |
+| G6 | C | Q26 `df.loc[1:2, 'b'].tolist()` | `5` | `[5, 6]` - loc includes both endpoints |
+| G6 | C | Q30 `df.iloc[0:2].shape` | `(3, 1)` | `(2, 1)` - iloc excludes end, only 2 rows |
