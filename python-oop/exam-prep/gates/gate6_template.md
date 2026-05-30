@@ -13,7 +13,7 @@
 import pandas as pd
 
 df = pd.DataFrame({'a': [1, 2, 3], 'b': [4, 5, 6]})
-print(df['a'] [ppl-ai-file-upload.s3.amazonaws](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/150209835/ffb20e2a-0ef4-4860-8d45-f4cc9d32d050/gate1_template.md))
+print(df['a'][1])
 ```
 
 **2.**
@@ -194,7 +194,7 @@ print(type(df['a'][0]))
 import pandas as pd
 
 df = pd.DataFrame({'a': [1, 2, 3], 'b': [4, 5, 6]})
-print(df.iloc [ppl-ai-file-upload.s3.amazonaws](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/150209835/ffb20e2a-0ef4-4860-8d45-f4cc9d32d050/gate1_template.md))
+print(df.iloc[1])
 print(df.iloc[1, 0])
 ```
 
@@ -204,7 +204,7 @@ import pandas as pd
 
 df = pd.DataFrame({'a': [1, 2, 3]}, index=[10, 20, 30])
 print(df.loc[20])
-print(df.iloc [ppl-ai-file-upload.s3.amazonaws](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/150209835/ffb20e2a-0ef4-4860-8d45-f4cc9d32d050/gate1_template.md))
+print(df.iloc[1])
 ```
 
 **4.**
@@ -314,7 +314,7 @@ print(df.loc[0:1, 'a'])
 | 1 | `1` then `<class 'numpy.int64'>` (pandas stores ints as numpy types) |
 | 2 | `a    2\nb    5\nName: 1, dtype: int64` then `2` |
 | 3 | `a    2\nName: 20, dtype: int64` twice — `loc` uses index label, `iloc` uses position, both hit row index 20 / position 1 |
-| 4 | drops any column containing NaN → only column `a` remains: `   a\n0  1.0\n1  NaN\n2  3.0` — wait: `axis=1` drops **columns** with NaN, so `b` is dropped → `   a\n0  1\n1  2\n2  3` |
+| 4 | drops both columns |
 | 5 | `(3, 1)` then `(3,)` — double brackets keep DataFrame shape, single bracket returns Series (1D) |
 | 6 | `[3, 4, 5]` |
 | 7 | `[5, 7, 9]` |

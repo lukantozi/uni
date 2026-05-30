@@ -9,9 +9,8 @@
 | G3 | Encapsulation | [x] 15/15, drills | [x] 11/14, drills | [x] 29/30 |
 | G4 | Unit Testing | [x] 14/15, drills | [x] 13/14, drills | [x] 30/30 |
 | G5 | NumPy | [x] 10/15, drills | [x] 11/15, drills | [x] 27/30 |
-| G6 | Pandas + JSON/CSV | [ ] | [ ] | [ ] |
-| G7 | Tkinter / GUI | [ ] | [ ] | [ ] |
-| G8 | Mixed Mocks | [ ] | [ ] | [ ] |
+| G6 | Pandas + JSON/CSV | [x] 11/15, drills | [ ] | [ ] |
+| G7 | Mixed Mocks | [ ] | [ ] | [ ] |
 
 ## Mistakes Log
 
@@ -47,3 +46,7 @@
 | G5 | C | Q17 boolean indexing vs `np.where` | `[0 0 0 1 1]` | `[4 5]` - confused boolean mask with np.where output |
 | G5 | C | Q20 hstack shape on column vectors | `[[1 3] [2 4]]` | `(2, 2)` - gave values instead of shape |
 | G5 | C | Q26 2D slice `[1:, 0]` | `[2 4]` | `[3 5]` - off by one on row index |
+| G6 | A | Q2 `df.shape` row/col order | `(1, 3)` | `(3, 1)` - always rows first, columns second |
+| G6 | A | Q3 `df.columns.tolist()` | `['Alice', 25]` | `['name', 'age']` - columns gives names, not values |
+| G6 | A | Q7 `df.loc['y', 'b']` | `[4, 5, 6]` | `5` - loc with two args returns a single cell |
+| G6 | A | Q9 `type(df['a'])` | `int64` | `<class 'pandas.core.series.Series'>` - `type()` always prints full class path |
