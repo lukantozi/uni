@@ -14,6 +14,7 @@
 | Mock | Result |
 |-------|--------|
 | 1 | [x] 41/50 |
+| 2 | [x] 47/51 |
 
 ## Mistakes Log
 
@@ -66,7 +67,11 @@
 | 1 | Q11 `type(d).__name__` | `Dog(Animal)` | `Dog` -- `__name__` gives just the class name, no inheritance info |
 | 1 | Q23 `testsRun` count | `3` | `2` -- two test methods, count carefully |
 | 1 | Q25 mutable class attr `tricks` | `[]` | `['sit']` -- `self` falls back to class attr, shared list |
-| 1 | Q28 instance vs class attr shadow | `Wolf\nDog` | `Wolf\nCanis familiaris` — rushed |
+| 1 | Q28 instance vs class attr shadow | `Wolf\nDog` | `Wolf\nCanis familiaris` -- rushed |
 | 1 | Q32 `np.sum(axis=1)` | `[4 6]` | `[3 7]` -- axis=1 sums across columns per row |
 | 1 | Q36 `__call__` + `__repr__` | `7` | `Counter(7)` -- `print(c)` calls `__repr__`, not the value |
 | 1 | Q39 name mangling in subclass | `5\n5` | `5\nAttributeError` -- `__x` in `B` resolves to `_B__x`, not `_A__x` |
+| 2 | Q1 `A.count` vs `a.count` | `1\n1` | `0\n1` -- `self.count += 1` creates instance attr, class attr stays 0 |
+| 2 | Q8 `fillna(0).tolist()` | `[1, 0, 3]` | `[1.0, 0.0, 3.0]` -- pandas uses float when NaNs are present |
+| 2 | Q13 copy vs original array | `1` | `[1 2 3 4 5 6]` -- `copy()` breaks the link, original unchanged |
+| 2 | Q42 `reshape().flatten()` and aliasing | `99` | `1` -- reshape+flatten here returns a copy, `a` not affected |
