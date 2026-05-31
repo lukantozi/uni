@@ -10,7 +10,10 @@
 | G4 | Unit Testing | [x] 14/15, drills | [x] 13/14, drills | [x] 30/30 |
 | G5 | NumPy | [x] 10/15, drills | [x] 11/15, drills | [x] 27/30 |
 | G6 | Pandas + JSON/CSV | [x] 11/15, drills | [x] 15/15, drills | [x] 24/30 |
-| G7 | Mixed Mocks | [ ] | [ ] | [ ] |
+
+| Mock | Result |
+|-------|--------|
+| 1 | [x] 41/50 |
 
 ## Mistakes Log
 
@@ -56,3 +59,14 @@
 | G6 | C | Q19 `json.loads('[1,2,3]')` return type | `[{1,2,3}]` | `list` |
 | G6 | C | Q26 `df.loc[1:2, 'b'].tolist()` | `5` | `[5, 6]` - loc includes both endpoints |
 | G6 | C | Q30 `df.iloc[0:2].shape` | `(3, 1)` | `(2, 1)` - iloc excludes end, only 2 rows |
+---
+| Mock | Question | What I wrote | Correct |
+|-------|----------|--------------|---------|
+| 1 | Q8 `flatten` + `shape` | `(1,6)` or `(6,)` | `[1 2 3 4 5 6]` then `(2, 3)` -- `flatten` returns copy, original shape unchanged |
+| 1 | Q11 `type(d).__name__` | `Dog(Animal)` | `Dog` -- `__name__` gives just the class name, no inheritance info |
+| 1 | Q23 `testsRun` count | `3` | `2` -- two test methods, count carefully |
+| 1 | Q25 mutable class attr `tricks` | `[]` | `['sit']` -- `self` falls back to class attr, shared list |
+| 1 | Q28 instance vs class attr shadow | `Wolf\nDog` | `Wolf\nCanis familiaris` — rushed |
+| 1 | Q32 `np.sum(axis=1)` | `[4 6]` | `[3 7]` -- axis=1 sums across columns per row |
+| 1 | Q36 `__call__` + `__repr__` | `7` | `Counter(7)` -- `print(c)` calls `__repr__`, not the value |
+| 1 | Q39 name mangling in subclass | `5\n5` | `5\nAttributeError` -- `__x` in `B` resolves to `_B__x`, not `_A__x` |
