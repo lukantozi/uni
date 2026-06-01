@@ -15,6 +15,7 @@
 |-------|--------|
 | 1 | [x] 41/50 |
 | 2 | [x] 47/51 |
+| 3 | [x] 46/50 |
 
 ## Mistakes Log
 
@@ -75,3 +76,7 @@
 | 2 | Q8 `fillna(0).tolist()` | `[1, 0, 3]` | `[1.0, 0.0, 3.0]` -- pandas uses float when NaNs are present |
 | 2 | Q13 copy vs original array | `1` | `[1 2 3 4 5 6]` -- `copy()` breaks the link, original unchanged |
 | 2 | Q42 `reshape().flatten()` and aliasing | `99` | `1` -- reshape+flatten here returns a copy, `a` not affected |
+| 3 | Q3 `print(list(p))` with `__iter__` | `Pair(10, 20)` | `[10, 20]` -- `list()` calls `__iter__`, gives a real list not `__repr__` |
+| 3 | Q23 `json.loads` return type | `list` | `dict` -- knew it, second-guessed |
+| 3 | Q39 2D slice `a[1:, 1:]` | `[1, 2, 3]` | `[[5 6] [8 9]]` -- slice both axes independently, drops first row and first col |
+| 3 | Q40 `assertNotEqual(1, 2)` | `False` | `True` -- 1 != 2 is true, test passes |
