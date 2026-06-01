@@ -16,6 +16,7 @@
 | 1 | [x] 41/50 |
 | 2 | [x] 47/51 |
 | 3 | [x] 46/50 |
+| 4 | [x] 47/51 |
 
 ## Mistakes Log
 
@@ -80,3 +81,7 @@
 | 3 | Q23 `json.loads` return type | `list` | `dict` -- knew it, second-guessed |
 | 3 | Q39 2D slice `a[1:, 1:]` | `[1, 2, 3]` | `[[5 6] [8 9]]` -- slice both axes independently, drops first row and first col |
 | 3 | Q40 `assertNotEqual(1, 2)` | `False` | `True` -- 1 != 2 is true, test passes |
+| 4 | Q7 `dropna().shape` on all-None col | `(1,)` | `(0, 1)` -- shape is always 2D for DataFrame, and all rows dropped |
+| 4 | Q12 `a.shape` for 2x3 array | `(3, 3)` | `(2, 3)` -- count rows first, then columns |
+| 4 | Q20 `print(b.x, b.y)` | `(1, 2)` | `1 2` -- print separates with space, not tuple |
+| 4 | Q27 `sum(axis=0)` on 2x2 | `[4, 7]` | `[4, 6]` -- 1+3=4, 2+4=6 |
